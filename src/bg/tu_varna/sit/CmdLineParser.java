@@ -1,8 +1,10 @@
 package bg.tu_varna.sit;
 
+import java.util.ArrayList;
+
 public class CmdLineParser {
-    public CmdLineParser(String[] cmdLine) {
-        switch(cmdLine[0]) {
+    public CmdLineParser(ArrayList<String> tokens) {
+        switch(tokens.getFirst()) {
             case "open":
             case "close":
             case "save":
@@ -35,7 +37,7 @@ public class CmdLineParser {
                 System.exit(0);
                 break;
             default:
-                System.out.println("Command " + cmdLine[0] + " not found, do 'help' for available commands");
+                System.out.println("Command " + tokens.getFirst() + " not found, do 'help' for available commands");
         }
     }
 
