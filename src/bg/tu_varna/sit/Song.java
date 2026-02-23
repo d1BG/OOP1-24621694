@@ -20,14 +20,14 @@ public class Song {
         same thing
      */
 
-    public Song(String ID, String title, String artist, String... args) {
+    public Song(String ID, String title, String artist, String duration, String... args) {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
         this.duration = duration;
         if (args.length > 0) {
             if (args[0] != null) {
-                this.album = (String)args[0];
+                this.album = args[0];
             } else {
                 this.album = "N/A";
                 this.year = "N/A";
@@ -36,7 +36,7 @@ public class Song {
             }
 
             if (args[1] != null) {
-                this.year = (String)args[1];
+                this.year = args[1];
             }  else {
                 this.year = "N/A";
                 this.genre = "N/A";
@@ -44,7 +44,7 @@ public class Song {
             }
 
             if (args[2] != null) {
-                this.genre = (String)args[2];
+                this.genre = args[2];
             } else {
                 this.genre = "N/A";
             }
