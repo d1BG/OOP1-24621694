@@ -3,7 +3,7 @@ package bg.tu_varna.sit;
 import java.util.ArrayList;
 
 public class CmdLineParser {
-    public CmdLineParser(ArrayList<String> tokens) {
+    public CmdLineParser(ArrayList<String> tokens, MusicPlaylists musicPlaylists) {
         switch(tokens.getFirst()) {
             case "open":
             case "close":
@@ -13,8 +13,6 @@ public class CmdLineParser {
             case "removesong":
             case "listsongs":
             case "songinfo":
-            case "createplaylist":
-            case "deleteplaylist":
             case "addtoplaylist":
             case "removefromplaylist":
             case "move":
@@ -28,6 +26,22 @@ public class CmdLineParser {
             case "lowactivity":
             case "dropplaylist":
                 System.out.println("Command not implemented yet");
+                break;
+            case "listplaylists":
+                musicPlaylists.listPlaylists();
+                break;
+            case "createplaylist":
+                if (tokens.size() == 2) {
+                    musicPlaylists.createPlaylist(tokens.get(1));
+                    break;
+                } else if (tokens.size() == 3) {
+                    musicPlaylists.createPlaylist(tokens.get(1), tokens.get(2));
+                    break;
+                }
+                System.out.println("Invalid usage of the command, do 'help' for usage");
+                break;
+            case "deleteplaylist":
+                musicPlaylists.deletePlaylist(tokens.get(1));
                 break;
             case "help":
                 printHelp();

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Application {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        MusicPlaylists musicPlaylists = new MusicPlaylists();
         do {
             System.out.print("Music Playlist > ");
             String currentLine = br.readLine();
@@ -42,7 +43,7 @@ public class Application {
             tokens.add(currToken.toString()); // add the last token
 
 
-            CmdLineParser parser = new CmdLineParser(tokens);
+            CmdLineParser parser = new CmdLineParser(tokens, musicPlaylists);
         } while (true);
     }
 }
