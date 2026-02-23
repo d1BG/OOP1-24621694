@@ -129,6 +129,10 @@ public class CmdLineParser {
             
                 dropplaylist <playlistName>
                     Премахва плейлист от системата.
+            
+            Debug commands:
+                listplaylists
+                    Изкарва имената на всички плейлисти.
             """;
         System.out.print(helpMessage);
     }
