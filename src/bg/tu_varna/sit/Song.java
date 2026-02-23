@@ -77,6 +77,19 @@ public class Song {
     }
 
     @Override
+    public String toString() {
+        return "Song{" +
+                "ID='" + ID + '\'' +
+                ", title='" + title + '\'' +
+                ", artist='" + artist + '\'' +
+                ", duration='" + duration + '\'' +
+                ", album='" + album + '\'' +
+                ", year='" + year + '\'' +
+                ", genre='" + genre + '\'' +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Song song = (Song) o;
