@@ -9,9 +9,7 @@ public class CmdLineParser {
             case "close":
             case "save":
             case "saveas":
-            case "addsong":
             case "removesong":
-            case "listsongs":
             case "songinfo":
             case "addtoplaylist":
             case "removefromplaylist":
@@ -26,6 +24,32 @@ public class CmdLineParser {
             case "lowactivity":
             case "dropplaylist":
                 System.out.println("Command not implemented yet");
+                break;
+            case "listsongs":
+                musicPlaylists.listSongs();
+                break;
+            case "addsong":
+                switch(tokens.size()) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        System.out.println("Command usage: addsong <title> <artist> <duration> [<album>] [<year>] [<genre>]");
+                        return;
+                    case 4:
+                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3));
+                        break;
+                    case 5:
+                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4));
+                        break;
+                    case 6:
+                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), tokens.get(5));
+                        break;
+                    case 7:
+                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), tokens.get(5), tokens.get(6));
+                        break;
+                    default:
+                        System.out.println("Too many arguments");
+                }
                 break;
             case "listplaylists":
                 musicPlaylists.listPlaylists();
