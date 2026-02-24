@@ -3,7 +3,7 @@ package bg.tu_varna.sit;
 import java.util.List;
 
 public class ListplaylistsCommand implements Command {
-    MusicPlaylists musicPlaylists;
+    private MusicPlaylists musicPlaylists;
     public ListplaylistsCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }

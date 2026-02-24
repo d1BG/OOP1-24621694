@@ -3,7 +3,7 @@ package bg.tu_varna.sit;
 import java.util.List;
 
 public class DeleteplaylistCommand implements Command {
-    MusicPlaylists musicPlaylists;
+    private MusicPlaylists musicPlaylists;
     public DeleteplaylistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
