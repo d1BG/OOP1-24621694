@@ -11,10 +11,18 @@ public class AddsongCommand implements Command {
     @Override
     public void execute(List<String> args) {
         List<Song> songs = musicPlaylists.getSongs();
-        if (args.isEmpty() || args.size() < 3) {
+        if (args.isEmpty() || args.size() < 3 || args.size() > 6) {
             System.out.println("Invalid arguments");
             return;
         }
+
+        for (Song song : songs) {
+            if (song.getTitle().equals(args.get(0)) && song.getTitle().equals(args.get(1))) {
+                System.out.println("Song already exists");
+                return;
+            }
+        }
+
         int songID;
         if (songs.isEmpty()) {
             songID = 1;
