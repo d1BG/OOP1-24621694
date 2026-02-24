@@ -25,7 +25,7 @@ public class CmdLineParser {
                 System.out.println("Command not implemented yet");
                 break;
             case "removesong":
-                musicPlaylists.removeSong(tokens.get(1));
+                musicPlaylists.removeSong(Integer.parseInt(tokens.get(1)));
                 break;
             case "listsongs":
                 musicPlaylists.listSongs();

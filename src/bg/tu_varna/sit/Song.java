@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Song {
     // Required*
-    private String ID;
+    private int ID;
     private String title;
     private String artist;
     private String duration;
@@ -14,7 +14,7 @@ public class Song {
     private String genre;
 
 
-    public Song(String ID, String title, String artist, String duration, String album, String year, String genre) {
+    public Song(int ID, String title, String artist, String duration, String album, String year, String genre) {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
@@ -25,7 +25,7 @@ public class Song {
     }
 
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 

@@ -61,13 +61,13 @@ public class MusicPlaylists {
                 return;
             }
         }
-        String songID = String.valueOf(songs.size()+1);
+        int songID = songs.size()+1;
         songs.add(new Song(songID, title, artist, duration, album, year, genre));
     }
 
-    void removeSong(String id) {
+    void removeSong(int id) {
         for (Song song : songs) {
-            if (song.getID().equals(id)) {
+            if (song.getID() == id) {
                 songs.remove(song);
                 return;
             }
