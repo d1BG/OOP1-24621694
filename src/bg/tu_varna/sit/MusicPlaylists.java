@@ -48,40 +48,13 @@ public class MusicPlaylists {
         }
     }
 
-    void addSong(String title, String artist, String duration){
-        for  (Song song : songs) {
-            if (song.getTitle().equals(title) && song.getArtist().equals(artist)) {
-                System.out.println("Song already exists");
-                return;
-            }
-        }
-        String songID = String.valueOf(songs.size()+1);
-        songs.add(new Song(songID, title, artist, duration));
-    }
-
-    void addSong(String title, String artist, String duration, String album){
-        for  (Song song : songs) {
-            if (song.getTitle().equals(title) && song.getArtist().equals(artist)) {
-                System.out.println("Song already exists");
-                return;
-            }
-        }
-        String songID = String.valueOf(songs.size()+1);
-        songs.add(new Song(songID, title, artist, duration, album));
-    }
-
-    void addSong(String title, String artist, String duration, String album, String year){
-        for  (Song song : songs) {
-            if (song.getTitle().equals(title) && song.getArtist().equals(artist)) {
-                System.out.println("Song already exists");
-                return;
-            }
-        }
-        String songID = String.valueOf(songs.size()+1);
-        songs.add(new Song(songID, title, artist, duration, album, year));
-    }
-
     void addSong(String title, String artist, String duration, String album, String year, String genre){
+        if (album.isEmpty()) { album = "N/A"; }
+
+        if (year.isEmpty()) { year = "N/A"; }
+
+        if (genre.isEmpty()) { genre = "N/A"; }
+
         for  (Song song : songs) {
             if (song.getTitle().equals(title) && song.getArtist().equals(artist)) {
                 System.out.println("Song already exists");

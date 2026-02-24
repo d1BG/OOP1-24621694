@@ -13,29 +13,6 @@ public class Song {
     private String year;
     private String genre;
 
-    public Song(String ID, String title, String artist, String duration) {
-        this.ID = ID;
-        this.title = title;
-        this.artist = artist;
-        this.duration = duration;
-    }
-
-    public Song(String ID, String title, String artist, String duration, String album) {
-        this.ID = ID;
-        this.title = title;
-        this.artist = artist;
-        this.duration = duration;
-        this.album = album;
-    }
-
-    public Song(String ID, String title, String artist, String duration, String album, String year) {
-        this.ID = ID;
-        this.title = title;
-        this.artist = artist;
-        this.duration = duration;
-        this.album = album;
-        this.year = year;
-    }
 
     public Song(String ID, String title, String artist, String duration, String album, String year, String genre) {
         this.ID = ID;

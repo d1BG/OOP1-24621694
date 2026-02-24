@@ -38,13 +38,13 @@ public class CmdLineParser {
                         System.out.println("Command usage: addsong <title> <artist> <duration> [<album>] [<year>] [<genre>]");
                         return;
                     case 4:
-                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3));
+                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), "", "", "");
                         break;
                     case 5:
-                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4));
+                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), "", "");
                         break;
                     case 6:
-                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), tokens.get(5));
+                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), tokens.get(5), "");
                         break;
                     case 7:
                         musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), tokens.get(5), tokens.get(6));
