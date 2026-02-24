@@ -9,7 +9,6 @@ public class CmdLineParser {
             case "close":
             case "save":
             case "saveas":
-            case "songinfo":
             case "addtoplaylist":
             case "removefromplaylist":
             case "move":
@@ -23,6 +22,9 @@ public class CmdLineParser {
             case "lowactivity":
             case "dropplaylist":
                 System.out.println("Command not implemented yet");
+                break;
+            case "songinfo":
+                musicPlaylists.songInfo(Integer.parseInt(tokens.get(1)));
                 break;
             case "removesong":
                 musicPlaylists.removeSong(Integer.parseInt(tokens.get(1)));

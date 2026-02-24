@@ -80,6 +80,16 @@ public class MusicPlaylists {
         System.out.println(id + " does not exist");
     }
 
+    void songInfo(int id) {
+        for (Song song : songs) {
+            if (song.getID() == id) {
+                System.out.println(song);
+                return;
+            }
+        }
+        System.out.println("Song " + id + " not found");
+    }
+
     // TODO: Filtering by artist, genre, year
     public void listSongs(){
         for (Song song : songs) {
