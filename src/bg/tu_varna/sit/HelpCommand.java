@@ -3,6 +3,11 @@ package bg.tu_varna.sit;
 import java.util.List;
 
 public class HelpCommand implements Command {
+    private MusicPlaylists musicPlaylists;
+    public HelpCommand(MusicPlaylists musicPlaylists) {
+        this.musicPlaylists = musicPlaylists;
+    }
+
     @Override
     public void execute(List<String> args) {
         String helpMessage = """

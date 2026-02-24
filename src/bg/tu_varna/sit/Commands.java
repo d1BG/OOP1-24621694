@@ -7,9 +7,9 @@ import java.util.Map;
 public class Commands {
     private final Map<String, Command> commands = new HashMap<>();
 
-    public Commands() {
-        commands.put("exit", new ExitCommand());
-        commands.put("help", new HelpCommand());
+    public Commands(MusicPlaylists musicPlaylists) {
+        commands.put("exit", new ExitCommand(musicPlaylists));
+        commands.put("help", new HelpCommand(musicPlaylists));
     }
 
     public void exec(String cmdName, List<String> args) {
