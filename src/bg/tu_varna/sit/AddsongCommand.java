@@ -44,4 +44,10 @@ public class AddsongCommand implements Command {
 
         songs.add(newSong);
     }
+
+    @Override
+    public String cmdHelpMessage() {
+        return "Добавя нова песен. Ако съществува песен със същото <title> и <artist>, връща грешка.\n" +
+                "   Usage: addsong <title> <artist> <duration> [<album>] [<year>] [<genre>]";
+    }
 }

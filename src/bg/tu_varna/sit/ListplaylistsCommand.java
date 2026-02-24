@@ -14,4 +14,10 @@ public class ListplaylistsCommand implements Command {
             System.out.println(playlist.getName());
         });
     }
+
+    @Override
+    public String cmdHelpMessage() {
+        return "ДЕБЪГ КОМАНДА Изкарва имената на всички плейлисти.\n" +
+                "   Usage: listplaylists";
+    }
 }

@@ -26,4 +26,10 @@ public class CreateplaylistCommand implements Command {
             playlists.add(newPlaylist);
         }
     }
+
+    @Override
+    public String cmdHelpMessage() {
+        return "Създава нов плейлист с уникално име.\n" +
+                "   Usage: createplaylist <name> [<description>]";
+    }
 }

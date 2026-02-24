@@ -28,4 +28,10 @@ public class SonginfoCommand implements Command {
         }
         System.out.println("Song " + args.getFirst() + " not found");
     }
+
+    @Override
+    public String cmdHelpMessage() {
+        return "Показва подробна информация за песен.\n" +
+                "   Usage: songinfo <songId>";
+    }
 }

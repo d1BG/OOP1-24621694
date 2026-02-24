@@ -28,4 +28,10 @@ public class RemovesongCommand implements Command {
         }
         System.out.println("Song " + args.getFirst() + " not found");
     }
+
+    @Override
+    public String cmdHelpMessage() {
+        return "Изтрива песен по ID.\n" +
+                "   Usage: removesong <songId>";
+    }
 }

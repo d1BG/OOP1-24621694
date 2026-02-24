@@ -9,7 +9,7 @@ public class Commands {
 
     public Commands(MusicPlaylists musicPlaylists) {
         commands.put("exit", new ExitCommand(musicPlaylists));
-        commands.put("help", new HelpCommand(musicPlaylists));
+        commands.put("help", new HelpCommand(musicPlaylists, commands));
         commands.put("createplaylist", new CreateplaylistCommand(musicPlaylists));
         commands.put("listplaylists", new ListplaylistsCommand(musicPlaylists));
         commands.put("deleteplaylist", new DeleteplaylistCommand(musicPlaylists));

@@ -25,4 +25,10 @@ public class DeleteplaylistCommand implements Command {
         System.out.println("Playlist " + args.getFirst() + " not found");
 
     }
+
+    @Override
+    public String cmdHelpMessage() {
+        return "Изтрива плейлист.\n" +
+                "   Usage: deleteplaylist <name>";
+    }
 }

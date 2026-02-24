@@ -16,4 +16,10 @@ public class ListsongsCommand implements Command {
             System.out.println(song);
         }
     }
+
+    @Override
+    public String cmdHelpMessage() {
+        return "Извежда списък с песни с възможност за филтриране.\n" +
+                "   Usage: listsongs [artist=<artist>] [genre=<genre>] [year=<year>]";
+    }
 }

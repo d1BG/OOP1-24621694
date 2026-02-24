@@ -1,11 +1,15 @@
 package bg.tu_varna.sit;
 
 import java.util.List;
+import java.util.Map;
 
 public class HelpCommand implements Command {
     private MusicPlaylists musicPlaylists;
-    public HelpCommand(MusicPlaylists musicPlaylists) {
+    private Map<String, Command> commands;
+
+    public HelpCommand(MusicPlaylists musicPlaylists, Map<String, Command> commands) {
         this.musicPlaylists = musicPlaylists;
+        this.commands = commands;
     }
 
     @Override
@@ -24,8 +28,8 @@ public class HelpCommand implements Command {
                 saveas <file>
                     Записва данните в нов файл.
             
-                help
-                    Изважда това съобщение.
+                help [<command name>]
+                    Изважда това съобщение, ако има аргумент показва информация за специфичната команда.
             
                 exit
                     Прекратява програмата.
@@ -88,6 +92,22 @@ public class HelpCommand implements Command {
                 listplaylists
                     Изкарва имената на всички плейлисти.
             """;
-        System.out.print(helpMessage);
+        if (args.isEmpty()) {
+            System.out.print(helpMessage);
+        } else {
+            String commandName = args.getFirst().toLowerCase();
+            Command command = commands.get(commandName);
+            if (command != null) {
+                System.out.println(command.cmdHelpMessage());
+            } else {
+                System.out.println("Unknown command: " + commandName);
+            }
+        }
+    }
+
+    @Override
+    public String cmdHelpMessage() {
+        return "Изважда съобщение за помощ, ако има аргумент показва информация за специфичната команда.\n" +
+                "   Usage: help [<command name>]";
     }
 }
