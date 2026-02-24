@@ -12,6 +12,22 @@ public class MusicPlaylists {
         this.songs = new ArrayList<>();
     }
 
+    public List<Playlist> getPlaylists() {
+        return playlists;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setPlaylists(List<Playlist> playlists) {
+        this.playlists = playlists;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
+    
     public void createPlaylist(String name){
         for (Playlist playlist : playlists) {
             if (playlist.getName().equals(name)) {
