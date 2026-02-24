@@ -92,6 +92,16 @@ public class MusicPlaylists {
         songs.add(new Song(songID, title, artist, duration, album, year, genre));
     }
 
+    void removeSong(String id) {
+        for (Song song : songs) {
+            if (song.getID().equals(id)) {
+                songs.remove(song);
+                return;
+            }
+        }
+        System.out.println(id + " does not exist");
+    }
+
     // TODO: Filtering by artist, genre, year
     public void listSongs(){
         for (Song song : songs) {
