@@ -61,7 +61,12 @@ public class MusicPlaylists {
                 return;
             }
         }
-        int songID = songs.size()+1;
+        int songID;
+        if (songs.isEmpty()) {
+            songID = 1;
+        } else {
+            songID = songs.getLast().getID()+1;
+        }
         songs.add(new Song(songID, title, artist, duration, album, year, genre));
     }
 
