@@ -9,6 +9,7 @@ public class Commands {
 
     public Commands() {
         commands.put("exit", new ExitCommand());
+        commands.put("help", new HelpCommand());
     }
 
     public void exec(String cmdName, List<String> args) {
