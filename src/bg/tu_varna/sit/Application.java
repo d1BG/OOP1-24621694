@@ -10,7 +10,7 @@ public class Application {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         MusicPlaylists musicPlaylists = new MusicPlaylists();
         do {
-            Commands commands = new Commands();
+            Commands commands = new Commands(musicPlaylists);
 
             System.out.print("Music Playlist > ");
             String currentLine = br.readLine();
