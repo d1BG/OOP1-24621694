@@ -9,6 +9,8 @@ public class Application {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         MusicPlaylists musicPlaylists = new MusicPlaylists();
+        Commands commands = new Commands(musicPlaylists);
+
         do {
             System.out.print("Music Playlist > ");
             String currentLine = br.readLine();
@@ -16,12 +18,6 @@ public class Application {
 
             ArrayList<String> tokens = new ArrayList<>();
             StringBuilder currToken = new StringBuilder();
-
-             /*
-                TODO: Linux file paths can include quotes,
-                 so alongside with this, I also need to add
-                 escape characters..
-             */
 
             for (int i = 0; i < currentLine.length(); i++) {
                 switch (currentLine.charAt(i)) {
@@ -42,8 +38,7 @@ public class Application {
             }
             tokens.add(currToken.toString()); // add the last token
 
-
-            CmdLineParser parser = new CmdLineParser(tokens, musicPlaylists);
+            commands.exec(tokens.getFirst(), tokens);
         } while (true);
     }
 }

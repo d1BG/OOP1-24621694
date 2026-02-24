@@ -1,89 +1,15 @@
 package bg.tu_varna.sit;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class CmdLineParser {
-    public CmdLineParser(ArrayList<String> tokens, MusicPlaylists musicPlaylists) {
-        switch(tokens.getFirst()) {
-            case "open":
-            case "close":
-            case "save":
-            case "saveas":
-            case "addtoplaylist":
-            case "removefromplaylist":
-            case "move":
-            case "showplaylist":
-            case "shuffle":
-            case "play":
-            case "plays":
-            case "toptracks":
-            case "topplaylists":
-            case "topartists":
-            case "lowactivity":
-            case "dropplaylist":
-                System.out.println("Command not implemented yet");
-                break;
-            case "songinfo":
-                musicPlaylists.songInfo(Integer.parseInt(tokens.get(1)));
-                break;
-            case "removesong":
-                musicPlaylists.removeSong(Integer.parseInt(tokens.get(1)));
-                break;
-            case "listsongs":
-                musicPlaylists.listSongs();
-                break;
-            case "addsong":
-                switch(tokens.size()) {
-                    case 1:
-                    case 2:
-                    case 3:
-                        System.out.println("Command usage: addsong <title> <artist> <duration> [<album>] [<year>] [<genre>]");
-                        return;
-                    case 4:
-                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), "", "", "");
-                        break;
-                    case 5:
-                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), "", "");
-                        break;
-                    case 6:
-                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), tokens.get(5), "");
-                        break;
-                    case 7:
-                        musicPlaylists.addSong(tokens.get(1), tokens.get(2), tokens.get(3), tokens.get(4), tokens.get(5), tokens.get(6));
-                        break;
-                    default:
-                        System.out.println("Too many arguments");
-                }
-                break;
-            case "listplaylists":
-                musicPlaylists.listPlaylists();
-                break;
-            case "createplaylist":
-                if (tokens.size() == 2) {
-                    musicPlaylists.createPlaylist(tokens.get(1));
-                    break;
-                } else if (tokens.size() == 3) {
-                    musicPlaylists.createPlaylist(tokens.get(1), tokens.get(2));
-                    break;
-                }
-                System.out.println("Invalid usage of the command, do 'help' for usage");
-                break;
-            case "deleteplaylist":
-                musicPlaylists.deletePlaylist(tokens.get(1));
-                break;
-            case "help":
-                printHelp();
-                break;
-            case "exit":
-                System.out.println("Exiting...");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Command " + tokens.getFirst() + " not found, do 'help' for available commands");
-        }
+public class HelpCommand implements Command {
+    private MusicPlaylists musicPlaylists;
+    public HelpCommand(MusicPlaylists musicPlaylists) {
+        this.musicPlaylists = musicPlaylists;
     }
 
-    public void printHelp() {
+    @Override
+    public void execute(List<String> args) {
         String helpMessage = """
             All Available Commands:
                 open <file>
