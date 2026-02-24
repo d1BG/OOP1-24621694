@@ -14,14 +14,14 @@ public class Song {
     private String genre;
 
 
-    public Song(int ID, String title, String artist, String duration, String album, String year, String genre) {
+    public Song(int ID, String title, String artist, String duration) {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
         this.duration = duration;
-        this.album = album;
-        this.year = year;
-        this.genre = genre;
+        this.album = "N/A";
+        this.year = "N/A";
+        this.genre = "N/A";
     }
 
 
@@ -51,6 +51,34 @@ public class Song {
 
     public String getGenre() {
         return genre;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     @Override

@@ -12,7 +12,8 @@ public class Commands {
         commands.put("help", new HelpCommand(musicPlaylists));
         commands.put("createplaylist", new CreateplaylistCommand(musicPlaylists));
         commands.put("listplaylists", new ListplaylistsCommand(musicPlaylists));
-        commands.put("deleteplaylist", new DeleteplaylistCommand(musicPlaylists) );
+        commands.put("deleteplaylist", new DeleteplaylistCommand(musicPlaylists));
+        commands.put("addsong", new AddsongCommand(musicPlaylists));
     }
 
     public void exec(String cmdName, List<String> args) {
