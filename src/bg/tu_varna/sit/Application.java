@@ -27,7 +27,7 @@ public class Application {
                     case ' ':
                         if (inQuotes) {
                             currToken.append(currentLine.charAt(i));
-                        } else {
+                        } else if (!currToken.isEmpty()) {
                             tokens.add(currToken.toString());
                             currToken = new StringBuilder();
                         }
@@ -36,7 +36,9 @@ public class Application {
                         currToken.append(currentLine.charAt(i));
                 }
             }
-            tokens.add(currToken.toString()); // add the last token
+            if (!currToken.isEmpty()) {
+                tokens.add(currToken.toString()); // add the last token
+            }
 
             commands.exec(tokens.getFirst(), tokens);
         } while (true);
