@@ -10,6 +10,8 @@ public class Application {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         MusicPlaylists musicPlaylists = new MusicPlaylists();
         do {
+            Commands commands = new Commands();
+
             System.out.print("Music Playlist > ");
             String currentLine = br.readLine();
             boolean inQuotes = false;
@@ -42,8 +44,9 @@ public class Application {
             }
             tokens.add(currToken.toString()); // add the last token
 
+            commands.exec(tokens.getFirst(), tokens);
 
-            CmdLineParser parser = new CmdLineParser(tokens, musicPlaylists);
+            // CmdLineParser parser = new CmdLineParser(tokens, musicPlaylists);
         } while (true);
     }
 }
