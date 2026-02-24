@@ -24,7 +24,6 @@ public class CreateplaylistCommand implements Command {
             }
 
             playlists.add(newPlaylist);
-            musicPlaylists.setPlaylists(playlists);
         }
     }
 }
