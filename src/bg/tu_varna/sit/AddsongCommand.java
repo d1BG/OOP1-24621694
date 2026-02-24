@@ -17,7 +17,7 @@ public class AddsongCommand implements Command {
         }
 
         for (Song song : songs) {
-            if (song.getTitle().equals(args.get(0)) && song.getTitle().equals(args.get(1))) {
+            if (song.getTitle().equals(args.get(0)) && song.getArtist().equals(args.get(1))) {
                 System.out.println("Song already exists");
                 return;
             }
