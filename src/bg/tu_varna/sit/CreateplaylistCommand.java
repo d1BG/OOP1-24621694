@@ -2,9 +2,9 @@ package bg.tu_varna.sit;
 
 import java.util.List;
 
-public class createplaylistCommand implements Command {
+public class CreateplaylistCommand implements Command {
     private MusicPlaylists musicPlaylists;
-    public createplaylistCommand(MusicPlaylists musicPlaylists) {
+    public CreateplaylistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
 

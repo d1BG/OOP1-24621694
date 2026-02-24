@@ -10,7 +10,7 @@ public class Commands {
     public Commands(MusicPlaylists musicPlaylists) {
         commands.put("exit", new ExitCommand(musicPlaylists));
         commands.put("help", new HelpCommand(musicPlaylists));
-        commands.put("createplaylist", new createplaylistCommand(musicPlaylists));
+        commands.put("createplaylist", new CreateplaylistCommand(musicPlaylists));
     }
 
     public void exec(String cmdName, List<String> args) {
