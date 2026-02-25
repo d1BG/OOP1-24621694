@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.MusicPlaylistsInterface;
+import bg.tu_varna.sit.exceptions.CommandException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +28,7 @@ public class Commands {
             args.removeFirst();
             cmd.execute(args);
         } else {
-            System.out.println("Unknown command: " + cmdName);
+            throw new CommandException("Unknown command: " + cmdName);
         }
     }
 }

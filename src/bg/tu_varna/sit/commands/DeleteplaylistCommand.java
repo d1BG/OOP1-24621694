@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.MusicPlaylistsInterface;
+import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
 
 import java.util.List;
@@ -14,8 +15,7 @@ public class DeleteplaylistCommand implements Command {
     @Override
     public void execute(List<String> args) {
         if (args.isEmpty()) {
-            System.out.println("Invalid arguments");
-            return;
+            throw new PlaylistException("Invalid arguments");
         }
 
         List<Playlist> playlists = musicPlaylists.getPlaylists();
@@ -25,7 +25,7 @@ public class DeleteplaylistCommand implements Command {
                 return;
             }
         }
-        System.out.println("Playlist " + args.getFirst() + " not found");
+        throw new PlaylistException("Playlist " + args.getFirst() + " not found");
 
     }
 

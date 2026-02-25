@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.MusicPlaylistsInterface;
+import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
 
 import java.util.List;
@@ -17,8 +18,7 @@ public class CreateplaylistCommand implements Command {
         if (!args.isEmpty()) {
             for (Playlist playlist : playlists) {
                 if (playlist.getName().equals(args.getFirst())) {
-                    System.out.println(playlist.getName() + " already exists");
-                    return;
+                    throw new PlaylistException(playlist.getName() + " already exists");
                 }
             }
             Playlist newPlaylist = new Playlist(args.getFirst());

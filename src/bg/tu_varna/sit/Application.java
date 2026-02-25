@@ -2,7 +2,7 @@ package bg.tu_varna.sit;
 
 import bg.tu_varna.sit.commands.Commands;
 import bg.tu_varna.sit.data.*;
-
+import bg.tu_varna.sit.exceptions.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -43,7 +43,11 @@ public class Application {
                 tokens.add(currToken.toString()); // add the last token
             }
 
-            commands.exec(tokens.getFirst(), tokens);
+            try {
+                commands.exec(tokens.getFirst(), tokens);
+            } catch (CommandException | SongException | PlaylistException e){
+                System.out.println(e.getMessage());
+            }
         } while (true);
     }
 }

@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.MusicPlaylistsInterface;
+import bg.tu_varna.sit.exceptions.SongException;
 import bg.tu_varna.sit.models.Song;
 
 import java.util.List;
@@ -14,8 +15,7 @@ public class SonginfoCommand implements Command {
     @Override
     public void execute(List<String> args) {
         if (args.isEmpty()) {
-            System.out.println("Invalid arguments");
-            return;
+            throw new SongException("Invalid arguments");
         }
         List<Song> songs = musicPlaylists.getSongs();
         for (Song song : songs) {
@@ -25,8 +25,7 @@ public class SonginfoCommand implements Command {
                     return;
                 }
             } catch (NumberFormatException e) {
-                System.out.println("Please input a number");
-                return;
+                throw new SongException("Please input a number");
             }
         }
         System.out.println("Song " + args.getFirst() + " not found");

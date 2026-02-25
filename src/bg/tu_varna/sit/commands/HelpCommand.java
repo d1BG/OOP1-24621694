@@ -1,5 +1,7 @@
 package bg.tu_varna.sit.commands;
 
+import bg.tu_varna.sit.exceptions.CommandException;
+
 import java.util.List;
 import java.util.Map;
 
@@ -98,7 +100,7 @@ public class HelpCommand implements Command {
             if (command != null) {
                 System.out.println(command.cmdHelpMessage());
             } else {
-                System.out.println("Unknown command: " + commandName);
+                throw new CommandException("Unknown command: " + commandName);
             }
         }
     }

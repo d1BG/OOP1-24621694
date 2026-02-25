@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.MusicPlaylistsInterface;
+import bg.tu_varna.sit.exceptions.SongException;
 import bg.tu_varna.sit.models.Song;
 
 import java.util.List;
@@ -15,14 +16,12 @@ public class AddsongCommand implements Command {
     public void execute(List<String> args) {
         List<Song> songs = musicPlaylists.getSongs();
         if (args.isEmpty() || args.size() < 3 || args.size() > 6) {
-            System.out.println("Invalid arguments");
-            return;
+            throw new SongException("Invalid arguments");
         }
 
         for (Song song : songs) {
             if (song.getTitle().equals(args.get(0)) && song.getArtist().equals(args.get(1))) {
-                System.out.println("Song already exists");
-                return;
+                throw new SongException("Song already exists");
             }
         }
 
