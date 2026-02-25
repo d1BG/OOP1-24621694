@@ -1,4 +1,4 @@
-package bg.tu_varna.sit;
+package bg.tu_varna.sit.models;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,11 +11,6 @@ public class Playlist {
     public Playlist(String name){
         this.name = name;
         this.description = "N/A";
-    }
-
-    public Playlist(String name, String description){
-        this.name = name;
-        this.description = description;
     }
 
     public String getName() {

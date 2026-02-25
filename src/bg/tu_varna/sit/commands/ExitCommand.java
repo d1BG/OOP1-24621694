@@ -1,12 +1,9 @@
-package bg.tu_varna.sit;
+package bg.tu_varna.sit.commands;
 
 import java.util.List;
 
 public class ExitCommand implements Command{
-    private MusicPlaylists musicPlaylists;
-    public ExitCommand(MusicPlaylists musicPlaylists) {
-        this.musicPlaylists = musicPlaylists;
-    }
+    public ExitCommand() {}
 
     @Override
     public void execute(List<String> args) {

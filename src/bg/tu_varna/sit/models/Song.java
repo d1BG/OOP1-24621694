@@ -1,4 +1,4 @@
-package bg.tu_varna.sit;
+package bg.tu_varna.sit.models;
 
 import java.util.Objects;
 

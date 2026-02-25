@@ -1,10 +1,13 @@
-package bg.tu_varna.sit;
+package bg.tu_varna.sit.commands;
+
+import bg.tu_varna.sit.data.MusicPlaylistsInterface;
+import bg.tu_varna.sit.models.Song;
 
 import java.util.List;
 
 public class SonginfoCommand implements Command {
-    private MusicPlaylists musicPlaylists;
-    public SonginfoCommand(MusicPlaylists musicPlaylists) {
+    private MusicPlaylistsInterface musicPlaylists;
+    public SonginfoCommand(MusicPlaylistsInterface musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
 

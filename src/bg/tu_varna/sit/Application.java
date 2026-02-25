@@ -1,5 +1,8 @@
 package bg.tu_varna.sit;
 
+import bg.tu_varna.sit.commands.Commands;
+import bg.tu_varna.sit.data.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +11,7 @@ import java.util.ArrayList;
 public class Application {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        MusicPlaylists musicPlaylists = new MusicPlaylists();
+        MusicPlaylistsInterface musicPlaylists = new MusicPlaylists();
         Commands commands = new Commands(musicPlaylists);
 
         do {

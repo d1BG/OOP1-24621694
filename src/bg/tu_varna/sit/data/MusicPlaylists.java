@@ -1,9 +1,12 @@
-package bg.tu_varna.sit;
+package bg.tu_varna.sit.data;
+
+import bg.tu_varna.sit.models.Playlist;
+import bg.tu_varna.sit.models.Song;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MusicPlaylists {
+public class MusicPlaylists implements MusicPlaylistsInterface {
     private List<Playlist> playlists;
     private List<Song> songs;
 
@@ -11,20 +14,13 @@ public class MusicPlaylists {
         this.playlists = new ArrayList<>();
         this.songs = new ArrayList<>();
     }
-
+    @Override
     public List<Playlist> getPlaylists() {
         return playlists;
     }
 
+    @Override
     public List<Song> getSongs() {
         return songs;
-    }
-
-    public void setPlaylists(List<Playlist> playlists) {
-        this.playlists = playlists;
-    }
-
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
     }
 }

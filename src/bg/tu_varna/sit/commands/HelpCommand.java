@@ -1,14 +1,12 @@
-package bg.tu_varna.sit;
+package bg.tu_varna.sit.commands;
 
 import java.util.List;
 import java.util.Map;
 
 public class HelpCommand implements Command {
-    private MusicPlaylists musicPlaylists;
     private Map<String, Command> commands;
 
-    public HelpCommand(MusicPlaylists musicPlaylists, Map<String, Command> commands) {
-        this.musicPlaylists = musicPlaylists;
+    public HelpCommand(Map<String, Command> commands) {
         this.commands = commands;
     }
 
