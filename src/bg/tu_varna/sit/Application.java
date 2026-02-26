@@ -12,7 +12,7 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class Application {
-    public static void main(String[] args) throws IOException {
+    static void main() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         MusicPlaylistsInterface musicPlaylists = new MusicPlaylists();
         Commands commands = new Commands(musicPlaylists);
