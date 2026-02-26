@@ -28,7 +28,7 @@ public class SonginfoCommand implements Command {
                 throw new SongException("Please input a number");
             }
         }
-        System.out.println("Song " + args.getFirst() + " not found");
+        throw new SongException("Song " + args.getFirst() + " not found");
     }
 
     @Override
