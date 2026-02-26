@@ -43,6 +43,10 @@ public class Application {
                 tokens.add(currToken.toString()); // add the last token
             }
 
+            if (tokens.isEmpty()) {
+                continue;
+            }
+
             try {
                 String result = commands.exec(tokens.getFirst(), tokens);
                 System.out.println(result);
