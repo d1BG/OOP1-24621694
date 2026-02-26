@@ -14,7 +14,7 @@ import java.util.List;
 public class Application {
     static void main() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        MusicPlaylistsInterface musicPlaylists = new MusicPlaylists();
+        MusicPlaylists musicPlaylists = new MusicData();
         Commands commands = new Commands(musicPlaylists);
         Tokenizer tokenizer = new TokenizerWindows();
         do {

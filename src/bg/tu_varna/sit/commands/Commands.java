@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.commands;
 
-import bg.tu_varna.sit.data.MusicPlaylistsInterface;
+import bg.tu_varna.sit.data.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.CommandException;
 
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class Commands {
     private final Map<String, Command> commands = new HashMap<>();
 
-    public Commands(MusicPlaylistsInterface musicPlaylists) {
+    public Commands(MusicPlaylists musicPlaylists) {
         commands.put("exit", new ExitCommand());
         commands.put("help", new HelpCommand(commands));
         commands.put("createplaylist", new CreateplaylistCommand(musicPlaylists));

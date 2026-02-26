@@ -1,14 +1,14 @@
 package bg.tu_varna.sit.commands;
 
-import bg.tu_varna.sit.data.MusicPlaylistsInterface;
+import bg.tu_varna.sit.data.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
 
 import java.util.List;
 
 public class DeleteplaylistCommand implements Command {
-    private MusicPlaylistsInterface musicPlaylists;
-    public DeleteplaylistCommand(MusicPlaylistsInterface musicPlaylists) {
+    private MusicPlaylists musicPlaylists;
+    public DeleteplaylistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
 
