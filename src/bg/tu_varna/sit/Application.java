@@ -44,7 +44,11 @@ public class Application {
             }
 
             try {
-                System.out.println(commands.exec(tokens.getFirst(), tokens));
+                String result = commands.exec(tokens.getFirst(), tokens);
+                System.out.println(result);
+                if (result.equals("Exiting...")) {
+                    break;
+                }
             } catch (CommandException | SongException | PlaylistException e){
                 System.out.println(e.getMessage());
             }
