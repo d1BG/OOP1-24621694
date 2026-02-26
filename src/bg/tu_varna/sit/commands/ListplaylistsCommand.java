@@ -11,10 +11,12 @@ public class ListplaylistsCommand implements Command {
     }
 
     @Override
-    public void execute(List<String> args) {
+    public String execute(List<String> args) {
+        StringBuilder listOfPlaylists = new StringBuilder();
         musicPlaylists.getPlaylists().forEach(playlist -> {
-            System.out.println(playlist.getName());
+            listOfPlaylists.append(playlist.getName()).append("\n");
         });
+        return listOfPlaylists.toString();
     }
 
     @Override

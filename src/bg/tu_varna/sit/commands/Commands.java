@@ -22,11 +22,11 @@ public class Commands {
         commands.put("removesong", new RemovesongCommand(musicPlaylists));
     }
 
-    public void exec(String cmdName, List<String> args) {
+    public String exec(String cmdName, List<String> args) {
         Command cmd = commands.get(cmdName.toLowerCase());
         if (cmd != null) {
             args.removeFirst();
-            cmd.execute(args);
+            return cmd.execute(args);
         } else {
             throw new CommandException("Unknown command: " + cmdName);
         }

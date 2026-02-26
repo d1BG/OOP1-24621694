@@ -13,7 +13,7 @@ public class HelpCommand implements Command {
     }
 
     @Override
-    public void execute(List<String> args) {
+    public String execute(List<String> args) {
         String helpMessage = """
             All Available Commands:
                 open <file>
@@ -93,12 +93,12 @@ public class HelpCommand implements Command {
                     Изкарва имената на всички плейлисти.
             """;
         if (args.isEmpty()) {
-            System.out.print(helpMessage);
+            return helpMessage;
         } else {
             String commandName = args.getFirst().toLowerCase();
             Command command = commands.get(commandName);
             if (command != null) {
-                System.out.println(command.cmdHelpMessage());
+                return command.cmdHelpMessage();
             } else {
                 throw new CommandException("Unknown command: " + commandName);
             }

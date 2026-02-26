@@ -13,11 +13,13 @@ public class ListsongsCommand implements Command {
 
     // TODO: Filtering by artist, genre, year. This will do for now.
     @Override
-    public void execute(List<String> args) {
+    public String execute(List<String> args) {
+        StringBuilder songList = new StringBuilder();
         List<Song> songs = musicPlaylists.getSongs();
         for (Song song : songs) {
-            System.out.println(song);
+            songList.append(song.toString()).append("\n");
         }
+        return songList.toString();
     }
 
     @Override

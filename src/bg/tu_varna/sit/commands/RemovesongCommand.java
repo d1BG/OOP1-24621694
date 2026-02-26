@@ -13,7 +13,7 @@ public class RemovesongCommand implements Command {
     }
 
     @Override
-    public void execute(List<String> args) {
+    public String execute(List<String> args) {
         if (args.isEmpty()) {
             throw new SongException("Invalid arguments");
         }
@@ -22,7 +22,7 @@ public class RemovesongCommand implements Command {
             try {
                 if (song.getID() == Integer.parseInt(args.getFirst())) {
                     songs.remove(song);
-                    return;
+                    return "Successfully removed song " + song.getID();
                 }
             } catch (NumberFormatException e) {
                 throw new SongException("Please input a number");

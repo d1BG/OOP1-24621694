@@ -44,7 +44,7 @@ public class Application {
             }
 
             try {
-                commands.exec(tokens.getFirst(), tokens);
+                System.out.println(commands.exec(tokens.getFirst(), tokens));
             } catch (CommandException | SongException | PlaylistException e){
                 System.out.println(e.getMessage());
             }

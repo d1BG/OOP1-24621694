@@ -13,7 +13,7 @@ public class SonginfoCommand implements Command {
     }
 
     @Override
-    public void execute(List<String> args) {
+    public String execute(List<String> args) {
         if (args.isEmpty()) {
             throw new SongException("Invalid arguments");
         }
@@ -21,8 +21,7 @@ public class SonginfoCommand implements Command {
         for (Song song : songs) {
             try {
                 if (song.getID() == Integer.parseInt(args.getFirst())) {
-                    System.out.println(song);
-                    return;
+                    return song.toString();
                 }
             } catch (NumberFormatException e) {
                 throw new SongException("Please input a number");

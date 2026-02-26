@@ -13,7 +13,7 @@ public class AddsongCommand implements Command {
     }
 
     @Override
-    public void execute(List<String> args) {
+    public String execute(List<String> args) {
         List<Song> songs = musicPlaylists.getSongs();
         if (args.isEmpty() || args.size() < 3 || args.size() > 6) {
             throw new SongException("Invalid arguments");
@@ -45,6 +45,7 @@ public class AddsongCommand implements Command {
         }
 
         songs.add(newSong);
+        return "Added new song with ID:" + songID;
     }
 
     @Override

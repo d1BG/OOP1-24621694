@@ -6,9 +6,10 @@ public class ExitCommand implements Command{
     public ExitCommand() {}
 
     @Override
-    public void execute(List<String> args) {
+    public String execute(List<String> args) {
         System.out.println("Exiting...");
         System.exit(0);
+        return null; // I dont need a value/string here since im exiting the program.
     }
 
     public String cmdHelpMessage() {
