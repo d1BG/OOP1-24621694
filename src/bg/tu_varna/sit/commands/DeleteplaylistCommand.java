@@ -14,18 +14,11 @@ public class DeleteplaylistCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.isEmpty()) {
+        if (args.size() != 1) {
             throw new PlaylistException("Invalid arguments");
         }
-
-        List<Playlist> playlists = playlistActions.getPlaylists();
-        for (Playlist playlist : playlists) {
-            if (playlist.getName().equals(args.getFirst())) {
-                playlists.remove(playlist);
-                return "Successfully removed playlist " + playlist.getName();
-            }
-        }
-        throw new PlaylistException("Playlist " + args.getFirst() + " not found");
+        playlistActions.deletePlaylist(args.getFirst());
+        return "Successfully deleted playlist " + args.getFirst();
     }
 
     @Override

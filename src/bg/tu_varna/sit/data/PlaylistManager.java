@@ -32,4 +32,15 @@ public class PlaylistManager implements PlaylistActions {
 
         playlists.add(newPlaylist);
     }
+
+    @Override
+    public void deletePlaylist(String name) {
+        for (Playlist playlist : playlists) {
+            if (playlist.getName().equals(name)) {
+                playlists.remove(playlist);
+                return;
+            }
+        }
+        throw new PlaylistException("Playlist does not exist");
+    }
 }
