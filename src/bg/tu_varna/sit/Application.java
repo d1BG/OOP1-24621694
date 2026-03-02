@@ -3,8 +3,7 @@ package bg.tu_varna.sit;
 import bg.tu_varna.sit.commands.Commands;
 import bg.tu_varna.sit.data.*;
 import bg.tu_varna.sit.exceptions.*;
-import bg.tu_varna.sit.util.Tokenizer;
-import bg.tu_varna.sit.util.TokenizerWindows;
+import bg.tu_varna.sit.util.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,8 +22,11 @@ public class Application {
             tokenizer.clear();
             List<String> tokens = tokenizer.tokenize(currentLine);
             if (tokens.isEmpty()) { continue; }
+            String command = tokens.getFirst();
+            tokens.removeFirst();
+
             try {
-                String result = commands.exec(tokens.getFirst(), tokens);
+                String result = commands.exec(command, tokens);
                 System.out.println(result);
                 if (result.equals("Exiting...")) {
                     break;

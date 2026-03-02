@@ -25,7 +25,6 @@ public class Commands {
     public String exec(String cmdName, List<String> args) {
         Command cmd = commands.get(cmdName.toLowerCase());
         if (cmd != null) {
-            args.removeFirst();
             return cmd.execute(args);
         } else {
             throw new CommandException("Unknown command: " + cmdName);
