@@ -14,7 +14,8 @@ public class ListplaylistsCommand implements Command {
     public String execute(List<String> args) {
         StringBuilder listOfPlaylists = new StringBuilder();
         playlistActions.getPlaylists().forEach(playlist -> {
-            listOfPlaylists.append(playlist.getName()).append("\n");
+            listOfPlaylists.append(playlist.getName()).append("\t");
+            listOfPlaylists.append(playlist.getDescription()).append("\n");
         });
         return listOfPlaylists.toString();
     }
