@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface PlaylistActions {
     List<Playlist> getPlaylists();
-    void createPlaylist(String name, String description);
+    void createPlaylist(Playlist playlist);
     void deletePlaylist(String name);
 }

@@ -18,18 +18,12 @@ public class PlaylistManager implements PlaylistActions {
     }
 
     @Override
-    public void createPlaylist(String name, String description) {
+    public void createPlaylist(Playlist newPlaylist) {
         for (Playlist playlist : playlists) {
-            if (playlist.getName().equals(name)) {
+            if (playlist.getName().equals(newPlaylist.getName())) {
                 throw new PlaylistException("Playlist already exists");
             }
         }
-
-        Playlist newPlaylist = new Playlist(name);
-        if (!description.isEmpty()) {
-            newPlaylist.setDescription(description);
-        }
-
         playlists.add(newPlaylist);
     }
 
