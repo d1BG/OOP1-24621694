@@ -15,14 +15,8 @@ public class AddsongCommand implements Command {
     @Override
     public String execute(List<String> args) {
         List<Song> songs = songActions.getSongs();
-        if (args.isEmpty() || args.size() < 3 || args.size() > 6) {
+        if (args.size() < 3 || args.size() > 6) {
             throw new SongException("Invalid arguments");
-        }
-
-        for (Song song : songs) {
-            if (song.getTitle().equals(args.get(0)) && song.getArtist().equals(args.get(1))) {
-                throw new SongException("Song already exists");
-            }
         }
 
         int songID;
