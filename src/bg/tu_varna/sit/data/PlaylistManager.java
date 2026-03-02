@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.data;
 
+import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
 
 import java.util.ArrayList;
@@ -14,5 +15,21 @@ public class PlaylistManager implements PlaylistActions {
     @Override
     public List<Playlist> getPlaylists() {
         return playlists;
+    }
+
+    @Override
+    public void createPlaylist(String name, String description) {
+        for (Playlist playlist : playlists) {
+            if (playlist.getName().equals(name)) {
+                throw new PlaylistException("Playlist already exists");
+            }
+        }
+
+        Playlist newPlaylist = new Playlist(name);
+        if (!description.isEmpty()) {
+            newPlaylist.setDescription(description);
+        }
+
+        playlists.add(newPlaylist);
     }
 }

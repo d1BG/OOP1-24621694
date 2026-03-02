@@ -14,23 +14,17 @@ public class CreateplaylistCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.isEmpty()) {
+        if (args.isEmpty() || args.size() > 2) {
             throw new PlaylistException("Invalid arguments");
         }
 
-        List<Playlist> playlists = playlistActions.getPlaylists();
-        for (Playlist playlist : playlists) {
-            if (playlist.getName().equals(args.getFirst())) {
-                throw new PlaylistException(playlist.getName() + " already exists");
-            }
-        }
-        Playlist newPlaylist = new Playlist(args.getFirst());
-        if (args.size() == 2) {
-            newPlaylist.setDescription(args.get(1));
+        if (args.size() == 1) {
+            playlistActions.createPlaylist(args.get(0), "");
+        } else { // 2
+            playlistActions.createPlaylist(args.get(0), args.get(1));
         }
 
-        playlists.add(newPlaylist);
-        return "Successfully added playlist " + newPlaylist.getName();
+        return "Successfully added playlist " + args.get(0);
     }
 
     @Override
