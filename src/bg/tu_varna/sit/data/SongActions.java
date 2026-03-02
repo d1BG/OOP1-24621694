@@ -7,4 +7,5 @@ import java.util.List;
 public interface SongActions {
     List<Song> getSongs();
     void addSong(Song song);
+    void removeSong(int id);
 }

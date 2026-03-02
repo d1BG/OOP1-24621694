@@ -25,4 +25,18 @@ public class SongManager implements SongActions {
         }
         songs.add(song);
     }
+
+    @Override
+    public void removeSong(int id) {
+        for (Song song : songs) {
+            try {
+                if (song.getID() == id) {
+                    songs.remove(song);
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                throw new SongException("Please input a number");
+            }
+        }
+    }
 }
