@@ -1,20 +1,20 @@
 package bg.tu_varna.sit.commands;
 
-import bg.tu_varna.sit.data.MusicPlaylists;
+import bg.tu_varna.sit.data.SongActions;
 import bg.tu_varna.sit.exceptions.SongException;
 import bg.tu_varna.sit.models.Song;
 
 import java.util.List;
 
 public class AddsongCommand implements Command {
-    private MusicPlaylists musicPlaylists;
-    public AddsongCommand(MusicPlaylists playlist) {
-        this.musicPlaylists = playlist;
+    private SongActions songActions;
+    public AddsongCommand(SongActions songActions) {
+        this.songActions = songActions;
     }
 
     @Override
     public String execute(List<String> args) {
-        List<Song> songs = musicPlaylists.getSongs();
+        List<Song> songs = songActions.getSongs();
         if (args.isEmpty() || args.size() < 3 || args.size() > 6) {
             throw new SongException("Invalid arguments");
         }
@@ -44,7 +44,7 @@ public class AddsongCommand implements Command {
                 break;
         }
 
-        songs.add(newSong);
+        songActions.addSong(newSong);
         return "Added new song with ID:" + songID;
     }
 

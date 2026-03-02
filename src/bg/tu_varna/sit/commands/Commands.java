@@ -13,13 +13,13 @@ public class Commands {
     public Commands(MusicPlaylists musicPlaylists) {
         commands.put("exit", new ExitCommand());
         commands.put("help", new HelpCommand(commands));
-        commands.put("createplaylist", new CreateplaylistCommand(musicPlaylists));
-        commands.put("listplaylists", new ListplaylistsCommand(musicPlaylists));
-        commands.put("deleteplaylist", new DeleteplaylistCommand(musicPlaylists));
-        commands.put("addsong", new AddsongCommand(musicPlaylists));
-        commands.put("listsongs", new ListsongsCommand(musicPlaylists));
-        commands.put("songinfo", new SonginfoCommand(musicPlaylists));
-        commands.put("removesong", new RemovesongCommand(musicPlaylists));
+        commands.put("createplaylist", new CreateplaylistCommand(musicPlaylists.getPlaylistActions()));
+        commands.put("listplaylists", new ListplaylistsCommand(musicPlaylists.getPlaylistActions()));
+        commands.put("deleteplaylist", new DeleteplaylistCommand(musicPlaylists.getPlaylistActions()));
+        commands.put("addsong", new AddsongCommand(musicPlaylists.getSongManager()));
+        commands.put("listsongs", new ListsongsCommand(musicPlaylists.getSongManager()));
+        commands.put("songinfo", new SonginfoCommand(musicPlaylists.getSongManager()));
+        commands.put("removesong", new RemovesongCommand(musicPlaylists.getSongManager()));
     }
 
     public String exec(String cmdName, List<String> args) {

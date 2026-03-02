@@ -14,4 +14,9 @@ public class SongManager implements SongActions {
     public List<Song> getSongs() {
         return songs;
     }
+
+    @Override
+    public void addSong(Song song) {
+        songs.add(song);
+    }
 }

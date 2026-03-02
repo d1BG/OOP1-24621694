@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.data;
 
-public interface MusicPlaylists extends PlaylistActions, SongActions{
-
+public interface MusicPlaylists {
+    SongActions getSongManager();
+    PlaylistActions getPlaylistActions();
 }
