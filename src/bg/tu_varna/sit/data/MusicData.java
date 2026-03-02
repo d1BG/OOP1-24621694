@@ -7,20 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicData implements MusicPlaylists {
-    private List<Playlist> playlists;
-    private List<Song> songs;
+    private PlaylistManager playlistManager;
+    private SongManager songManager;
 
     public MusicData() {
-        this.playlists = new ArrayList<>();
-        this.songs = new ArrayList<>();
+        playlistManager = new PlaylistManager();
+        songManager = new SongManager();
     }
     @Override
     public List<Playlist> getPlaylists() {
-        return playlists;
+        return playlistManager.getPlaylists();
     }
 
     @Override
     public List<Song> getSongs() {
-        return songs;
+        return songManager.getSongs();
     }
 }
