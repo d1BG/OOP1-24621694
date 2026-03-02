@@ -39,4 +39,14 @@ public class SongManager implements SongActions {
             }
         }
     }
+
+    @Override
+    public Song getSong(int id) {
+        for (Song song : songs) {
+            if (song.getID() == id) {
+                return song;
+            }
+        }
+        throw new SongException("Song not found");
+    }
 }

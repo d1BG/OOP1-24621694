@@ -14,20 +14,17 @@ public class SonginfoCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.isEmpty()) {
+        if (args.size() != 1) {
             throw new SongException("Invalid arguments");
         }
-        List<Song> songs = songActions.getSongs();
-        for (Song song : songs) {
-            try {
-                if (song.getID() == Integer.parseInt(args.getFirst())) {
-                    return song.toString();
-                }
-            } catch (NumberFormatException e) {
-                throw new SongException("Please input a number");
-            }
+
+        try{
+            int id = Integer.parseInt(args.getFirst());
+            Song song = songActions.getSong(id);
+            return song.toString();
+        } catch (NumberFormatException e) {
+            throw new SongException("ID must be a number");
         }
-        throw new SongException("Song " + args.getFirst() + " not found");
     }
 
     @Override

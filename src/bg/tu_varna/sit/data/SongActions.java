@@ -8,4 +8,5 @@ public interface SongActions {
     List<Song> getSongs();
     void addSong(Song song);
     void removeSong(int id);
+    Song getSong(int id);
 }
