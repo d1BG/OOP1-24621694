@@ -13,13 +13,13 @@ public class Commands {
     public Commands(MusicPlaylists musicPlaylists) {
         commands.put("exit", new ExitCommand());
         commands.put("help", new HelpCommand(commands));
-        commands.put("createplaylist", new CreateplaylistCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("listplaylists", new ListplaylistsCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("deleteplaylist", new DeleteplaylistCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("addsong", new AddsongCommand(musicPlaylists.getSongManager()));
-        commands.put("listsongs", new ListsongsCommand(musicPlaylists.getSongManager()));
-        commands.put("songinfo", new SonginfoCommand(musicPlaylists.getSongManager()));
-        commands.put("removesong", new RemovesongCommand(musicPlaylists.getSongManager()));
+        commands.put("createplaylist", new CreatePlaylistCommand(musicPlaylists.getPlaylistActions()));
+        commands.put("listplaylists", new ListPlaylistsCommand(musicPlaylists.getPlaylistActions()));
+        commands.put("deleteplaylist", new DeletePlaylistCommand(musicPlaylists.getPlaylistActions()));
+        commands.put("addsong", new AddSongCommand(musicPlaylists.getSongManager()));
+        commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongManager()));
+        commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongManager()));
+        commands.put("removesong", new RemoveSongCommand(musicPlaylists.getSongManager()));
     }
 
     public String exec(String cmdName, List<String> args) {

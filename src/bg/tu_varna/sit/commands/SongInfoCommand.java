@@ -2,12 +2,13 @@ package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.SongActions;
 import bg.tu_varna.sit.exceptions.SongException;
+import bg.tu_varna.sit.models.Song;
 
 import java.util.List;
 
-public class RemovesongCommand implements Command {
+public class SongInfoCommand implements Command {
     private SongActions songActions;
-    public RemovesongCommand(SongActions songActions) {
+    public SongInfoCommand(SongActions songActions) {
         this.songActions = songActions;
     }
 
@@ -16,10 +17,11 @@ public class RemovesongCommand implements Command {
         if (args.size() != 1) {
             throw new SongException("Invalid arguments");
         }
+
         try{
             int id = Integer.parseInt(args.getFirst());
-            songActions.removeSong(id);
-            return "Successfully removed song with id " + id;
+            Song song = songActions.getSong(id);
+            return song.toString();
         } catch (NumberFormatException e) {
             throw new SongException("ID must be a number");
         }
@@ -27,7 +29,7 @@ public class RemovesongCommand implements Command {
 
     @Override
     public String cmdHelpMessage() {
-        return "Изтрива песен по ID.\n" +
-                "   Usage: removesong <songId>";
+        return "Показва подробна информация за песен.\n" +
+                "   Usage: songinfo <songId>";
     }
 }

@@ -4,9 +4,9 @@ import bg.tu_varna.sit.data.PlaylistActions;
 
 import java.util.List;
 
-public class ListplaylistsCommand implements Command {
+public class ListPlaylistsCommand implements Command {
     private PlaylistActions playlistActions;
-    public ListplaylistsCommand(PlaylistActions playlistActions) {
+    public ListPlaylistsCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;
     }
 

@@ -6,9 +6,9 @@ import bg.tu_varna.sit.models.Playlist;
 
 import java.util.List;
 
-public class CreateplaylistCommand implements Command {
+public class CreatePlaylistCommand implements Command {
     private PlaylistActions playlistActions;
-    public CreateplaylistCommand(PlaylistActions playlistActions) {
+    public CreatePlaylistCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;
     }
 

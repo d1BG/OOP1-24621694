@@ -5,9 +5,9 @@ import bg.tu_varna.sit.exceptions.PlaylistException;
 
 import java.util.List;
 
-public class DeleteplaylistCommand implements Command {
+public class DeletePlaylistCommand implements Command {
     private PlaylistActions playlistActions;
-    public DeleteplaylistCommand(PlaylistActions playlistActions) {
+    public DeletePlaylistCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;
     }
 

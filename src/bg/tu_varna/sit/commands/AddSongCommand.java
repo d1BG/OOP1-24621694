@@ -6,9 +6,9 @@ import bg.tu_varna.sit.models.Song;
 
 import java.util.List;
 
-public class AddsongCommand implements Command {
+public class AddSongCommand implements Command {
     private SongActions songActions;
-    public AddsongCommand(SongActions songActions) {
+    public AddSongCommand(SongActions songActions) {
         this.songActions = songActions;
     }
 
