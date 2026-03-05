@@ -1,9 +1,10 @@
 package bg.tu_varna.sit.models;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class Playlist {
+public class Playlist implements Serializable {
     private String name;
     private String description;
     private List<Song> songs;

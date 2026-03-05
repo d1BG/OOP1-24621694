@@ -1,8 +1,9 @@
 package bg.tu_varna.sit.models;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Song {
+public class Song implements Serializable {
     // Required*
     private int ID;
     private String title;

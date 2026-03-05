@@ -3,10 +3,11 @@ package bg.tu_varna.sit.data;
 import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlaylistManager implements PlaylistActions {
+public class PlaylistManager implements PlaylistActions, Serializable {
     List<Playlist> playlists;
     public PlaylistManager() {
         playlists = new ArrayList<>();

@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.data;
 
-public class MusicData implements MusicPlaylists {
+import java.io.Serializable;
+
+public class MusicData implements MusicPlaylists, Serializable {
     private SongManager songManager;
     private PlaylistManager playlistManager;
 
