@@ -31,7 +31,7 @@ public class Application {
                 if (result.equals("Exiting...")) {
                     break;
                 }
-            } catch (CommandException | SongException | PlaylistException e){
+            } catch (CommandException | SongException | PlaylistException | FileException e){
                 System.out.println(e.getMessage());
             }
         } while (true);
