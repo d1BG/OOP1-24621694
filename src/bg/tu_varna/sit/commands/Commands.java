@@ -20,6 +20,7 @@ public class Commands {
         commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongManager()));
         commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongManager()));
         commands.put("removesong", new RemoveSongCommand(musicPlaylists.getSongManager()));
+        commands.put("saveas", new SaveAsCommand(musicPlaylists));
     }
 
     public String exec(String cmdName, List<String> args) {
