@@ -17,11 +17,12 @@ public class Commands {
         commands.put("createplaylist", new CreatePlaylistCommand(musicPlaylists.getPlaylistActions()));
         commands.put("listplaylists", new ListPlaylistsCommand(musicPlaylists.getPlaylistActions()));
         commands.put("deleteplaylist", new DeletePlaylistCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("addsong", new AddSongCommand(musicPlaylists.getSongManager()));
-        commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongManager()));
-        commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongManager()));
-        commands.put("removesong", new RemoveSongCommand(musicPlaylists.getSongManager()));
+        commands.put("addsong", new AddSongCommand(musicPlaylists.getSongActions()));
+        commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongActions()));
+        commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongActions()));
+        commands.put("removesong", new RemoveSongCommand(musicPlaylists.getSongActions()));
         commands.put("saveas", new SaveAsCommand(musicPlaylists, fileActions));
+        commands.put("open", new OpenCommand(musicPlaylists, fileActions));
     }
 
     public String exec(String cmdName, List<String> args) {

@@ -7,23 +7,27 @@ import java.io.*;
 
 public class FileService implements FileActions {
     private File file;
-    public FileService(File file) {
-        this.file = file;
-    }
 
-    public FileService(){}
+    public FileService() {}
 
-
-    // TODO: open file should load the file
     @Override
-    public boolean open(File file) {
+    public boolean open(MusicPlaylists musicPlaylists, File file) {
         if (isOpen()) {
-            throw new FileException("A File is already open");
+            throw new FileException("A File is already open, save/close it before opening a new one");
         }
 
         if (file.exists()) {
             this.file = file;
-            return true;
+
+            try {
+                FileInputStream fis = new FileInputStream(file);
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                musicPlaylists.setMusicPlaylists((MusicPlaylists) ois.readObject());
+                ois.close();
+                return true;
+            } catch (ClassNotFoundException | IOException e) {
+                throw new FileException(e.getMessage());
+            }
         }
         return false;
     }
@@ -68,11 +72,6 @@ public class FileService implements FileActions {
     @Override
     public boolean isOpen() {
         return (file != null && file.exists() && file.isFile());
-    }
-
-    @Override
-    public boolean isOpen(File file) {
-        return (file.exists() && file.isFile());
     }
 
     @Override

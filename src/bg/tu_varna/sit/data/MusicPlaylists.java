@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.data;
 
 public interface MusicPlaylists {
-    SongActions getSongManager();
+    SongActions getSongActions();
     PlaylistActions getPlaylistActions();
+
+    void setMusicPlaylists(MusicPlaylists musicPlaylists);
 }
