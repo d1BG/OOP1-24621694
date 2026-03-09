@@ -60,6 +60,7 @@ public class FileService implements FileActions {
         }
 
         try {
+            this.file = file;
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(musicPlaylists);
