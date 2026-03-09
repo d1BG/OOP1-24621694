@@ -21,6 +21,7 @@ public class CloseCommand implements Command {
 
     @Override
     public String cmdHelpMessage() {
-        return "";
+        return "Затваря текущия файл.\n" +
+                "   Usage: close";
     }
 }
