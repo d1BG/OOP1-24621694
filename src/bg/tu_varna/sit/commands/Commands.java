@@ -22,6 +22,7 @@ public class Commands {
         commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongActions()));
         commands.put("removesong", new RemoveSongCommand(musicPlaylists.getSongActions()));
         commands.put("saveas", new SaveAsCommand(musicPlaylists, fileActions));
+        commands.put("save", new SaveCommand(musicPlaylists, fileActions));
         commands.put("open", new OpenCommand(musicPlaylists, fileActions));
     }
 
