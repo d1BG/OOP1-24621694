@@ -16,9 +16,10 @@ public class Application {
         FileActions fileActions = new FileService();
 
         MusicPlaylists musicPlaylists = new MusicData();
-        Commands commands = new Commands(musicPlaylists, fileActions);
         Tokenizer tokenizer = new TokenizerWindows();
         do {
+            Commands commands = new Commands(musicPlaylists, fileActions);
+
             System.out.print("Music Playlist > ");
             String currentLine = br.readLine();
             tokenizer.clear();
