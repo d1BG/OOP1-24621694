@@ -39,21 +39,26 @@ public class FileService implements FileActions {
     @Override
     public boolean write(MusicPlaylists musicPlaylists, File file) {
         if (file == null) {
-            file = this.file; // if no file is passed, use the already opened one
+            if (this.file != null) {
+                file = this.file; // if no file is passed, use the already opened one
+            } else {
+                throw new FileException("There is no open file");
+            }
         }
 
-        if (!isOpen(file)) {
-            try {
+        try {
+            if (!file.exists()) {
                 file.createNewFile();
-            } catch ( IOException e ) {
-                throw new FileException("Could not create new file");
             }
+        } catch ( IOException e ) {
+            throw new FileException("Could not create new file");
         }
 
         try {
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(musicPlaylists);
+            oos.close();
             return true;
         } catch (IOException e) {
             throw new FileException(e.getMessage());
@@ -62,7 +67,7 @@ public class FileService implements FileActions {
 
     @Override
     public boolean isOpen() {
-        return (file.exists() && file.isFile());
+        return (file != null && file.exists() && file.isFile());
     }
 
     @Override

@@ -1,12 +1,10 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.FileActions;
-import bg.tu_varna.sit.data.FileService;
 import bg.tu_varna.sit.data.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.FileException;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 public class SaveAsCommand implements Command {
