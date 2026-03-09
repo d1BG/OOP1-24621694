@@ -10,4 +10,6 @@ public interface FileActions {
 
     boolean isOpen(File file);
     boolean isOpen();
+
+    File getFile();
 }

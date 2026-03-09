@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.commands;
 
+import bg.tu_varna.sit.data.FileActions;
 import bg.tu_varna.sit.data.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.CommandException;
 
@@ -10,7 +11,7 @@ import java.util.Map;
 public class Commands {
     private final Map<String, Command> commands = new HashMap<>();
 
-    public Commands(MusicPlaylists musicPlaylists) {
+    public Commands(MusicPlaylists musicPlaylists, FileActions fileActions) {
         commands.put("exit", new ExitCommand());
         commands.put("help", new HelpCommand(commands));
         commands.put("createplaylist", new CreatePlaylistCommand(musicPlaylists.getPlaylistActions()));
@@ -20,7 +21,7 @@ public class Commands {
         commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongManager()));
         commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongManager()));
         commands.put("removesong", new RemoveSongCommand(musicPlaylists.getSongManager()));
-        commands.put("saveas", new SaveAsCommand(musicPlaylists));
+        commands.put("saveas", new SaveAsCommand(musicPlaylists, fileActions));
     }
 
     public String exec(String cmdName, List<String> args) {

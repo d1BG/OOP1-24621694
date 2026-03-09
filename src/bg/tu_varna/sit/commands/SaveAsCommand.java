@@ -6,27 +6,37 @@ import bg.tu_varna.sit.data.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.FileException;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class SaveAsCommand implements Command {
-    MusicPlaylists musicPlaylists;
-    public SaveAsCommand(MusicPlaylists musicPlaylists) {
+    private MusicPlaylists musicPlaylists;
+    private FileActions fileActions;
+    public SaveAsCommand(MusicPlaylists musicPlaylists, FileActions fileActions) {
         this.musicPlaylists = musicPlaylists;
+        this.fileActions = fileActions;
     }
 
     @Override
     public String execute(List<String> args){
+        if (args.size() != 1) {
+            throw new FileException("Invalid Arguments");
+        }
+
         File file = new File(args.getFirst());
-        // TODO: open FileActions somewhere else and pass it so other save commands will be able to use it
-        FileActions fileActions = new FileService(file);
-        if (!fileActions.write(musicPlaylists, null)) {
+
+        try {
+            fileActions.write(musicPlaylists, file);
+        } catch(FileException e) {
             throw new FileException("Could not save file");
         }
+
         return "Saved to file: " + file.getAbsolutePath();
     }
 
     @Override
     public String cmdHelpMessage() {
-        return "";
+        return "Записва данните в нов файл.\n" +
+                "   Usage: saveas <file path>";
     }
 }

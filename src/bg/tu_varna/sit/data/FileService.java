@@ -6,7 +6,7 @@ import bg.tu_varna.sit.exceptions.FileException;
 import java.io.*;
 
 public class FileService implements FileActions {
-    File file;
+    private File file;
     public FileService(File file) {
         this.file = file;
     }
@@ -68,5 +68,10 @@ public class FileService implements FileActions {
     @Override
     public boolean isOpen(File file) {
         return (file.exists() && file.isFile());
+    }
+
+    @Override
+    public File getFile() {
+        return file;
     }
 }

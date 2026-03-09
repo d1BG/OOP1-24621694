@@ -13,8 +13,10 @@ import java.util.List;
 public class Application {
     static void main() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        FileActions fileActions = new FileService();
+
         MusicPlaylists musicPlaylists = new MusicData();
-        Commands commands = new Commands(musicPlaylists);
+        Commands commands = new Commands(musicPlaylists, fileActions);
         Tokenizer tokenizer = new TokenizerWindows();
         do {
             System.out.print("Music Playlist > ");
