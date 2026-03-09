@@ -24,6 +24,7 @@ public class Commands {
         commands.put("saveas", new SaveAsCommand(musicPlaylists, fileActions));
         commands.put("save", new SaveCommand(musicPlaylists, fileActions));
         commands.put("open", new OpenCommand(musicPlaylists, fileActions));
+        commands.put("close", new CloseCommand(musicPlaylists, fileActions));
     }
 
     public String exec(String cmdName, List<String> args) {

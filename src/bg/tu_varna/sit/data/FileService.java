@@ -33,11 +33,12 @@ public class FileService implements FileActions {
     }
 
     @Override
-    public void close() {
+    public void close(MusicPlaylists musicPlaylists) {
         if (!isOpen()) {
             throw new FileException("There is no open file");
         }
         this.file = null;
+        musicPlaylists.setMusicPlaylists(new MusicData());
     }
 
     @Override
