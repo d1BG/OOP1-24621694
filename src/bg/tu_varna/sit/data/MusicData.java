@@ -47,7 +47,18 @@ public class MusicData implements MusicPlaylists, Serializable {
 
     @Override
     public void removeSongFromPlaylist(String playlistName, int songId) {
-        // not implemented yet
+        for (Playlist pl : getPlaylistActions().getPlaylists()) {
+            if (pl.getName().equals(playlistName)) {
+                for (Song song : getSongActions().getSongs()) {
+                    if (song.getID() == songId) {
+                        pl.getSongs().remove(song);
+                        return;
+                    }
+                }
+                throw new PlaylistException("Song with id " + songId + " not found");
+            }
+        }
+        throw new PlaylistException("Playlist " + playlistName + " not found");
     }
 
     @Override
