@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.models;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +13,7 @@ public class Playlist implements Serializable {
     public Playlist(String name){
         this.name = name;
         this.description = "N/A";
+        this.songs = new ArrayList<>();
     }
 
     public String getName() {
@@ -24,6 +26,10 @@ public class Playlist implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Song> getSongs() {
+        return songs;
     }
 
     @Override
