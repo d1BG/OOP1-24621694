@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.PlaylistActions;
+import bg.tu_varna.sit.models.Song;
 
 import java.util.List;
 
@@ -16,6 +17,15 @@ public class ListPlaylistsCommand implements Command {
         playlistActions.getPlaylists().forEach(playlist -> {
             listOfPlaylists.append(playlist.getName()).append("\t");
             listOfPlaylists.append(playlist.getDescription()).append("\n");
+            for (Song song : playlist.getSongs()) {
+                listOfPlaylists.append("\t")
+                        .append(song.getID())
+                        .append(". ")
+                        .append(song.getTitle())
+                        .append(" - ")
+                        .append(song.getArtist())
+                        .append("\n");
+            }
         });
         return listOfPlaylists.toString();
     }
