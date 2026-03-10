@@ -6,7 +6,7 @@ import bg.tu_varna.sit.exceptions.CommandException;
 import java.util.List;
 
 public class AddToPlaylistCommand implements Command {
-    MusicPlaylists musicPlaylists;
+    private MusicPlaylists musicPlaylists;
     public AddToPlaylistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
