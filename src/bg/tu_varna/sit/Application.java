@@ -16,7 +16,7 @@ public class Application {
         FileActions fileActions = new FileService();
 
         MusicPlaylists musicPlaylists = new MusicData();
-        Tokenizer tokenizer = new TokenizerWindows();
+        Tokenizer tokenizer = TokenizerFactory.getTokenizer();
         do {
             Commands commands = new Commands(musicPlaylists, fileActions);
 

@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.util;
+package bg.tu_varna.sit.util.tokenizers;
 
 import java.util.List;
 
