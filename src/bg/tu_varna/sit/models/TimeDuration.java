@@ -11,7 +11,7 @@ public class TimeDuration {
         String[] split = duration.split(":");
         try {
             for (String segment : split) {
-                if (Short.parseShort(segment) >= 60) {
+                if (Integer.parseInt(segment) >= 60 || Integer.parseInt(segment) < 0) {
                     throw new SongException("Invalid duration format");
                 }
             }
