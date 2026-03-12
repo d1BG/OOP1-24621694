@@ -3,7 +3,7 @@ package bg.tu_varna.sit;
 import bg.tu_varna.sit.commands.Commands;
 import bg.tu_varna.sit.data.*;
 import bg.tu_varna.sit.exceptions.*;
-import bg.tu_varna.sit.util.*;
+import bg.tu_varna.sit.util.tokenizers.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

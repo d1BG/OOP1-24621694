@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlaylistManager implements PlaylistActions, Serializable {
-    List<Playlist> playlists;
+    private List<Playlist> playlists;
     public PlaylistManager() {
         playlists = new ArrayList<>();
     }
