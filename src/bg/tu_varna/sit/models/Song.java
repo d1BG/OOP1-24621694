@@ -7,19 +7,19 @@ public class Song implements Serializable {
     // Required*
     private int ID;
     private String title;
-    private String artist;
-    private String duration;
+    private String artist; // object?
+    private TimeDuration duration;
     // Optional
     private String album;
     private String year;
-    private String genre;
+    private String genre; // enum
 
 
     public Song(int ID, String title, String artist, String duration) {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
-        this.duration = duration;
+        this.duration = new TimeDuration(duration);
         this.album = "N/A";
         this.year = "N/A";
         this.genre = "N/A";
@@ -39,7 +39,7 @@ public class Song implements Serializable {
     }
 
     public String getDuration() {
-        return duration;
+        return duration.toString();
     }
 
     public String getAlbum() {
@@ -67,7 +67,7 @@ public class Song implements Serializable {
     }
 
     public void setDuration(String duration) {
-        this.duration = duration;
+        this.duration = new TimeDuration(duration);
     }
 
     public void setAlbum(String album) {
