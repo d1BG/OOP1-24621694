@@ -18,12 +18,8 @@ public class ListPlaylistsCommand implements Command {
             listOfPlaylists.append(playlist.getName()).append("\t");
             listOfPlaylists.append(playlist.getDescription()).append("\n");
             for (Song song : playlist.getSongs()) {
-                listOfPlaylists.append("\t")
-                        .append(song.getID())
-                        .append(". ")
-                        .append(song.getTitle())
-                        .append(" - ")
-                        .append(song.getArtist())
+                listOfPlaylists
+                        .append(song)
                         .append("\n");
             }
         });
