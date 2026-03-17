@@ -50,8 +50,8 @@ public class Song implements Serializable {
         return year;
     }
 
-    public String getGenre() {
-        return genre.getFancyName();
+    public Genre getGenre() {
+        return genre;
     }
 
     public void setID(int ID) {
@@ -84,13 +84,13 @@ public class Song implements Serializable {
 
     public String songInfo(){
         StringBuilder sb = new StringBuilder();
-        sb.append("ID: ")      .append(ID)                      .append("\n");
-        sb.append("Title: ")   .append(title)                   .append("\n");
-        sb.append("Artist: ")  .append(artist)                  .append("\n");
-        sb.append("Duration: ").append(duration)                .append("\n");
-        sb.append("Album: ")   .append(album)                   .append("\n");
-        sb.append("Year: ")    .append(year)                    .append("\n");
-        sb.append("Genre: ")   .append(genre.getFancyName())    .append("\n");
+        sb.append("ID: ")      .append(ID)      .append("\n");
+        sb.append("Title: ")   .append(title)   .append("\n");
+        sb.append("Artist: ")  .append(artist)  .append("\n");
+        sb.append("Duration: ").append(duration).append("\n");
+        sb.append("Album: ")   .append(album)   .append("\n");
+        sb.append("Year: ")    .append(year)    .append("\n");
+        sb.append("Genre: ")   .append(genre)   .append("\n");
         return sb.toString();
     }
 

@@ -1,46 +1,45 @@
 package bg.tu_varna.sit.models;
 
 public enum Genre {
-    NA("n/a", "N/A"),
-    POP("pop", "Pop"),
-    ROCK("rock", "Rock"),
-    METAL("metal", "Metal"),
-    HIP_HOP("hip-hop", "Hip-Hop"),
-    RNB("rnb", "RNB"),
-    JAZZ("jazz", "Jazz"),
-    CLASSICAL("classical",  "Classical"),
-    ELECTRONIC("electronic",  "Electronic"),
-    COUNTRY("country", "Country"),
-    FOLK("folk", "Folk"),
-    REGGAE("reggae", "Reggae"),
-    PUNK("punk",  "Punk"),
-    FUNK("funk", "Funk"),
-    DISCO("disco", "Disco"),
-    TECHNO("techno", "Techno"),
-    HOUSE("house", "House"),
-    DUBSTEP("dubstep", "Dubstep"),
-    INDIE("indie", "Indie"),
-    K_POP("k-pop", "K-Pop"),
-    J_POP("j-pop", "J-Pop"),
-    ALTERNATIVE("alternative", "Alternative"),
-    LO_FI("lo-fi", "Lo-Fi"),
-    OTHER("other", "Other");
+    NA("N/A"),
+    POP("Pop"),
+    ROCK("Rock"),
+    METAL("Metal"),
+    HIP_HOP("Hip-Hop"),
+    RNB("RNB"),
+    JAZZ("Jazz"),
+    CLASSICAL("Classical"),
+    ELECTRONIC("Electronic"),
+    COUNTRY("Country"),
+    FOLK("Folk"),
+    REGGAE("Reggae"),
+    PUNK("Punk"),
+    FUNK("Funk"),
+    DISCO("Disco"),
+    TECHNO("Techno"),
+    HOUSE("House"),
+    DUBSTEP("Dubstep"),
+    INDIE("Indie"),
+    K_POP("K-Pop"),
+    J_POP("J-Pop"),
+    ALTERNATIVE("Alternative"),
+    LO_FI("Lo-Fi"),
+    OTHER("Other");
 
     private final String name;
-    private final String fancyName;
 
-    Genre(String name, String fancyName) {
+    Genre(String name) {
         this.name = name;
-        this.fancyName = fancyName;
     }
 
-    String getFancyName() {
-        return fancyName;
+    @Override
+    public String toString() {
+        return name;
     }
 
     public static Genre fromName(String name) {
         for (Genre genre : Genre.values()) {
-            if (genre.name.equals(name.toLowerCase())) {
+            if (genre.name.equalsIgnoreCase(name)) {
                 return genre;
             }
         }
