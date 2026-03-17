@@ -9,10 +9,12 @@ import java.io.Serializable;
 public class MusicData implements MusicPlaylists, Serializable {
     private SongActions songManager;
     private PlaylistActions playlistManager;
+    private PlayHistoryActions playHistoryManager;
 
     public MusicData() {
         playlistManager = new PlaylistManager();
         songManager = new SongManager();
+        playHistoryManager = new PlayHistoryManager();
     }
 
     @Override
@@ -23,6 +25,11 @@ public class MusicData implements MusicPlaylists, Serializable {
     @Override
     public PlaylistActions getPlaylistActions() {
         return playlistManager;
+    }
+
+    @Override
+    public PlayHistoryActions getPlayHistoryActions() {
+        return playHistoryManager;
     }
 
     @Override

@@ -8,13 +8,13 @@ public class PlayHistoryEntry implements Serializable {
     private LocalDateTime timestamp;
     private Playlist playlist; // may be null
 
-    PlayHistoryEntry(Song song, Playlist playlist) {
+    public PlayHistoryEntry(Song song, Playlist playlist) {
         this.song = song;
         this.timestamp = LocalDateTime.now();
         this.playlist = playlist;
     }
 
-    PlayHistoryEntry(Song song) {
+    public PlayHistoryEntry(Song song) {
         this.song = song;
         this.timestamp = LocalDateTime.now();
         this.playlist = null;
