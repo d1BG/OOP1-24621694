@@ -1,9 +1,11 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.SongActions;
+import bg.tu_varna.sit.exceptions.CommandException;
 import bg.tu_varna.sit.exceptions.SongException;
 import bg.tu_varna.sit.models.Song;
 
+import java.time.Year;
 import java.util.List;
 
 public class AddSongCommand implements Command {
@@ -16,7 +18,7 @@ public class AddSongCommand implements Command {
     public String execute(List<String> args) {
         List<Song> songs = songActions.getSongs();
         if (args.size() < 3 || args.size() > 6) {
-            throw new SongException("Invalid arguments");
+            throw new CommandException("Invalid arguments");
         }
 
         int songID;
@@ -32,6 +34,13 @@ public class AddSongCommand implements Command {
             case 6:
                 newSong.setGenre(args.get(5));
             case 5:
+                try {
+                    if (Integer.parseInt(args.get(4)) > Year.now().getValue()){
+                        throw new CommandException("Song can not be released later then current year");
+                    }
+                }  catch (NumberFormatException e) {
+                    throw new CommandException("Year must be a number");
+                }
                 newSong.setYear(args.get(4));
             case 4:
                 newSong.setAlbum(args.get(3));
