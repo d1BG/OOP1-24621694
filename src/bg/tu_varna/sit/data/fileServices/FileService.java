@@ -1,6 +1,8 @@
-package bg.tu_varna.sit.data;
+package bg.tu_varna.sit.data.fileServices;
 
 
+import bg.tu_varna.sit.data.MusicData;
+import bg.tu_varna.sit.data.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.FileException;
 
 import java.io.*;
