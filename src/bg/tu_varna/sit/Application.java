@@ -30,11 +30,7 @@ public class Application {
             tokens.removeFirst();
 
             try {
-                String result = commands.exec(command, tokens);
-                System.out.println(result);
-                if (result.equals("Exiting...")) {
-                    break;
-                }
+                System.out.println(commands.exec(command, tokens));
             } catch (CommandException | SongException | PlaylistException | FileException e){
                 System.out.println(e.getMessage());
             }

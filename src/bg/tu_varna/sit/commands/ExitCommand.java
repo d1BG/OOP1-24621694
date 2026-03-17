@@ -7,7 +7,8 @@ public class ExitCommand implements Command{
 
     @Override
     public String execute(List<String> args) {
-        return "Exiting...";
+        System.exit(0);
+        return null; // null since the program is exiting, there is no need to return anything.
     }
 
     public String cmdHelpMessage() {
