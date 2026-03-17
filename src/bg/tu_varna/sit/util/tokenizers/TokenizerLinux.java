@@ -17,6 +17,10 @@ public class TokenizerLinux implements Tokenizer {
         for (int i = 0; i < line.length(); i++) {
             switch (line.charAt(i)) {
                 case '\\':
+                    if  (inQuotes) {
+                        currToken.append(line.charAt(i));
+                        break;
+                    }
                     if (isEscaped) {
                         currToken.append(line.charAt(i));
                         isEscaped = false;
