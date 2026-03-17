@@ -83,15 +83,13 @@ public class Song implements Serializable {
     }
 
     public String songInfo(){
-        StringBuilder sb = new StringBuilder();
-        sb.append("ID: ")      .append(ID)      .append("\n");
-        sb.append("Title: ")   .append(title)   .append("\n");
-        sb.append("Artist: ")  .append(artist)  .append("\n");
-        sb.append("Duration: ").append(duration).append("\n");
-        sb.append("Album: ")   .append(album)   .append("\n");
-        sb.append("Year: ")    .append(year)    .append("\n");
-        sb.append("Genre: ")   .append(genre)   .append("\n");
-        return sb.toString();
+        return  "ID: "       + ID       + "\n" +
+                "Title: "    + title    + "\n" +
+                "Artist: "   + artist   + "\n" +
+                "Duration: " + duration + "\n" +
+                "Album: "    + album    + "\n" +
+                "Year: "     + year     + "\n" +
+                "Genre: "    + genre    + "\n";
     }
 
     @Override
