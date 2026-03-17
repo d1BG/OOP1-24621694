@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.models;
 
-import bg.tu_varna.sit.exceptions.SongException;
+import bg.tu_varna.sit.exceptions.TimeFormatException;
 
 public class TimeDuration {
     private int hours;
@@ -12,7 +12,7 @@ public class TimeDuration {
         try {
             for (String segment : split) {
                 if (Integer.parseInt(segment) >= 60 || Integer.parseInt(segment) < 0) {
-                    throw new SongException("Invalid duration format");
+                    throw new TimeFormatException("Invalid duration format");
                 }
             }
 
@@ -27,7 +27,7 @@ public class TimeDuration {
                 seconds = Integer.parseInt(split[2]);
             }
         } catch (NumberFormatException e) {
-            throw new SongException("Invalid duration format");
+            throw new TimeFormatException("Invalid duration format");
         }
     }
 
