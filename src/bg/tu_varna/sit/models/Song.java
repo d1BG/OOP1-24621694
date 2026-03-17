@@ -12,7 +12,7 @@ public class Song implements Serializable {
     // Optional
     private String album;
     private String year;
-    private String genre; // enum
+    private Genre genre;
 
 
     public Song(int ID, String title, String artist, String duration) {
@@ -22,7 +22,7 @@ public class Song implements Serializable {
         this.duration = new TimeDuration(duration);
         this.album = "N/A";
         this.year = "N/A";
-        this.genre = "N/A";
+        this.genre = Genre.NA;
     }
 
 
@@ -51,7 +51,7 @@ public class Song implements Serializable {
     }
 
     public String getGenre() {
-        return genre;
+        return genre.getFancyName();
     }
 
     public void setID(int ID) {
@@ -79,18 +79,18 @@ public class Song implements Serializable {
     }
 
     public void setGenre(String genre) {
-        this.genre = genre;
+        this.genre = Genre.fromName(genre);
     }
 
     public String songInfo(){
         StringBuilder sb = new StringBuilder();
-        sb.append("ID: ")      .append(ID)      .append("\n");
-        sb.append("Title: ")   .append(title)   .append("\n");
-        sb.append("Artist: ")  .append(artist)  .append("\n");
-        sb.append("Duration: ").append(duration).append("\n");
-        sb.append("Album: ")   .append(album)   .append("\n");
-        sb.append("Year: ")    .append(year)    .append("\n");
-        sb.append("Genre: ")   .append(genre)   .append("\n");
+        sb.append("ID: ")      .append(ID)                      .append("\n");
+        sb.append("Title: ")   .append(title)                   .append("\n");
+        sb.append("Artist: ")  .append(artist)                  .append("\n");
+        sb.append("Duration: ").append(duration)                .append("\n");
+        sb.append("Album: ")   .append(album)                   .append("\n");
+        sb.append("Year: ")    .append(year)                    .append("\n");
+        sb.append("Genre: ")   .append(genre.getFancyName())    .append("\n");
         return sb.toString();
     }
 

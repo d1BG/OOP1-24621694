@@ -1,10 +1,10 @@
 ## To-do list:
 - sorting/filtering of listSongs
-- better songInfo (Song toString)
 - move (a song inside a playlist)
 - shuffle (playlist)
 - play (a song)
-- addsong's duration must be in MM:SS format
+- addsong optional params - better handling
+- add a default folder to save files in
 
 ## Play History stuff:
 - plays (between 2 dates)
