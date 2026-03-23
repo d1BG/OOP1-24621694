@@ -27,6 +27,7 @@ public class Commands {
         commands.put("close", new CloseCommand(musicPlaylists, fileActions));
         commands.put("addtoplaylist", new AddToPlaylistCommand(musicPlaylists));
         commands.put("removefromplaylist", new RemoveFromPlaylist(musicPlaylists));
+        commands.put("play", new PlayCommand(musicPlaylists));
     }
 
     public String exec(String cmdName, List<String> args) {
