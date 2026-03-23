@@ -1,17 +1,22 @@
 package bg.tu_varna.sit.commands;
 
-import bg.tu_varna.sit.data.interfaces.PlayHistoryActions;
+import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.CommandException;
 import bg.tu_varna.sit.models.PlayHistoryEntry;
+import bg.tu_varna.sit.models.Playlist;
+import bg.tu_varna.sit.models.Song;
 import bg.tu_varna.sit.util.ArgumentParser;
+import bg.tu_varna.sit.util.DateTimeParser;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class PlaysCommand implements Command {
-    PlayHistoryActions playHistoryActions;
-    public PlaysCommand(PlayHistoryActions playHistoryActions) {
-        this.playHistoryActions = playHistoryActions;
+    MusicPlaylists musicPlaylists;
+    public PlaysCommand(MusicPlaylists musicPlaylists) {
+        this.musicPlaylists = musicPlaylists;
     }
 
     @Override
@@ -20,16 +25,26 @@ public class PlaysCommand implements Command {
             throw new CommandException("Invalid arguments");
         }
 
-        if (args.isEmpty()) {
-            StringBuilder sb = new StringBuilder();
-            for (PlayHistoryEntry entry : playHistoryActions.getEntries()) {
-                sb.append(entry).append("\n");
-            }
-            return sb.toString();
+        Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(args);
+        List<PlayHistoryEntry> filteredList = new ArrayList<>();
+
+        try {
+            // TODO: ADD MORE ERROR HANDLING!!!
+
+            LocalDateTime fromFilter = parsedArgs.get("from") != null ? DateTimeParser.parse(parsedArgs.get("from")) : null;
+            LocalDateTime toFilter = parsedArgs.get("to") != null ? DateTimeParser.parse(parsedArgs.get("to")) : null;
+            Song songFilter = parsedArgs.get("song") != null ? musicPlaylists.getSongActions().getSong(Integer.parseInt(parsedArgs.get("song"))) : null;
+            Playlist playlistFilter = parsedArgs.get("playlist") !=null ? musicPlaylists.getPlaylistActions().getPlaylistByName(parsedArgs.get("playlist")) : null;
+            filteredList = musicPlaylists.getPlayHistoryActions().plays(fromFilter, toFilter, playlistFilter, songFilter);
+        } catch (NumberFormatException e) {
+            throw new CommandException(e.getMessage());
         }
 
-        Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(args);
-        return "unimplemented";
+        StringBuilder sb = new StringBuilder();
+        for (PlayHistoryEntry e : filteredList) {
+            sb.append(e.toString()).append("\n");
+        }
+        return sb.toString();
     }
 
     @Override

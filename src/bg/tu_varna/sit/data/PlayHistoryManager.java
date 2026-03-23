@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayHistoryManager implements Serializable, PlayHistoryActions {
-    List<PlayHistoryEntry> entries;
+    private List<PlayHistoryEntry> entries;
 
     public PlayHistoryManager() {
         this.entries = new ArrayList<>();
@@ -21,23 +21,35 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         return entries;
     }
 
-    public void addEntry(PlayHistoryEntry entry) {
-        entries.add(entry);
-    }
-
-
-
-    // NOT IMPLEMENTED
     @Override
     public void play(Song song, Playlist playlist) {
         entries.add(new PlayHistoryEntry(song, playlist));
     }
 
     @Override
-    public String plays(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song) {
-        return "";
+    public List<PlayHistoryEntry> plays(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song) {
+        List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
+        if (song != null) {
+            filteredList.removeIf(e -> !e.getSong() .equals(song));
+        }
+
+        // extra check here bcuz Playlists can be null
+        if (playlist != null) {
+            filteredList.removeIf(e -> e.getPlaylist() != null && e.getPlaylist().equals(playlist));
+        }
+
+        if (from != null) {
+            filteredList.removeIf(e -> e.getTimestamp().isBefore(from));
+        }
+
+        if (to != null) {
+            filteredList.removeIf(e -> e.getTimestamp().isAfter(to));
+        }
+
+        return filteredList;
     }
 
+    // NOT IMPLEMENTED
     @Override
     public String topPlaylists(int n, LocalDateTime from, LocalDateTime to) {
         return "";

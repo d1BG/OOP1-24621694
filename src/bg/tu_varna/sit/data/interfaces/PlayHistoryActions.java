@@ -9,9 +9,8 @@ import java.util.List;
 
 public interface PlayHistoryActions {
     List<PlayHistoryEntry> getEntries();
-    void addEntry(PlayHistoryEntry entry);
     void play(Song song, Playlist playlist);
-    String plays(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song); // between 2 dates
+    List<PlayHistoryEntry> plays(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song);
     String topPlaylists(int n, LocalDateTime from, LocalDateTime to);
     String topTracks(int n, LocalDateTime from, LocalDateTime to);
     String topArtists(int n, LocalDateTime from, LocalDateTime to);
