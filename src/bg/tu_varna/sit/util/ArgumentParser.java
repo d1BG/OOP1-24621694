@@ -20,10 +20,10 @@ public class ArgumentParser {
         Map<String, String> parsedKeyValue = new HashMap<>();
         for (String arg : args) {
             String[] split = arg.trim().split("=");
-            parsedKeyValue.put(split[0], split[1]);
             if (split.length != 2) {
                 throw new CommandException("Couldn't Parse: " + arg);
             }
+            parsedKeyValue.put(split[0], split[1]);
         }
         return parsedKeyValue;
     }
