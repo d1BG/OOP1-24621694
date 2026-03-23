@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.models;
 
-public enum Genre {
+import java.io.Serializable;
+
+public enum Genre implements Serializable {
     NA("N/A"),
     POP("Pop"),
     ROCK("Rock"),

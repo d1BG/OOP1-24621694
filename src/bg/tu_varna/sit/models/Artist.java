@@ -1,6 +1,8 @@
 package bg.tu_varna.sit.models;
 
-public class Artist {
+import java.io.Serializable;
+
+public class Artist implements Serializable {
     // must-have
     private String username;
     // optional

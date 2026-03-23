@@ -2,7 +2,9 @@ package bg.tu_varna.sit.models;
 
 import bg.tu_varna.sit.exceptions.TimeFormatException;
 
-public class TimeDuration {
+import java.io.Serializable;
+
+public class TimeDuration implements Serializable {
     private int hours;
     private int minutes;
     private int seconds;
