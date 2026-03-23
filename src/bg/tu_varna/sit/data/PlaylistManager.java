@@ -46,5 +46,6 @@ public class PlaylistManager implements PlaylistActions, Serializable {
                 return p;
             }
         }
+        throw new PlaylistException("Couldn't find playlist");
     }
 }
