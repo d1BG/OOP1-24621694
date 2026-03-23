@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.data;
+package bg.tu_varna.sit.data.interfaces;
 
 import bg.tu_varna.sit.models.PlayHistoryEntry;
 import bg.tu_varna.sit.models.Playlist;

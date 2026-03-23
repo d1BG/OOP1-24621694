@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.data;
+package bg.tu_varna.sit.data.interfaces;
 
 public interface MusicPlaylists {
     SongActions getSongActions();

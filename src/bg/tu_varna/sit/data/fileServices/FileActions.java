@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.data.fileServices;
 
-import bg.tu_varna.sit.data.MusicPlaylists;
+import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
 
 import java.io.File;
 

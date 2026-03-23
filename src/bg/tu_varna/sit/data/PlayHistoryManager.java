@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.data;
 
+import bg.tu_varna.sit.data.interfaces.PlayHistoryActions;
 import bg.tu_varna.sit.models.PlayHistoryEntry;
 import bg.tu_varna.sit.models.Playlist;
 import bg.tu_varna.sit.models.Song;

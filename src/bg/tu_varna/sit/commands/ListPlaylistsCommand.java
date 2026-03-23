@@ -1,6 +1,6 @@
 package bg.tu_varna.sit.commands;
 
-import bg.tu_varna.sit.data.PlaylistActions;
+import bg.tu_varna.sit.data.interfaces.PlaylistActions;
 import bg.tu_varna.sit.models.Song;
 
 import java.util.List;
