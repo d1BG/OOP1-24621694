@@ -11,9 +11,9 @@ public class DateTimeParser {
         try {
             String[] splitDateTime = dateTime.split("-");
             String[] date = splitDateTime[0].split("\\.");
-            int year = Integer.parseInt(date[0]);
+            int day = Integer.parseInt(date[0]);
             int month = Integer.parseInt(date[1]);
-            int day = Integer.parseInt(date[2]);
+            int year = Integer.parseInt(date[2]);
 
             String[] time = splitDateTime[1].split(":");
             int hour = Integer.parseInt(time[0]);
