@@ -35,4 +35,14 @@ public class PlayHistoryEntry implements Serializable {
     public void playlistDeleted(Playlist playlist) {
         this.playlist = null;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(song);
+        if (playlist != null) {
+            sb.append(" from playlist: ").append(playlist.getName());
+        }
+        return sb.toString();
+    }
 }

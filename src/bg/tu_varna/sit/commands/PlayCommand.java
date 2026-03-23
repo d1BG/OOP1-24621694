@@ -34,7 +34,7 @@ public class PlayCommand implements Command {
                 }
 
                 musicPlaylists.getPlayHistoryActions().play(song, playlist);
-                return "Played: " + song.toString() + " from playlist " + playlist;
+                return "Played: " + song.toString() + " from playlist " + playlist.getName();
             }
             musicPlaylists.getPlayHistoryActions().play(song, null);
             return "Played: " + song.toString();
