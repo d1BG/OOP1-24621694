@@ -2,6 +2,7 @@ package bg.tu_varna.sit.util;
 
 import bg.tu_varna.sit.exceptions.CommandException;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ArgumentParser {
@@ -12,5 +13,17 @@ public class ArgumentParser {
             throw new CommandException("Couldn't Parse: " + arg);
         }
         return Map.of(split[0], split[1]);
+    }
+
+    public static Map<String, String> KeyValueParser(String[] args) {
+        Map<String, String> parsedKeyValue = new HashMap<>();
+        for (String arg : args) {
+            String[] split = arg.trim().split("=");
+            parsedKeyValue.put(split[0], split[1]);
+            if (split.length != 2) {
+                throw new CommandException("Couldn't Parse: " + arg);
+            }
+        }
+        return parsedKeyValue;
     }
 }
