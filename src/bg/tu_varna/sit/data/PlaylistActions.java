@@ -8,4 +8,5 @@ public interface PlaylistActions {
     List<Playlist> getPlaylists();
     void createPlaylist(Playlist playlist);
     void deletePlaylist(String name);
+    Playlist getPlaylistByName(String name);
 }

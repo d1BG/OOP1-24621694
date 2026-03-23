@@ -38,4 +38,13 @@ public class PlaylistManager implements PlaylistActions, Serializable {
         }
         throw new PlaylistException("Playlist does not exist");
     }
+
+    @Override
+    public Playlist getPlaylistByName(String name) {
+        for (Playlist p : playlists) {
+            if (p.getName().equals(name)) {
+                return p;
+            }
+        }
+    }
 }
