@@ -1,5 +1,9 @@
 package bg.tu_varna.sit.data;
 
+import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
+import bg.tu_varna.sit.data.interfaces.PlayHistoryActions;
+import bg.tu_varna.sit.data.interfaces.PlaylistActions;
+import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
 import bg.tu_varna.sit.models.Song;
@@ -9,10 +13,12 @@ import java.io.Serializable;
 public class MusicData implements MusicPlaylists, Serializable {
     private SongActions songManager;
     private PlaylistActions playlistManager;
+    private PlayHistoryActions playHistoryManager;
 
     public MusicData() {
         playlistManager = new PlaylistManager();
         songManager = new SongManager();
+        playHistoryManager = new PlayHistoryManager();
     }
 
     @Override
@@ -23,6 +29,11 @@ public class MusicData implements MusicPlaylists, Serializable {
     @Override
     public PlaylistActions getPlaylistActions() {
         return playlistManager;
+    }
+
+    @Override
+    public PlayHistoryActions getPlayHistoryActions() {
+        return playHistoryManager;
     }
 
     @Override

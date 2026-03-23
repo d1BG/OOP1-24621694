@@ -1,7 +1,7 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.fileServices.FileActions;
-import bg.tu_varna.sit.data.MusicPlaylists;
+import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.CommandException;
 
 import java.util.HashMap;
@@ -27,6 +27,8 @@ public class Commands {
         commands.put("close", new CloseCommand(musicPlaylists, fileActions));
         commands.put("addtoplaylist", new AddToPlaylistCommand(musicPlaylists));
         commands.put("removefromplaylist", new RemoveFromPlaylist(musicPlaylists));
+        commands.put("play", new PlayCommand(musicPlaylists));
+        commands.put("plays", new PlaysCommand(musicPlaylists));
     }
 
     public String exec(String cmdName, List<String> args) {

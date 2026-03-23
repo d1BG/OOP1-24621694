@@ -1,5 +1,6 @@
 package bg.tu_varna.sit.data;
 
+import bg.tu_varna.sit.data.interfaces.PlaylistActions;
 import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
 
@@ -37,5 +38,15 @@ public class PlaylistManager implements PlaylistActions, Serializable {
             }
         }
         throw new PlaylistException("Playlist does not exist");
+    }
+
+    @Override
+    public Playlist getPlaylistByName(String name) {
+        for (Playlist p : playlists) {
+            if (p.getName().equals(name)) {
+                return p;
+            }
+        }
+        throw new PlaylistException("Couldn't find playlist");
     }
 }

@@ -39,6 +39,15 @@ public class Playlist implements Serializable {
         return Objects.equals(name, playlist.name);
     }
 
+    public boolean contains(Song song) {
+        for (Song s : songs) {
+            if (s.equals(song)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hashCode(name);

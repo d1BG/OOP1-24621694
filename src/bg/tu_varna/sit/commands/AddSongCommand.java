@@ -1,8 +1,7 @@
 package bg.tu_varna.sit.commands;
 
-import bg.tu_varna.sit.data.SongActions;
+import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.CommandException;
-import bg.tu_varna.sit.exceptions.SongException;
 import bg.tu_varna.sit.models.Song;
 
 import java.time.Year;

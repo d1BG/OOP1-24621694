@@ -1,4 +1,4 @@
-package bg.tu_varna.sit.data;
+package bg.tu_varna.sit.data.interfaces;
 
 import bg.tu_varna.sit.models.Playlist;
 
@@ -8,4 +8,5 @@ public interface PlaylistActions {
     List<Playlist> getPlaylists();
     void createPlaylist(Playlist playlist);
     void deletePlaylist(String name);
+    Playlist getPlaylistByName(String name);
 }
