@@ -19,8 +19,8 @@ public class DateTimeParser {
             int hour = Integer.parseInt(time[0]);
             int minute = Integer.parseInt(time[1]);
             return LocalDateTime.of(year, month, day, hour, minute);
-        } catch (NumberFormatException e) {
-            throw new TimeFormatException(e.getMessage());
+        } catch (NumberFormatException | ArrayIndexOutOfBoundsException | NullPointerException e) {
+            throw new TimeFormatException("Format must be: dd.MM.yyyy-hh:mm");
         }
 
     }
