@@ -28,6 +28,14 @@ public class PlayHistoryEntry implements Serializable {
         return timestamp;
     }
 
+    public String getFancyTimestamp() {
+        return timestamp.getDayOfMonth() + "." +
+                timestamp.getMonthValue() + "." +
+                timestamp.getYear() + "-" +
+                timestamp.getHour() + ":" +
+                timestamp.getMinute();
+    }
+
     public Playlist getPlaylist() {
         return playlist;
     }
@@ -39,7 +47,7 @@ public class PlayHistoryEntry implements Serializable {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(song);
+        sb.append(song).append(" (Played on: ").append(getFancyTimestamp()).append(")");
         if (playlist != null) {
             sb.append(" from playlist: ").append(playlist.getName());
         }
