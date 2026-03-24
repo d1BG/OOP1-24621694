@@ -28,7 +28,7 @@ public class ShowPlaylistCommand implements Command {
             playlistDuration.addDurations(s.getDuration());
         }
 
-        sb.append("\n Total Playlist Duration: ").append(playlistDuration);
+        sb.append("\nTotal Playlist Duration: ").append(playlistDuration);
 
         return sb.toString();
     }

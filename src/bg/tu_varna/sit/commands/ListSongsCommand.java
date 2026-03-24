@@ -11,7 +11,6 @@ public class ListSongsCommand implements Command {
         this.songActions = songActions;
     }
 
-    // TODO: Filtering by artist, genre, year. This will do for now.
     @Override
     public String execute(List<String> args) {
         StringBuilder songList = new StringBuilder();
