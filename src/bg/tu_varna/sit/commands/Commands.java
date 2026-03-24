@@ -30,6 +30,7 @@ public class Commands {
         commands.put("play", new PlayCommand(musicPlaylists));
         commands.put("plays", new PlaysCommand(musicPlaylists));
         commands.put("showplaylist", new ShowPlaylistCommand(musicPlaylists.getPlaylistActions()));
+        commands.put("dropplaylist", new DropPlaylistCommand(musicPlaylists));
     }
 
     public String exec(String cmdName, List<String> args) {

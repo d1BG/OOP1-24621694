@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TokenizerWindows implements Tokenizer {
-    List<String> tokens = new ArrayList<>();
+    private List<String> tokens = new ArrayList<>();
     public TokenizerWindows() {}
 
     @Override

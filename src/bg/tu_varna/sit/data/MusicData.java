@@ -5,10 +5,12 @@ import bg.tu_varna.sit.data.interfaces.PlayHistoryActions;
 import bg.tu_varna.sit.data.interfaces.PlaylistActions;
 import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.PlaylistException;
+import bg.tu_varna.sit.models.PlayHistoryEntry;
 import bg.tu_varna.sit.models.Playlist;
 import bg.tu_varna.sit.models.Song;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class MusicData implements MusicPlaylists, Serializable {
     private SongActions songManager;
@@ -78,4 +80,10 @@ public class MusicData implements MusicPlaylists, Serializable {
         this.songManager = musicPlaylists.getSongActions();
     }
 
+    @Override
+    public void dropPlaylist(Playlist p) {
+        List<PlayHistoryEntry> filterList = playHistoryManager.plays(null, null, p, null);
+        playHistoryManager.getEntries().removeAll(filterList);
+        playlistManager.deletePlaylist(p);
+    }
 }
