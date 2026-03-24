@@ -9,7 +9,7 @@ public class TimeDuration implements Serializable {
     private int minutes;
     private int seconds;
 
-    TimeDuration(String duration) {
+    public TimeDuration(String duration) {
         String[] split = duration.split(":");
         try {
             for (String segment : split) {
@@ -33,6 +33,10 @@ public class TimeDuration implements Serializable {
         }
     }
 
+    public TimeDuration() {
+        hours = minutes = seconds = 0;
+    }
+
     public void addDurations(TimeDuration duration) {
         seconds += duration.seconds;
         validateSeconds();
@@ -45,7 +49,7 @@ public class TimeDuration implements Serializable {
 
     private void validateSeconds() {
         if (seconds >= 60) {
-            seconds =- 60;
+            seconds -= 60;
             minutes++;
             validateMinutes();
         }
@@ -53,7 +57,7 @@ public class TimeDuration implements Serializable {
 
     private void validateMinutes() {
         if (minutes >= 60) {
-            minutes =- 60;
+            minutes -= 60;
             hours++;
         }
     }
