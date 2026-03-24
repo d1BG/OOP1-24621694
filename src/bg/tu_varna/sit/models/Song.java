@@ -15,14 +15,14 @@ public class Song implements Serializable {
     private Genre genre;
 
 
-    public Song(int ID, String title, String artist, String duration) {
+    public Song(int ID, String title, String artist, String duration, String album, String year, Genre genre) {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
         this.duration = new TimeDuration(duration);
-        this.album = "N/A";
-        this.year = "N/A";
-        this.genre = Genre.NA;
+        this.album = album != null ? album : "N/A";
+        this.year = year != null ? year : "N/A";
+        this.genre = genre;
     }
 
 
@@ -52,34 +52,6 @@ public class Song implements Serializable {
 
     public Genre getGenre() {
         return genre;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setArtist(String artist) {
-        this.artist = artist;
-    }
-
-    public void setDuration(String duration) {
-        this.duration = new TimeDuration(duration);
-    }
-
-    public void setAlbum(String album) {
-        this.album = album;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = Genre.fromName(genre);
     }
 
     public String songInfo(){
