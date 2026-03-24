@@ -82,7 +82,7 @@ public class MusicData implements MusicPlaylists, Serializable {
 
     @Override
     public void dropPlaylist(Playlist p) {
-        List<PlayHistoryEntry> filterList = playHistoryManager.plays(null, null, p, null);
+        List<PlayHistoryEntry> filterList = playHistoryManager.filterEntries(null, null, p, null);
         playHistoryManager.getEntries().removeAll(filterList);
         playlistManager.deletePlaylist(p);
     }

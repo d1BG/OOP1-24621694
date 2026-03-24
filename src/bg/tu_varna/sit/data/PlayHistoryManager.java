@@ -27,7 +27,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     }
 
     @Override
-    public List<PlayHistoryEntry> plays(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song) {
+    public List<PlayHistoryEntry> filterEntries(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song) {
         List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
         if (song != null) {
             filteredList.removeIf(e -> !e.getSong() .equals(song));
