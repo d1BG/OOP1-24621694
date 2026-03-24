@@ -38,8 +38,8 @@ public class Song implements Serializable {
         return artist;
     }
 
-    public String getDuration() {
-        return duration.toString();
+    public TimeDuration getDuration() {
+        return duration;
     }
 
     public String getAlbum() {
@@ -94,7 +94,7 @@ public class Song implements Serializable {
 
     @Override
     public String toString() {
-        return "ID: " + ID + ". " + title + " - " + artist;
+        return "ID: " + ID + ". " + title + " - " + artist + " " + duration;
     }
 
     @Override
