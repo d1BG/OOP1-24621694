@@ -1,9 +1,14 @@
 package bg.tu_varna.sit.commands;
 
 import bg.tu_varna.sit.data.interfaces.SongActions;
+import bg.tu_varna.sit.exceptions.CommandException;
+import bg.tu_varna.sit.models.Genre;
 import bg.tu_varna.sit.models.Song;
+import bg.tu_varna.sit.util.ArgumentParser;
 
+import java.time.Year;
 import java.util.List;
+import java.util.Map;
 
 public class ListSongsCommand implements Command {
     private SongActions songActions;
@@ -13,12 +18,35 @@ public class ListSongsCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        StringBuilder songList = new StringBuilder();
-        List<Song> songs = songActions.getSongs();
-        for (Song song : songs) {
-            songList.append(song.toString()).append("\n");
+        if (args.size() > 3) {
+            throw new CommandException("Invalid Arguments");
         }
-        return songList.toString();
+
+        StringBuilder songList = new StringBuilder();
+
+        Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(args);
+
+        try {
+            Genre genre = parsedArgs.get("genre") != null ? Genre.fromName(parsedArgs.get("genre")) : null;
+
+            // if the passed as arg year != null and is a number <= current year
+            String year =
+                    parsedArgs.get("year") != null &&
+                            Integer.parseInt(parsedArgs.get("year")) <= Year.now().getValue()
+                            ? parsedArgs.get("year") : null;
+
+            String artist = parsedArgs.get("artist") != null ? parsedArgs.get("artist") : null;
+
+            List<Song> filteredSongs = songActions.filterSongs(artist, genre, year);
+
+            for (Song song : filteredSongs) {
+                songList.append(song.toString()).append("\n");
+            }
+
+            return songList.toString();
+        } catch (NumberFormatException e) {
+            throw new CommandException("An error occurred while filtering");
+        }
     }
 
     @Override

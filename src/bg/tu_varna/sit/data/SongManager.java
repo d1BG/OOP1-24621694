@@ -2,6 +2,8 @@ package bg.tu_varna.sit.data;
 
 import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.SongException;
+// import bg.tu_varna.sit.models.Artist;
+import bg.tu_varna.sit.models.Genre;
 import bg.tu_varna.sit.models.Song;
 
 import java.io.Serializable;
@@ -16,6 +18,25 @@ public class SongManager implements SongActions, Serializable {
 
     public List<Song> getSongs() {
         return songs;
+    }
+
+    @Override
+    public List<Song> filterSongs(String artist, Genre genre, String year) {
+        List<Song> filteredSongs = new ArrayList<>(songs);
+
+        if (artist != null) { // TODO: change when I implement Artist as an Object
+            filteredSongs.removeIf(s -> !s.getArtist().equals(artist));
+        }
+
+        if (genre != null) {
+            filteredSongs.removeIf(s -> !s.getGenre().equals(genre));
+        }
+
+        if (year != null) {
+            filteredSongs.removeIf(s -> !s.getYear().equals(year));
+        }
+
+        return filteredSongs;
     }
 
     @Override
