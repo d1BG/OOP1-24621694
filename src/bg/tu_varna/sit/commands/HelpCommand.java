@@ -94,15 +94,14 @@ public class HelpCommand implements Command {
             """;
         if (args.isEmpty()) {
             return helpMessage;
-        } else {
-            String commandName = args.getFirst().toLowerCase();
-            Command command = commands.get(commandName);
-            if (command != null) {
-                return command.cmdHelpMessage();
-            } else {
-                throw new CommandException("Unknown command: " + commandName);
-            }
         }
+
+        String commandName = args.getFirst().toLowerCase();
+        Command command = commands.get(commandName);
+        if (command != null) {
+            return command.cmdHelpMessage();
+        }
+        throw new CommandException("Unknown command: " + commandName);
     }
 
     @Override
