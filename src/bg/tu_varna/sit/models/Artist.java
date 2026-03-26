@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.models;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Artist implements Serializable {
     // must-have
@@ -37,19 +38,27 @@ public class Artist implements Serializable {
         this.lastName = lastName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return Objects.equals(username, artist.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(username);
+    }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append(username);
         if (firstName != null) {
-            sb.append(firstName);
+            sb.append(" - ").append(firstName);
             if (lastName != null) {
                 sb.append(" ").append(lastName);
             }
-        }
-
-        if (sb.isEmpty()) {
-            sb.append(username);
         }
         return sb.toString();
     }
