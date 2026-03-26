@@ -1,5 +1,6 @@
-package bg.tu_varna.sit.commands;
+package bg.tu_varna.sit.commands.genericCommands;
 
+import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.exceptions.CommandException;
 
 import java.util.List;

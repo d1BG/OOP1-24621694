@@ -1,5 +1,6 @@
-package bg.tu_varna.sit.commands;
+package bg.tu_varna.sit.commands.songCommands;
 
+import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.ArtistActions;
 import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.CommandException;

@@ -1,12 +1,11 @@
-package bg.tu_varna.sit.commands;
+package bg.tu_varna.sit.commands.songCommands;
 
+import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.ArtistActions;
-import bg.tu_varna.sit.data.interfaces.PlaylistActions;
 import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.CommandException;
 import bg.tu_varna.sit.models.Artist;
 import bg.tu_varna.sit.models.Genre;
-import bg.tu_varna.sit.models.Playlist;
 import bg.tu_varna.sit.models.Song;
 import bg.tu_varna.sit.util.ArgumentParser;
 

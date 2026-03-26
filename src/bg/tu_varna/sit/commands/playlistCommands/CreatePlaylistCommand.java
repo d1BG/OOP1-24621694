@@ -1,5 +1,6 @@
-package bg.tu_varna.sit.commands;
+package bg.tu_varna.sit.commands.playlistCommands;
 
+import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.PlaylistActions;
 import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;

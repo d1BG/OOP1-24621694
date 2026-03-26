@@ -1,8 +1,10 @@
-package bg.tu_varna.sit.commands;
+package bg.tu_varna.sit.commands.genericCommands;
+
+import bg.tu_varna.sit.commands.Command;
 
 import java.util.List;
 
-public class ExitCommand implements Command{
+public class ExitCommand implements Command {
     public ExitCommand() {}
 
     @Override

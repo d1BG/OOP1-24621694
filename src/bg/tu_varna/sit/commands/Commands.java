@@ -1,5 +1,11 @@
 package bg.tu_varna.sit.commands;
 
+import bg.tu_varna.sit.commands.artistCommands.*;
+import bg.tu_varna.sit.commands.fileCommands.*;
+import bg.tu_varna.sit.commands.genericCommands.*;
+import bg.tu_varna.sit.commands.playHistoryCommands.*;
+import bg.tu_varna.sit.commands.playlistCommands.*;
+import bg.tu_varna.sit.commands.songCommands.*;
 import bg.tu_varna.sit.data.fileServices.FileActions;
 import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.CommandException;

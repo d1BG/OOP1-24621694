@@ -1,5 +1,6 @@
-package bg.tu_varna.sit.commands;
+package bg.tu_varna.sit.commands.artistCommands;
 
+import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.ArtistActions;
 import bg.tu_varna.sit.exceptions.CommandException;
 import bg.tu_varna.sit.models.Artist;

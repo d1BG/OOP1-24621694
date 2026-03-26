@@ -1,11 +1,12 @@
-package bg.tu_varna.sit.commands;
+package bg.tu_varna.sit.commands.artistCommands;
 
+import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.CommandException;
 
 import java.util.List;
 
-public class RemoveArtistCommand implements Command{
+public class RemoveArtistCommand implements Command {
     MusicPlaylists musicPlaylists;
     public RemoveArtistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
