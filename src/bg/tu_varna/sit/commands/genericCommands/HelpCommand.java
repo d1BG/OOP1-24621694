@@ -1,15 +1,16 @@
 package bg.tu_varna.sit.commands.genericCommands;
 
 import bg.tu_varna.sit.commands.Command;
+import bg.tu_varna.sit.commands.CommandsIndex;
 import bg.tu_varna.sit.exceptions.CommandException;
 
 import java.util.List;
 import java.util.Map;
 
 public class HelpCommand implements Command {
-    private Map<String, Command> commands;
+    private Map<CommandsIndex, Command> commands;
 
-    public HelpCommand(Map<String, Command> commands) {
+    public HelpCommand(Map<CommandsIndex, Command> commands) {
         this.commands = commands;
     }
 
@@ -97,12 +98,11 @@ public class HelpCommand implements Command {
             return helpMessage;
         }
 
-        String commandName = args.getFirst().toLowerCase();
-        Command command = commands.get(commandName);
+        Command command = commands.get(CommandsIndex.fromName(args.getFirst()));
         if (command != null) {
             return command.cmdHelpMessage();
         }
-        throw new CommandException("Unknown command: " + commandName);
+        throw new CommandException("Unknown command: " + args.getFirst());
     }
 
     @Override

@@ -15,35 +15,35 @@ import java.util.List;
 import java.util.Map;
 
 public class Commands {
-    private final Map<String, Command> commands = new HashMap<>();
+    private final Map<CommandsIndex, Command> commands = new HashMap<>();
 
     public Commands(MusicPlaylists musicPlaylists, FileActions fileActions) {
-        commands.put("exit", new ExitCommand());
-        commands.put("help", new HelpCommand(commands));
-        commands.put("createplaylist", new CreatePlaylistCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("listplaylists", new ListPlaylistsCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("deleteplaylist", new DeletePlaylistCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("addsong", new AddSongCommand(musicPlaylists.getSongActions(), musicPlaylists.getArtistActions()));
-        commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongActions(), musicPlaylists.getArtistActions()));
-        commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongActions()));
-        commands.put("removesong", new RemoveSongCommand(musicPlaylists.getSongActions()));
-        commands.put("saveas", new SaveAsCommand(musicPlaylists, fileActions));
-        commands.put("save", new SaveCommand(musicPlaylists, fileActions));
-        commands.put("open", new OpenCommand(musicPlaylists, fileActions));
-        commands.put("close", new CloseCommand(musicPlaylists, fileActions));
-        commands.put("addtoplaylist", new AddToPlaylistCommand(musicPlaylists));
-        commands.put("removefromplaylist", new RemoveFromPlaylist(musicPlaylists));
-        commands.put("play", new PlayCommand(musicPlaylists));
-        commands.put("plays", new PlaysCommand(musicPlaylists));
-        commands.put("showplaylist", new ShowPlaylistCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("dropplaylist", new DropPlaylistCommand(musicPlaylists));
-        commands.put("addartist", new AddArtistCommand(musicPlaylists.getArtistActions()));
-        commands.put("listartists", new ListArtistsCommand(musicPlaylists.getArtistActions()));
-        commands.put("removeartist", new RemoveArtistCommand(musicPlaylists));
+        commands.put(CommandsIndex.EXIT, new ExitCommand());
+        commands.put(CommandsIndex.HELP, new HelpCommand(commands));
+        commands.put(CommandsIndex.CREATE_PLAYLIST, new CreatePlaylistCommand(musicPlaylists.getPlaylistActions()));
+        commands.put(CommandsIndex.LIST_PLAYLISTS, new ListPlaylistsCommand(musicPlaylists.getPlaylistActions()));
+        commands.put(CommandsIndex.DELETE_PLAYLIST, new DeletePlaylistCommand(musicPlaylists.getPlaylistActions()));
+        commands.put(CommandsIndex.ADD_SONG, new AddSongCommand(musicPlaylists.getSongActions(), musicPlaylists.getArtistActions()));
+        commands.put(CommandsIndex.LIST_SONGS, new ListSongsCommand(musicPlaylists.getSongActions(), musicPlaylists.getArtistActions()));
+        commands.put(CommandsIndex.SONG_INFO, new SongInfoCommand(musicPlaylists.getSongActions()));
+        commands.put(CommandsIndex.REMOVE_SONG, new RemoveSongCommand(musicPlaylists.getSongActions()));
+        commands.put(CommandsIndex.SAVE_AS, new SaveAsCommand(musicPlaylists, fileActions));
+        commands.put(CommandsIndex.SAVE, new SaveCommand(musicPlaylists, fileActions));
+        commands.put(CommandsIndex.OPEN, new OpenCommand(musicPlaylists, fileActions));
+        commands.put(CommandsIndex.CLOSE, new CloseCommand(musicPlaylists, fileActions));
+        commands.put(CommandsIndex.ADD_TO_PLAYLIST, new AddToPlaylistCommand(musicPlaylists));
+        commands.put(CommandsIndex.REMOVE_FROM_PLAYLIST, new RemoveFromPlaylist(musicPlaylists));
+        commands.put(CommandsIndex.PLAY, new PlayCommand(musicPlaylists));
+        commands.put(CommandsIndex.PLAYS, new PlaysCommand(musicPlaylists));
+        commands.put(CommandsIndex.SHOW_PLAYLIST, new ShowPlaylistCommand(musicPlaylists.getPlaylistActions()));
+        commands.put(CommandsIndex.DROP_PLAYLIST, new DropPlaylistCommand(musicPlaylists));
+        commands.put(CommandsIndex.ADD_ARTIST, new AddArtistCommand(musicPlaylists.getArtistActions()));
+        commands.put(CommandsIndex.LIST_ARTISTS, new ListArtistsCommand(musicPlaylists.getArtistActions()));
+        commands.put(CommandsIndex.REMOVE_ARTIST, new RemoveArtistCommand(musicPlaylists));
     }
 
     public String exec(String cmdName, List<String> args) {
-        Command cmd = commands.get(cmdName.toLowerCase());
+        Command cmd = commands.get(CommandsIndex.fromName(cmdName));
         if (cmd != null) {
             return cmd.execute(args);
         } else {
