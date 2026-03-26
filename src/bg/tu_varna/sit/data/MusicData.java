@@ -99,5 +99,6 @@ public class MusicData implements MusicPlaylists, Serializable {
     public void removeArtistByUsername(String username) {
         Artist artist = getArtistActions().getArtistByUsername(username);
         getSongActions().getSongs().removeAll(getSongActions().filterSongs(artist, null, null));
+        artistManager.removeArtist(artist);
     }
 }

@@ -17,8 +17,6 @@ public class Commands {
         commands.put("createplaylist", new CreatePlaylistCommand(musicPlaylists.getPlaylistActions()));
         commands.put("listplaylists", new ListPlaylistsCommand(musicPlaylists.getPlaylistActions()));
         commands.put("deleteplaylist", new DeletePlaylistCommand(musicPlaylists.getPlaylistActions()));
-        commands.put("addsong", new AddSongCommand(musicPlaylists.getSongActions()));
-        commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongActions()));
         commands.put("addsong", new AddSongCommand(musicPlaylists.getSongActions(), musicPlaylists.getArtistActions()));
         commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongActions(), musicPlaylists.getArtistActions()));
         commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongActions()));
@@ -33,6 +31,9 @@ public class Commands {
         commands.put("plays", new PlaysCommand(musicPlaylists));
         commands.put("showplaylist", new ShowPlaylistCommand(musicPlaylists.getPlaylistActions()));
         commands.put("dropplaylist", new DropPlaylistCommand(musicPlaylists));
+        commands.put("addartist", new AddArtistCommand(musicPlaylists.getArtistActions()));
+        commands.put("listartists", new ListArtistsCommand(musicPlaylists.getArtistActions()));
+        commands.put("removeartist", new RemoveArtistCommand(musicPlaylists));
     }
 
     public String exec(String cmdName, List<String> args) {
