@@ -1,8 +1,12 @@
 package bg.tu_varna.sit.commands;
 
+import bg.tu_varna.sit.data.interfaces.ArtistActions;
+import bg.tu_varna.sit.data.interfaces.PlaylistActions;
 import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.CommandException;
+import bg.tu_varna.sit.models.Artist;
 import bg.tu_varna.sit.models.Genre;
+import bg.tu_varna.sit.models.Playlist;
 import bg.tu_varna.sit.models.Song;
 import bg.tu_varna.sit.util.ArgumentParser;
 
@@ -12,8 +16,10 @@ import java.util.Map;
 
 public class ListSongsCommand implements Command {
     private SongActions songActions;
-    public ListSongsCommand(SongActions songActions) {
+    private ArtistActions artistActions;
+    public ListSongsCommand(SongActions songActions, ArtistActions artistActions) {
         this.songActions = songActions;
+        this.artistActions = artistActions;
     }
 
     @Override
@@ -35,7 +41,7 @@ public class ListSongsCommand implements Command {
                             Integer.parseInt(parsedArgs.get("year")) <= Year.now().getValue()
                             ? parsedArgs.get("year") : null;
 
-            String artist = parsedArgs.get("artist") != null ? parsedArgs.get("artist") : null;
+            Artist artist = parsedArgs.get("artist") != null ? artistActions.getArtistByUsername(parsedArgs.get("artist")) : null;
 
             List<Song> filteredSongs = songActions.filterSongs(artist, genre, year);
 

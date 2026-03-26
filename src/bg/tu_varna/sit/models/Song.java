@@ -7,7 +7,7 @@ public class Song implements Serializable {
     // Required*
     private int ID;
     private String title;
-    private String artist; // object?
+    private Artist artist; // object?
     private TimeDuration duration;
     // Optional
     private String album;
@@ -15,7 +15,7 @@ public class Song implements Serializable {
     private Genre genre;
 
 
-    public Song(int ID, String title, String artist, String duration, String album, String year, Genre genre) {
+    public Song(int ID, String title, Artist artist, String duration, String album, String year, Genre genre) {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
@@ -34,7 +34,7 @@ public class Song implements Serializable {
         return title;
     }
 
-    public String getArtist() {
+    public Artist getArtist() {
         return artist;
     }
 

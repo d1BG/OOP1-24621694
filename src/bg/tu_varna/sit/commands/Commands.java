@@ -19,6 +19,8 @@ public class Commands {
         commands.put("deleteplaylist", new DeletePlaylistCommand(musicPlaylists.getPlaylistActions()));
         commands.put("addsong", new AddSongCommand(musicPlaylists.getSongActions()));
         commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongActions()));
+        commands.put("addsong", new AddSongCommand(musicPlaylists.getSongActions(), musicPlaylists.getArtistActions()));
+        commands.put("listsongs", new ListSongsCommand(musicPlaylists.getSongActions(), musicPlaylists.getArtistActions()));
         commands.put("songinfo", new SongInfoCommand(musicPlaylists.getSongActions()));
         commands.put("removesong", new RemoveSongCommand(musicPlaylists.getSongActions()));
         commands.put("saveas", new SaveAsCommand(musicPlaylists, fileActions));

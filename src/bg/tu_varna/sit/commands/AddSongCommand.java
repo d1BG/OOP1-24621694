@@ -1,7 +1,9 @@
 package bg.tu_varna.sit.commands;
 
+import bg.tu_varna.sit.data.interfaces.ArtistActions;
 import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.CommandException;
+import bg.tu_varna.sit.models.Artist;
 import bg.tu_varna.sit.models.Genre;
 import bg.tu_varna.sit.models.Song;
 import bg.tu_varna.sit.util.ArgumentParser;
@@ -13,8 +15,11 @@ import java.util.Map;
 
 public class AddSongCommand implements Command {
     private SongActions songActions;
-    public AddSongCommand(SongActions songActions) {
+    private ArtistActions artistActions;
+
+    public AddSongCommand(SongActions songActions, ArtistActions artistActions) {
         this.songActions = songActions;
+        this.artistActions = artistActions;
     }
 
     @Override
@@ -40,6 +45,8 @@ public class AddSongCommand implements Command {
 
 
         try {
+            Artist artist = artistActions.getArtistByUsername(args.get(1));
+
             Genre genre = parsedArgs.get("genre") != null ? Genre.fromName(parsedArgs.get("genre")) : Genre.NA;
 
             // if the passed as arg year != null and is a number <= current year
@@ -50,7 +57,7 @@ public class AddSongCommand implements Command {
 
             String album = parsedArgs.get("album") != null ? parsedArgs.get("album") : null;
 
-            songActions.addSong(new Song(songID, args.get(0), args.get(1), args.get(2), album, year, genre));
+            songActions.addSong(new Song(songID, args.get(0), artist , args.get(2), album, year, genre));
         } catch (NumberFormatException e) {
             throw new CommandException("Year must be a number");
         }
