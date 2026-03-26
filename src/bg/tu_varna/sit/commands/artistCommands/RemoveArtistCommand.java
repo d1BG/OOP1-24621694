@@ -22,6 +22,7 @@ public class RemoveArtistCommand implements Command {
 
     @Override
     public String cmdHelpMessage() {
-        return "";
+        return "Премахва артист по псевдоним.\n" +
+                "   Usage: removeartist <username>";
     }
 }

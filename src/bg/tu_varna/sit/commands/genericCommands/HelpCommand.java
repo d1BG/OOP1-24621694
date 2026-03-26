@@ -90,6 +90,16 @@ public class HelpCommand implements Command {
                 dropplaylist <playlistName>
                     Премахва плейлист от системата.
             
+            Additional Commands:
+                addartist <username> [<firstName>] [<lastName>]
+                    Добавя артист. Уникален по псевдоним.
+
+                listartists
+                    Извежда всички артисти.
+
+                removeartist <username>
+                    Премахва артист по псевдоним.
+
             Debug commands:
                 listplaylists
                     Изкарва имената на всички плейлисти.
