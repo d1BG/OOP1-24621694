@@ -49,10 +49,38 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         return filteredList;
     }
 
-    // NOT IMPLEMENTED
+    // TODO: DUPLICATE CODE - condense into a single method
     @Override
-    public String topPlaylists(int n, LocalDateTime from, LocalDateTime to) {
-        return "";
+    public Map<Playlist, Integer> topPlaylists(int n, LocalDateTime from, LocalDateTime to) {
+        List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
+        filteredList.removeIf(e-> e.getPlaylist() == null);
+
+        if (from != null) {
+            filteredList.removeIf(e -> e.getTimestamp().isBefore(from));
+        }
+
+        if (to != null) {
+            filteredList.removeIf(e -> e.getTimestamp().isAfter(to));
+        }
+
+        Map<Playlist, Integer> counts = new HashMap<>();
+        for (PlayHistoryEntry e : filteredList) {
+            Playlist curr = e.getPlaylist();
+            if (counts.get(curr) == null) {
+                counts.put(curr, 1);
+            } else {
+                counts.replace(curr, counts.get(curr)+1);
+            }
+        }
+
+        List<Map.Entry<Playlist, Integer>> entryList = new ArrayList<>(counts.entrySet());
+        // compare and sort in descending order
+        entryList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
+        Map<Playlist, Integer> topPlaylists = new HashMap<>();
+        for (int i = 0; i < Math.min(n, entryList.size()); i++) {
+            topPlaylists.put(entryList.get(i).getKey(), entryList.get(i).getValue());
+        }
+        return topPlaylists;
     }
 
     @Override

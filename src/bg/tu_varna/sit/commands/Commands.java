@@ -42,6 +42,8 @@ public class Commands {
         commands.put(CommandsIndex.REMOVE_ARTIST, new RemoveArtistCommand(musicPlaylists));
         commands.put(CommandsIndex.TOP_ARTISTS, new TopArtistsCommand(musicPlaylists.getPlayHistoryActions()));
         commands.put(CommandsIndex.TOP_TRACKS, new TopTracksCommand(musicPlaylists.getPlayHistoryActions()));
+        commands.put(CommandsIndex.TOP_PLAYLISTS, new TopPlaylistsCommand(musicPlaylists.getPlayHistoryActions()));
+
     }
 
     public String exec(String cmdName, List<String> args) {

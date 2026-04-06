@@ -3,7 +3,7 @@ package bg.tu_varna.sit.commands.playHistoryCommands;
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.PlayHistoryActions;
 import bg.tu_varna.sit.exceptions.CommandException;
-import bg.tu_varna.sit.models.Song;
+import bg.tu_varna.sit.models.Playlist;
 import bg.tu_varna.sit.util.ArgumentParser;
 import bg.tu_varna.sit.util.DateTimeParser;
 
@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TopTracksCommand implements Command {
+public class TopPlaylistsCommand implements Command {
     private PlayHistoryActions playHistoryActions;
-    public TopTracksCommand(PlayHistoryActions playHistoryActions) {
+    public TopPlaylistsCommand(PlayHistoryActions playHistoryActions) {
         this.playHistoryActions = playHistoryActions;
     }
     @Override
@@ -28,14 +28,14 @@ public class TopTracksCommand implements Command {
             newArgs.add(args.get(i));
         }
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(newArgs);
-        Map<Song, Integer> topTracks;
+        Map<Playlist, Integer> topPlaylists;
         StringBuilder sb = new StringBuilder();
-        sb.append("Top Tracks");
+        sb.append("Top Playlists");
         try {
             int n = Integer.parseInt(args.getFirst());
             LocalDateTime fromFilter = parsedArgs.get("from") != null ? DateTimeParser.parse(parsedArgs.get("from")) : null;
             LocalDateTime toFilter = parsedArgs.get("to") != null ? DateTimeParser.parse(parsedArgs.get("to")) : null;
-            topTracks = playHistoryActions.topTracks(n, fromFilter, toFilter);
+            topPlaylists = playHistoryActions.topPlaylists(n, fromFilter, toFilter);
 
             if (fromFilter != null) {
                 sb.append(" From: ").append(DateTimeParser.format(fromFilter));
@@ -48,7 +48,7 @@ public class TopTracksCommand implements Command {
         } catch (NumberFormatException e) {
             throw new CommandException("N must be a number");
         }
-        topTracks.forEach((artist, count) -> {
+        topPlaylists.forEach((artist, count) -> {
             sb.append(artist).append(" - Number of plays: ").append(count).append("\n");
         });
         return sb.toString();
@@ -56,7 +56,7 @@ public class TopTracksCommand implements Command {
 
     @Override
     public String cmdHelpMessage() {
-        return "Извежда топ n най-слушани песни за даден период.\n" +
-                "   Usage: toptracks <n> [from=<date>] [to=<date>]";
+        return "Извежда топ n най-активни плейлисти.\n" +
+                "   Usage: topplaylists <n> [from=<date>] [to=<date>]";
     }
 }

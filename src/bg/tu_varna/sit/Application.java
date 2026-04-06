@@ -32,7 +32,8 @@ public class Application {
 
             try {
                 System.out.println(commands.exec(command, tokens));
-            } catch (CommandException | SongException | ArtistException | PlaylistException | FileException e){
+            } catch (TimeFormatException | CommandException | SongException |
+                     ArtistException | PlaylistException | FileException e) {
                 System.out.println(e.getMessage());
             }
         } while (true);

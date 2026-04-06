@@ -6,6 +6,5 @@
 - LocalDateTime Format instead of StringBuilder
 
 ## Play History stuff:
-- topTracks
-- topArtists
+- condense top artists, tracks, playlists into a single method
 - lowActivity
