@@ -96,7 +96,7 @@ public class MusicData implements MusicPlaylists, Serializable {
     }
 
     @Override
-    public void removeArtistByUsername(String username) {
+    public void removeArtistByUsername(String username) { //todo: use object
         Artist artist = getArtistActions().getArtistByUsername(username);
         getSongActions().getSongs().removeAll(getSongActions().filterSongs(artist, null, null));
         artistManager.removeArtist(artist);

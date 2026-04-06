@@ -1,14 +1,14 @@
 package bg.tu_varna.sit.data;
 
 import bg.tu_varna.sit.data.interfaces.PlayHistoryActions;
+import bg.tu_varna.sit.models.Artist;
 import bg.tu_varna.sit.models.PlayHistoryEntry;
 import bg.tu_varna.sit.models.Playlist;
 import bg.tu_varna.sit.models.Song;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     private List<PlayHistoryEntry> entries;
@@ -61,8 +61,34 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     }
 
     @Override
-    public String topArtists(int n, LocalDateTime from, LocalDateTime to) {
-        return "";
+    public Map<Artist, Integer> topArtists(int n, LocalDateTime from, LocalDateTime to) {
+        List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
+        if (from != null) {
+            filteredList.removeIf(e -> e.getTimestamp().isBefore(from));
+        }
+
+        if (to != null) {
+            filteredList.removeIf(e -> e.getTimestamp().isAfter(to));
+        }
+
+        Map<Artist, Integer> counts = new HashMap<>();
+        for (PlayHistoryEntry e : filteredList) {
+            Artist curr = e.getSong().getArtist();
+            if (counts.get(curr) == null) {
+                counts.put(curr, 1);
+            } else {
+                counts.replace(curr, counts.get(curr)+1);
+            }
+        }
+
+        List<Map.Entry<Artist, Integer>> entryList = new ArrayList<>(counts.entrySet());
+        // compare and sort in descending order
+        entryList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
+        Map<Artist, Integer> topArtists = new HashMap<>();
+        for (int i = 0; i < Math.min(n, entryList.size()); i++) {
+            topArtists.put(entryList.get(i).getKey(), entryList.get(i).getValue());
+        }
+        return topArtists;
     }
 
     @Override

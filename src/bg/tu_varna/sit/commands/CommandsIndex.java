@@ -25,6 +25,7 @@ public enum CommandsIndex {
     ADD_ARTIST("addartist"),
     LIST_ARTISTS("listartists"),
     REMOVE_ARTIST("removeartist"),
+    TOP_ARTISTS("topartists"),
     UNKNOWN_COMMAND(null);
 
     private final String name;
@@ -61,6 +62,7 @@ public enum CommandsIndex {
             case "addartist" -> ADD_ARTIST;
             case "listartists" -> LIST_ARTISTS;
             case "removeartist" -> REMOVE_ARTIST;
+            case "topartists" -> TOP_ARTISTS;
             default -> UNKNOWN_COMMAND;
         };
     }

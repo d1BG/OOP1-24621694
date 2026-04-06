@@ -22,6 +22,13 @@ public class DateTimeParser {
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException | NullPointerException e) {
             throw new TimeFormatException("Format must be: dd.MM.yyyy-hh:mm");
         }
+    }
 
+    public static String format(LocalDateTime date) {
+        return date.getDayOfMonth() + "." +
+                date.getMonth().getValue() + "." +
+                date.getYear() + "-" +
+                date.getHour() + ":" +
+                date.getMinute();
     }
 }
