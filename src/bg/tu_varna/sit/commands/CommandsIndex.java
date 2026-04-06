@@ -1,7 +1,5 @@
 package bg.tu_varna.sit.commands;
 
-import bg.tu_varna.sit.commands.genericCommands.ExitCommand;
-
 public enum CommandsIndex {
     EXIT("exit"),
     HELP("help"),

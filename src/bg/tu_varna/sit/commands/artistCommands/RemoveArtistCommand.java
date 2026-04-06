@@ -3,6 +3,7 @@ package bg.tu_varna.sit.commands.artistCommands;
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.CommandException;
+import bg.tu_varna.sit.models.Artist;
 
 import java.util.List;
 
@@ -16,7 +17,8 @@ public class RemoveArtistCommand implements Command {
         if (args.size() > 1) {
             throw new CommandException("Invalid Arguments");
         }
-        musicPlaylists.removeArtistByUsername(args.getFirst());
+        Artist artist = musicPlaylists.getArtistActions().getArtistByUsername(args.getFirst());
+        musicPlaylists.removeArtistByUsername(artist);
         return "Successfully removed artist: " + args.getFirst();
     }
 

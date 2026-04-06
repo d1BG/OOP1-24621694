@@ -1,14 +1,9 @@
 package bg.tu_varna.sit.data;
 
 import bg.tu_varna.sit.data.interfaces.*;
-import bg.tu_varna.sit.exceptions.PlaylistException;
-import bg.tu_varna.sit.models.Artist;
-import bg.tu_varna.sit.models.PlayHistoryEntry;
-import bg.tu_varna.sit.models.Playlist;
-import bg.tu_varna.sit.models.Song;
+import bg.tu_varna.sit.models.*;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MusicData implements MusicPlaylists, Serializable {
@@ -44,48 +39,31 @@ public class MusicData implements MusicPlaylists, Serializable {
         return playHistoryManager;
     }
 
-    // TODO: use getPlaylistByName and getSongById
     @Override
-    public void addSongToPlaylist(String playlistName, int songId, Integer position) {
-        for (Playlist pl : getPlaylistActions().getPlaylists()) {
-            if (pl.getName().equals(playlistName)) {
-                for (Song song : getSongActions().getSongs()) {
-                    if (song.getID() == songId) {
-                        if (position == null || position >= pl.getSongs().size() || position < 0) {
-                            pl.getSongs().add(song);
-                        } else {
-                            pl.getSongs().add(position, song);
-                        }
-                        return;
-                    }
-                }
-                throw new PlaylistException("Song with id " + songId + " not found");
-            }
+    public void addSongToPlaylist(String playlistName, int songId, Integer position) { // TODO: pass playlist and song object - fetch them in command
+        Playlist pl = getPlaylistActions().getPlaylistByName(playlistName);
+        Song song = getSongActions().getSong(songId);
+
+        if (position == null || position >= pl.getSongs().size() || position < 0) {
+            pl.getSongs().add(song);
+        } else {
+            pl.getSongs().add(position, song);
         }
-        throw new PlaylistException("Playlist " + playlistName + " not found");
     }
 
-    // TODO: use getPlaylistByName and getSongById
     @Override
-    public void removeSongFromPlaylist(String playlistName, int songId) {
-        for (Playlist pl : getPlaylistActions().getPlaylists()) {
-            if (pl.getName().equals(playlistName)) {
-                for (Song song : getSongActions().getSongs()) {
-                    if (song.getID() == songId) {
-                        pl.getSongs().remove(song);
-                        return;
-                    }
-                }
-                throw new PlaylistException("Song with id " + songId + " not found");
-            }
-        }
-        throw new PlaylistException("Playlist " + playlistName + " not found");
+    public void removeSongFromPlaylist(String playlistName, int songId) { // TODO: pass playlist and song object - fetch them in command
+        Playlist pl = getPlaylistActions().getPlaylistByName(playlistName);
+        Song song = getSongActions().getSong(songId);
+        pl.getSongs().remove(song);
     }
 
     @Override
     public void setMusicPlaylists(MusicPlaylists musicPlaylists) {
         this.playlistManager = musicPlaylists.getPlaylistActions();
         this.songManager = musicPlaylists.getSongActions();
+        this.playHistoryManager = musicPlaylists.getPlayHistoryActions();
+        this.artistManager = musicPlaylists.getArtistActions();
     }
 
     @Override
@@ -96,8 +74,7 @@ public class MusicData implements MusicPlaylists, Serializable {
     }
 
     @Override
-    public void removeArtistByUsername(String username) { //todo: use object
-        Artist artist = getArtistActions().getArtistByUsername(username);
+    public void removeArtistByUsername(Artist artist) {
         getSongActions().getSongs().removeAll(getSongActions().filterSongs(artist, null, null));
         artistManager.removeArtist(artist);
     }
