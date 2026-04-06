@@ -3,7 +3,7 @@ package bg.tu_varna.sit.util;
 import bg.tu_varna.sit.exceptions.TimeFormatException;
 
 import java.time.LocalDateTime;
-
+// TODO: nuke this, use LocalDateTime.format()
 public class DateTimeParser {
     // parses dd.MM.yyyy-hh:mm to ISO-8601
 
