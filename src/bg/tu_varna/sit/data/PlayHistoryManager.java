@@ -56,8 +56,34 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     }
 
     @Override
-    public String topTracks(int n, LocalDateTime from, LocalDateTime to) {
-        return "";
+    public Map<Song, Integer> topTracks(int n, LocalDateTime from, LocalDateTime to) {
+        List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
+        if (from != null) {
+            filteredList.removeIf(e -> e.getTimestamp().isBefore(from));
+        }
+
+        if (to != null) {
+            filteredList.removeIf(e -> e.getTimestamp().isAfter(to));
+        }
+
+        Map<Song, Integer> counts = new HashMap<>();
+        for (PlayHistoryEntry e : filteredList) {
+            Song curr = e.getSong();
+            if (counts.get(curr) == null) {
+                counts.put(curr, 1);
+            } else {
+                counts.replace(curr, counts.get(curr)+1);
+            }
+        }
+
+        List<Map.Entry<Song, Integer>> entryList = new ArrayList<>(counts.entrySet());
+        // compare and sort in descending order
+        entryList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
+        Map<Song, Integer> topTracks = new HashMap<>();
+        for (int i = 0; i < Math.min(n, entryList.size()); i++) {
+            topTracks.put(entryList.get(i).getKey(), entryList.get(i).getValue());
+        }
+        return topTracks;
     }
 
     @Override
