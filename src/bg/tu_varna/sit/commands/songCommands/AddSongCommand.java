@@ -44,24 +44,24 @@ public class AddSongCommand implements Command {
 
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(newArgs);
 
+        Artist artist = artistActions.getArtistByUsername(args.get(1));
 
+        Genre genre = parsedArgs.get("genre") != null ? Genre.fromName(parsedArgs.get("genre")) : Genre.NA;
+
+        String year;
         try {
-            Artist artist = artistActions.getArtistByUsername(args.get(1));
-
-            Genre genre = parsedArgs.get("genre") != null ? Genre.fromName(parsedArgs.get("genre")) : Genre.NA;
-
             // if the passed as arg year != null and is a number <= current year
-            String year =
-                    parsedArgs.get("year") != null &&
-                            Integer.parseInt(parsedArgs.get("year")) <= Year.now().getValue()
-                            ? parsedArgs.get("year") : null;
-
-            String album = parsedArgs.get("album") != null ? parsedArgs.get("album") : null;
-
-            songActions.addSong(new Song(songID, args.get(0), artist , args.get(2), album, year, genre));
+            year = parsedArgs.get("year") != null &&
+                    Integer.parseInt(parsedArgs.get("year")) <= Year.now().getValue()
+                    ? parsedArgs.get("year") : null;
         } catch (NumberFormatException e) {
             throw new CommandException("Year must be a number");
         }
+
+        String album = parsedArgs.get("album") != null ? parsedArgs.get("album") : null;
+
+        songActions.addSong(new Song(songID, args.get(0), artist , args.get(2), album, year, genre));
+
         return "Added new song with ID:" + songID;
     }
 

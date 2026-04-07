@@ -17,7 +17,7 @@ public class CloseCommand implements Command {
     @Override
     public String execute(List<String> args) {
         fileActions.close(musicPlaylists);
-        return "";
+        return "Successfully closed file";
     }
 
     @Override
