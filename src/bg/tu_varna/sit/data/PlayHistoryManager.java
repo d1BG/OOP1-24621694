@@ -30,7 +30,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     public List<PlayHistoryEntry> filterEntries(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song) {
         List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
         if (song != null) {
-            filteredList.removeIf(e -> !e.getSong() .equals(song));
+            filteredList.removeIf(e -> !e.getSong().equals(song));
         }
 
         // extra check here bcuz Playlists can be null
@@ -49,19 +49,10 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         return filteredList;
     }
 
-    // TODO: DUPLICATE CODE - condense into a single method
     @Override
     public Map<Playlist, Integer> topPlaylists(int n, LocalDateTime from, LocalDateTime to) {
-        List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
+        List<PlayHistoryEntry> filteredList = filterEntries(from, to, null, null);
         filteredList.removeIf(e-> e.getPlaylist() == null);
-
-        if (from != null) {
-            filteredList.removeIf(e -> e.getTimestamp().isBefore(from));
-        }
-
-        if (to != null) {
-            filteredList.removeIf(e -> e.getTimestamp().isAfter(to));
-        }
 
         Map<Playlist, Integer> counts = new HashMap<>();
         for (PlayHistoryEntry e : filteredList) {
@@ -85,14 +76,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
 
     @Override
     public Map<Song, Integer> topTracks(int n, LocalDateTime from, LocalDateTime to) {
-        List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
-        if (from != null) {
-            filteredList.removeIf(e -> e.getTimestamp().isBefore(from));
-        }
-
-        if (to != null) {
-            filteredList.removeIf(e -> e.getTimestamp().isAfter(to));
-        }
+        List<PlayHistoryEntry> filteredList = filterEntries(from, to, null, null);
 
         Map<Song, Integer> counts = new HashMap<>();
         for (PlayHistoryEntry e : filteredList) {
@@ -116,14 +100,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
 
     @Override
     public Map<Artist, Integer> topArtists(int n, LocalDateTime from, LocalDateTime to) {
-        List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
-        if (from != null) {
-            filteredList.removeIf(e -> e.getTimestamp().isBefore(from));
-        }
-
-        if (to != null) {
-            filteredList.removeIf(e -> e.getTimestamp().isAfter(to));
-        }
+        List<PlayHistoryEntry> filteredList = filterEntries(from, to, null, null);
 
         Map<Artist, Integer> counts = new HashMap<>();
         for (PlayHistoryEntry e : filteredList) {
