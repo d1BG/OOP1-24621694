@@ -22,22 +22,11 @@ public class PlaylistManager implements PlaylistActions, Serializable {
     @Override
     public void createPlaylist(Playlist newPlaylist) {
         for (Playlist playlist : playlists) {
-            if (playlist.getName().equals(newPlaylist.getName())) {
+            if (playlist.equals(newPlaylist)) {
                 throw new PlaylistException("Playlist already exists");
             }
         }
         playlists.add(newPlaylist);
-    }
-
-    @Override
-    public void deletePlaylist(String name) {
-        for (Playlist playlist : playlists) {
-            if (playlist.getName().equals(name)) {
-                playlists.remove(playlist);
-                return;
-            }
-        }
-        throw new PlaylistException("Playlist does not exist");
     }
 
     @Override

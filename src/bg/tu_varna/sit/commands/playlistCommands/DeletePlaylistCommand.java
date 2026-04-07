@@ -17,7 +17,7 @@ public class DeletePlaylistCommand implements Command {
         if (args.size() != 1) {
             throw new PlaylistException("Invalid arguments");
         }
-        playlistActions.deletePlaylist(args.getFirst());
+        playlistActions.deletePlaylist(playlistActions.getPlaylistByName(args.getFirst()));
         return "Successfully deleted playlist " + args.getFirst();
     }
 
