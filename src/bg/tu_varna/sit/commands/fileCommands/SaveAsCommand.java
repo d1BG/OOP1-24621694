@@ -24,12 +24,7 @@ public class SaveAsCommand implements Command {
 
         File file = new File(args.getFirst());
 
-        try {
-            fileActions.write(musicPlaylists, file);
-        } catch(FileException e) {
-            throw new FileException("Could not save file");
-        }
-
+        fileActions.write(musicPlaylists, file);
         return "Saved to file: " + file.getAbsolutePath();
     }
 
