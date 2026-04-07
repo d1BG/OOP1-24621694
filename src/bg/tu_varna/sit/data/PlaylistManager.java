@@ -42,11 +42,8 @@ public class PlaylistManager implements PlaylistActions, Serializable {
 
     @Override
     public void deletePlaylist(Playlist p) {
-        for (Playlist playlist : playlists) {
-            if (playlist.equals(p)) {
-                playlists.remove(playlist);
-                return;
-            }
+        if (playlists.remove(p)) {
+            return;
         }
         throw new PlaylistException("Playlist does not exist");
     }
