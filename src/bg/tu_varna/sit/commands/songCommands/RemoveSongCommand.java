@@ -19,10 +19,10 @@ public class RemoveSongCommand implements Command {
         }
         try{
             songActions.removeSong(songActions.getSongById(Integer.parseInt(args.getFirst())));
-            return "Successfully removed song with id " + args.getFirst();
         } catch (NumberFormatException e) {
             throw new SongException("ID must be a number");
         }
+        return "Successfully removed song with id " + args.getFirst();
     }
 
     @Override

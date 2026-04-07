@@ -31,27 +31,26 @@ public class ListSongsCommand implements Command {
 
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(args);
 
+        Genre genre = parsedArgs.get("genre") != null ? Genre.fromName(parsedArgs.get("genre")) : null;
+
+        String year;
         try {
-            Genre genre = parsedArgs.get("genre") != null ? Genre.fromName(parsedArgs.get("genre")) : null;
-
             // if the passed as arg year != null and is a number <= current year
-            String year =
-                    parsedArgs.get("year") != null &&
-                            Integer.parseInt(parsedArgs.get("year")) <= Year.now().getValue()
-                            ? parsedArgs.get("year") : null;
-
-            Artist artist = parsedArgs.get("artist") != null ? artistActions.getArtistByUsername(parsedArgs.get("artist")) : null;
-
-            List<Song> filteredSongs = songActions.filterSongs(artist, genre, year);
-
-            for (Song song : filteredSongs) {
-                songList.append(song.toString()).append("\n");
-            }
-
-            return songList.toString();
+            year = parsedArgs.get("year") != null &&
+                    Integer.parseInt(parsedArgs.get("year")) <= Year.now().getValue()
+                    ? parsedArgs.get("year") : null;
         } catch (NumberFormatException e) {
-            throw new CommandException("An error occurred while filtering");
+            throw new CommandException("Year must be a number");
         }
+        Artist artist = parsedArgs.get("artist") != null ? artistActions.getArtistByUsername(parsedArgs.get("artist")) : null;
+
+        List<Song> filteredSongs = songActions.filterSongs(artist, genre, year);
+
+        for (Song song : filteredSongs) {
+            songList.append(song.toString()).append("\n");
+        }
+
+        return songList.toString();
     }
 
     @Override
