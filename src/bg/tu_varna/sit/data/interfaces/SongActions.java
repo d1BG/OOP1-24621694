@@ -11,5 +11,5 @@ public interface SongActions {
     List<Song> filterSongs(Artist artist, Genre genre, String year);
     void addSong(Song song);
     void removeSong(Song song);
-    Song getSong(int id);
+    Song getSongById(int id);
 }

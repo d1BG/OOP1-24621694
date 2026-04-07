@@ -21,7 +21,7 @@ public class SongInfoCommand implements Command {
 
         try{
             int id = Integer.parseInt(args.getFirst());
-            Song song = songActions.getSong(id);
+            Song song = songActions.getSongById(id);
             return song.songInfo();
         } catch (NumberFormatException e) {
             throw new SongException("ID must be a number");

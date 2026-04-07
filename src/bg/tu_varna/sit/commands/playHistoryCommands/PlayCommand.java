@@ -24,7 +24,7 @@ public class PlayCommand implements Command {
         }
 
         try {
-            Song song = musicPlaylists.getSongActions().getSong(Integer.parseInt(args.getFirst()));
+            Song song = musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.getFirst()));
 
             if (args.size() == 2) {
                 Map<String, String> optPlaylist = ArgumentParser.KeyValueParser(args.get(1));

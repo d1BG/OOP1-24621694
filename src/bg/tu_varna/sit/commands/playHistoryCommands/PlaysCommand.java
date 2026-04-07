@@ -34,7 +34,7 @@ public class PlaysCommand implements Command {
 
             LocalDateTime fromFilter = parsedArgs.get("from") != null ? DateTimeParser.parse(parsedArgs.get("from")) : null;
             LocalDateTime toFilter = parsedArgs.get("to") != null ? DateTimeParser.parse(parsedArgs.get("to")) : null;
-            Song songFilter = parsedArgs.get("song") != null ? musicPlaylists.getSongActions().getSong(Integer.parseInt(parsedArgs.get("song"))) : null;
+            Song songFilter = parsedArgs.get("song") != null ? musicPlaylists.getSongActions().getSongById(Integer.parseInt(parsedArgs.get("song"))) : null;
             Playlist playlistFilter = parsedArgs.get("playlist") !=null ? musicPlaylists.getPlaylistActions().getPlaylistByName(parsedArgs.get("playlist")) : null;
             filteredList = musicPlaylists.getPlayHistoryActions().filterEntries(fromFilter, toFilter, playlistFilter, songFilter);
         } catch (NumberFormatException e) {
