@@ -43,7 +43,7 @@ public class SongManager implements SongActions, Serializable {
     @Override
     public void addSong(Song song) {
         for (Song s : songs) {
-            if (s.getTitle().equals(song.getTitle()) &&  s.getArtist().equals(song.getArtist()) ) {
+            if (s.equals(song)) {
                 throw new SongException("Song already exists");
             }
         }
