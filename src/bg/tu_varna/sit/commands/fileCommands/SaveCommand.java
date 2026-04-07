@@ -21,11 +21,7 @@ public class SaveCommand implements Command {
             throw new FileException("Invalid Arguments");
         }
 
-        try {
-            fileActions.write(musicPlaylists,null);
-        } catch(FileException e) {
-            throw new FileException(e.getMessage());
-        }
+        fileActions.write(musicPlaylists,null);
 
         return "Saved to file: " + fileActions.getFile().getAbsolutePath();
     }
