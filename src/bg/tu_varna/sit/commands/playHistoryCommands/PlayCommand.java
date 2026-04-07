@@ -23,25 +23,30 @@ public class PlayCommand implements Command {
             throw new CommandException("Invalid Arguments");
         }
 
+        Song song;
         try {
-            Song song = musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.getFirst()));
-
-            if (args.size() == 2) {
-                Map<String, String> optPlaylist = ArgumentParser.KeyValueParser(args.get(1));
-                Playlist playlist = musicPlaylists.getPlaylistActions().getPlaylistByName(optPlaylist.get("playlist"));
-
-                if (!playlist.contains(song)) {
-                    throw new PlaylistException("Song is not in the provided playlist");
-                }
-
-                musicPlaylists.getPlayHistoryActions().play(song, playlist);
-                return "Played: " + song.toString() + " from playlist " + playlist.getName();
-            }
-            musicPlaylists.getPlayHistoryActions().play(song, null);
-            return "Played: " + song.toString();
+            song = musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.getFirst()));
         } catch (NumberFormatException e) {
             throw new CommandException("Song ID must be a number");
         }
+
+        Playlist playlist = null;
+        if (args.size() == 2) {
+            Map<String, String> optPlaylist = ArgumentParser.KeyValueParser(args.get(1));
+            playlist = musicPlaylists.getPlaylistActions().getPlaylistByName(optPlaylist.get("playlist"));
+
+            if (!playlist.contains(song)) {
+                throw new PlaylistException("Song is not in the provided playlist");
+            }
+        }
+
+        musicPlaylists.getPlayHistoryActions().play(song, playlist);
+        StringBuilder sb = new StringBuilder("Played: ").append(song.toString());
+        if (playlist != null) {
+            sb.append(" from playlist").append(playlist.getName());
+        }
+
+        return sb.toString();
     }
 
     @Override
