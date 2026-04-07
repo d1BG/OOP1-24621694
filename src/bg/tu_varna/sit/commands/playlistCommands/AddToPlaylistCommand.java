@@ -18,23 +18,22 @@ public class AddToPlaylistCommand implements Command {
             throw new CommandException("Invalid arguments");
         }
 
+        Integer pos = null;
+
         try {
             if (args.size() == 3) {
-                musicPlaylists.addSongToPlaylist(
-                        musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
-                        musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.get(1))),
-                        Integer.parseInt(args.get(2)) - 1
-                );
-            } else {
-                musicPlaylists.addSongToPlaylist(
-                        musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
-                        musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.get(1))),
-                        null
-                );
+                pos = Integer.parseInt(args.get(2)) - 1;
             }
         } catch (NumberFormatException e) {
-            throw new CommandException("Invalid arguments");
+            throw new CommandException("Position must be a number");
         }
+
+        musicPlaylists.addSongToPlaylist(
+                musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
+                musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.get(1))),
+                pos
+        );
+
 
         return "Successfully added song to playlist";
     }
