@@ -40,22 +40,17 @@ public class MusicData implements MusicPlaylists, Serializable {
     }
 
     @Override
-    public void addSongToPlaylist(String playlistName, int songId, Integer position) { // TODO: pass playlist and song object - fetch them in command
-        Playlist pl = getPlaylistActions().getPlaylistByName(playlistName);
-        Song song = getSongActions().getSongById(songId);
-
-        if (position == null || position >= pl.getSongs().size() || position < 0) {
-            pl.getSongs().add(song);
+    public void addSongToPlaylist(Playlist playlist, Song song, Integer position) {
+        if (position == null || position >= playlist.getSongs().size() || position < 0) {
+            playlist.getSongs().add(song);
         } else {
-            pl.getSongs().add(position, song);
+            playlist.getSongs().add(position, song);
         }
     }
 
     @Override
-    public void removeSongFromPlaylist(String playlistName, int songId) { // TODO: pass playlist and song object - fetch them in command
-        Playlist pl = getPlaylistActions().getPlaylistByName(playlistName);
-        Song song = getSongActions().getSongById(songId);
-        pl.getSongs().remove(song);
+    public void removeSongFromPlaylist(Playlist playlist, Song song) {
+        playlist.getSongs().remove(song);
     }
 
     @Override

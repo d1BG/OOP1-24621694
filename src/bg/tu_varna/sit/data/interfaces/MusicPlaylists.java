@@ -2,6 +2,7 @@ package bg.tu_varna.sit.data.interfaces;
 
 import bg.tu_varna.sit.models.Artist;
 import bg.tu_varna.sit.models.Playlist;
+import bg.tu_varna.sit.models.Song;
 
 public interface MusicPlaylists {
     SongActions getSongActions();
@@ -9,8 +10,8 @@ public interface MusicPlaylists {
     PlaylistActions getPlaylistActions();
     PlayHistoryActions getPlayHistoryActions();
 
-    void addSongToPlaylist(String playlistName, int songId, Integer position);
-    void removeSongFromPlaylist(String playlistName, int songId);
+    void addSongToPlaylist(Playlist playlist, Song song, Integer position);
+    void removeSongFromPlaylist(Playlist playlist, Song song);
     void dropPlaylist(Playlist p);
     void removeArtistByUsername(Artist artist);
 

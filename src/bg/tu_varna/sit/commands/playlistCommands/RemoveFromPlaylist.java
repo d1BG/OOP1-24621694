@@ -19,7 +19,10 @@ public class RemoveFromPlaylist implements Command {
         }
 
         try {
-            musicPlaylists.removeSongFromPlaylist(args.get(0), Integer.parseInt(args.get(1)));
+            musicPlaylists.removeSongFromPlaylist(
+                    musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
+                    musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.get(1)))
+            );
         } catch (NumberFormatException e) {
             throw new CommandException("Invalid arguments");
         }

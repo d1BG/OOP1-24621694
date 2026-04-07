@@ -20,9 +20,17 @@ public class AddToPlaylistCommand implements Command {
 
         try {
             if (args.size() == 3) {
-                musicPlaylists.addSongToPlaylist(args.get(0), Integer.parseInt(args.get(1)), Integer.parseInt(args.get(2)) - 1);
+                musicPlaylists.addSongToPlaylist(
+                        musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
+                        musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.get(1))),
+                        Integer.parseInt(args.get(2)) - 1
+                );
             } else {
-                musicPlaylists.addSongToPlaylist(args.get(0), Integer.parseInt(args.get(1)), null);
+                musicPlaylists.addSongToPlaylist(
+                        musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
+                        musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.get(1))),
+                        null
+                );
             }
         } catch (NumberFormatException e) {
             throw new CommandException("Invalid arguments");
