@@ -18,9 +18,8 @@ public class RemoveSongCommand implements Command {
             throw new SongException("Invalid arguments");
         }
         try{
-            int id = Integer.parseInt(args.getFirst());
-            songActions.removeSong(id);
-            return "Successfully removed song with id " + id;
+            songActions.removeSong(songActions.getSong(Integer.parseInt(args.getFirst())));
+            return "Successfully removed song with id " + args.getFirst();
         } catch (NumberFormatException e) {
             throw new SongException("ID must be a number");
         }

@@ -10,6 +10,6 @@ public interface SongActions {
     List<Song> getSongs();
     List<Song> filterSongs(Artist artist, Genre genre, String year);
     void addSong(Song song);
-    void removeSong(int id);
+    void removeSong(Song song);
     Song getSong(int id);
 }

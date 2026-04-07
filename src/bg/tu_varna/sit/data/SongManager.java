@@ -51,17 +51,8 @@ public class SongManager implements SongActions, Serializable {
     }
 
     @Override
-    public void removeSong(int id) { // TODO: pass song as object, find song with getSong
-        for (Song song : songs) {
-            try {
-                if (song.getID() == id) {
-                    songs.remove(song);
-                    return;
-                }
-            } catch (NumberFormatException e) {
-                throw new SongException("Please input a number");
-            }
-        }
+    public void removeSong(Song song) {
+        songs.remove(song);
     }
 
     @Override
