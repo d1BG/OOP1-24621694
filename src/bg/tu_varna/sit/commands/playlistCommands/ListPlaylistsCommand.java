@@ -3,6 +3,7 @@ package bg.tu_varna.sit.commands.playlistCommands;
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.PlaylistActions;
 import bg.tu_varna.sit.models.Song;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class ListPlaylistsCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
+        ArgumentParser.argSizeChecker(args);
+
         StringBuilder listOfPlaylists = new StringBuilder();
         playlistActions.getPlaylists().forEach(playlist -> {
             listOfPlaylists.append(playlist.getName()).append("\t");

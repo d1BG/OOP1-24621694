@@ -22,9 +22,8 @@ public class PlaysCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.size() > 4) {
-            throw new CommandException("Invalid arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 0, 4);
+
 
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(args);
         List<PlayHistoryEntry> filteredList = new ArrayList<>();

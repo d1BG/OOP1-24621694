@@ -3,7 +3,7 @@ package bg.tu_varna.sit.commands.fileCommands;
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.fileServices.FileActions;
 import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
-import bg.tu_varna.sit.exceptions.FileException;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
@@ -17,9 +17,8 @@ public class SaveCommand implements Command {
     }
     @Override
     public String execute(List<String> args) {
-        if (!args.isEmpty()) {
-            throw new FileException("Invalid Arguments");
-        }
+        ArgumentParser.argSizeChecker(args);
+
 
         fileActions.write(musicPlaylists,null);
 

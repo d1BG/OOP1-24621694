@@ -2,7 +2,7 @@ package bg.tu_varna.sit.commands.playlistCommands;
 
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.PlaylistActions;
-import bg.tu_varna.sit.exceptions.PlaylistException;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
@@ -14,9 +14,8 @@ public class DeletePlaylistCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.size() != 1) {
-            throw new PlaylistException("Invalid arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 1);
+
         playlistActions.deletePlaylist(playlistActions.getPlaylistByName(args.getFirst()));
         return "Successfully deleted playlist " + args.getFirst();
     }

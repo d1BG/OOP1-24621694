@@ -2,8 +2,8 @@ package bg.tu_varna.sit.commands.artistCommands;
 
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.ArtistActions;
-import bg.tu_varna.sit.exceptions.CommandException;
 import bg.tu_varna.sit.models.Artist;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
@@ -15,9 +15,8 @@ public class ListArtistsCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (!args.isEmpty()) {
-            throw new CommandException("Invalid Arguments");
-        }
+        ArgumentParser.argSizeChecker(args);
+
         StringBuilder sb = new StringBuilder();
         for (Artist a : artistActions.getArtists()) {
             sb.append(a).append("\n");

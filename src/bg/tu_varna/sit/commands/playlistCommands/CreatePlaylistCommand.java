@@ -2,8 +2,8 @@ package bg.tu_varna.sit.commands.playlistCommands;
 
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.PlaylistActions;
-import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
@@ -15,9 +15,8 @@ public class CreatePlaylistCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.isEmpty() || args.size() > 2) {
-            throw new PlaylistException("Invalid arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 1, 2);
+
         Playlist playlist = new Playlist(args.get(0));
 
         if (args.size() == 2) {

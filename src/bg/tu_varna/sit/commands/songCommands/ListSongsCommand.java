@@ -23,9 +23,8 @@ public class ListSongsCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.size() > 3) {
-            throw new CommandException("Invalid Arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 0, 3);
+
 
         StringBuilder songList = new StringBuilder();
 

@@ -19,9 +19,8 @@ public class PlayCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.isEmpty() || args.size() > 2) {
-            throw new CommandException("Invalid Arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 1, 2);
+
 
         Song song;
         try {

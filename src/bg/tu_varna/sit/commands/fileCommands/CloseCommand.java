@@ -3,6 +3,7 @@ package bg.tu_varna.sit.commands.fileCommands;
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.fileServices.FileActions;
 import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public class CloseCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
+        ArgumentParser.argSizeChecker(args);
+
         fileActions.close(musicPlaylists);
         return "Successfully closed file";
     }

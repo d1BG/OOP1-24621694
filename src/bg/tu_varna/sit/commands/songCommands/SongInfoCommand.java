@@ -4,6 +4,7 @@ import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.SongActions;
 import bg.tu_varna.sit.exceptions.SongException;
 import bg.tu_varna.sit.models.Song;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
@@ -15,9 +16,7 @@ public class SongInfoCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.size() != 1) {
-            throw new SongException("Invalid arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 1);
 
         int id;
         try{

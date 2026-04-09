@@ -3,8 +3,8 @@ package bg.tu_varna.sit.commands.fileCommands;
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.fileServices.FileActions;
 import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
-import bg.tu_varna.sit.exceptions.CommandException;
 import bg.tu_varna.sit.exceptions.FileException;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.io.File;
 import java.util.List;
@@ -19,9 +19,8 @@ public class OpenCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.size() != 1) {
-            throw new CommandException("Invalid Arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 1);
+
 
         File file = new File(args.getFirst());
         fileActions.open(musicPlaylists, file);

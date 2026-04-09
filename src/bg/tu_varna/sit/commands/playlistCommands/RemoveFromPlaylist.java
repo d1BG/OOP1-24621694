@@ -3,6 +3,7 @@ package bg.tu_varna.sit.commands.playlistCommands;
 import bg.tu_varna.sit.commands.Command;
 import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
 import bg.tu_varna.sit.exceptions.CommandException;
+import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
@@ -14,9 +15,8 @@ public class RemoveFromPlaylist implements Command {
 
     @Override
     public String execute(List<String> args) {
-        if (args.size() != 2) {
-            throw new CommandException("Invalid arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 2);
+
 
         try {
             musicPlaylists.removeSongFromPlaylist(

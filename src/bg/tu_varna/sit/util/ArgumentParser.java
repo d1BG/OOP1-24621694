@@ -27,4 +27,30 @@ public class ArgumentParser {
         }
         return parsedKeyValue;
     }
+
+    // Checker for argument size
+        // with min and max
+    public static void argSizeChecker(List<String> args, int min, int max) {
+        if (args.size() < min || args.size() > max) {
+            throw new CommandException("Invalid Arguments: provided " + args.size() +
+                    ", command asks for " + min + " minimum and " + max + " maximum."
+            );
+        }
+    }
+        // with a hard-set limit
+    public static void argSizeChecker(List<String> args, int eq) {
+        if (args.size() != eq) {
+            throw new CommandException(
+                    "Invalid Arguments: provided " + args.size() + ", needed " + eq
+            );
+        }
+    }
+        // check for no args
+    public static void argSizeChecker(List<String> args) {
+        if (!args.isEmpty()) {
+            throw new CommandException(
+                    "Invalid Arguments: Command doesnt take any arguments"
+            );
+        }
+    }
 }

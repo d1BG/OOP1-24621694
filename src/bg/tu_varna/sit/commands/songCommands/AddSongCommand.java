@@ -25,10 +25,9 @@ public class AddSongCommand implements Command {
 
     @Override
     public String execute(List<String> args) {
+        ArgumentParser.argSizeChecker(args, 3, 6);
+
         List<Song> songs = songActions.getSongs();
-        if (args.size() < 3 || args.size() > 6) {
-            throw new CommandException("Invalid arguments");
-        }
 
         List<String> newArgs = new ArrayList<>();
         for (int i = 3; i < args.size(); i++){

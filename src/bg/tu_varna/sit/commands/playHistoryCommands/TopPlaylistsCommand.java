@@ -19,9 +19,7 @@ public class TopPlaylistsCommand implements Command {
     }
     @Override
     public String execute(List<String> args) {
-        if (args.isEmpty() || args.size() > 3) {
-            throw new CommandException("Invalid Arguments");
-        }
+        ArgumentParser.argSizeChecker(args, 1, 3);
 
         List<String> newArgs = new ArrayList<>();
         for (int i = 1; i < args.size(); i++){ // grab any arg after the first one
