@@ -19,13 +19,15 @@ public class SongInfoCommand implements Command {
             throw new SongException("Invalid arguments");
         }
 
+        int id;
         try{
-            int id = Integer.parseInt(args.getFirst());
-            Song song = songActions.getSongById(id);
-            return song.songInfo();
+            id = Integer.parseInt(args.getFirst());
         } catch (NumberFormatException e) {
             throw new SongException("ID must be a number");
         }
+
+        Song song = songActions.getSongById(id);
+        return song.songInfo();
     }
 
     @Override

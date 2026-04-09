@@ -29,25 +29,28 @@ public class TopPlaylistsCommand implements Command {
         }
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(newArgs);
         Map<Playlist, Integer> topPlaylists;
-        StringBuilder sb = new StringBuilder();
-        sb.append("Top Playlists");
+        StringBuilder sb = new StringBuilder("Top Playlists");
+
+        int n;
         try {
-            int n = Integer.parseInt(args.getFirst());
-            LocalDateTime fromFilter = parsedArgs.get("from") != null ? DateTimeParser.parse(parsedArgs.get("from")) : null;
-            LocalDateTime toFilter = parsedArgs.get("to") != null ? DateTimeParser.parse(parsedArgs.get("to")) : null;
-            topPlaylists = playHistoryActions.topPlaylists(n, fromFilter, toFilter);
-
-            if (fromFilter != null) {
-                sb.append(" From: ").append(DateTimeParser.format(fromFilter));
-            }
-
-            if (toFilter != null) {
-                sb.append(" To: ").append(DateTimeParser.format(toFilter));
-            }
-            sb.append("\n");
+            n = Integer.parseInt(args.getFirst());
         } catch (NumberFormatException e) {
             throw new CommandException("N must be a number");
         }
+        LocalDateTime fromFilter = parsedArgs.get("from") != null ? DateTimeParser.parse(parsedArgs.get("from")) : null;
+        LocalDateTime toFilter = parsedArgs.get("to") != null ? DateTimeParser.parse(parsedArgs.get("to")) : null;
+        topPlaylists = playHistoryActions.topPlaylists(n, fromFilter, toFilter);
+
+        if (fromFilter != null) {
+            sb.append(" From: ").append(DateTimeParser.format(fromFilter));
+        }
+
+        if (toFilter != null) {
+            sb.append(" To: ").append(DateTimeParser.format(toFilter));
+        }
+
+        sb.append("\n");
+
         topPlaylists.forEach((artist, count) -> {
             sb.append(artist).append(" - Number of plays: ").append(count).append("\n");
         });
