@@ -49,9 +49,9 @@ public class TopTracksCommand implements Command {
 
         sb.append("\n");
 
-        topTracks.forEach((artist, count) -> {
-            sb.append(artist).append(" - Number of plays: ").append(count).append("\n");
-        });
+        topTracks.forEach((artist, count) ->
+            sb.append(artist).append(" - Number of plays: ").append(count).append("\n")
+        );
         return sb.toString();
     }
 

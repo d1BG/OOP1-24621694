@@ -26,7 +26,7 @@ public class PlaysCommand implements Command {
 
 
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(args);
-        List<PlayHistoryEntry> filteredList = new ArrayList<>();
+        List<PlayHistoryEntry> filteredList;
 
         try {
             // TODO: ADD MORE ERROR HANDLING!!!

@@ -49,9 +49,9 @@ public class TopArtistsCommand implements Command {
 
         sb.append("\n");
 
-        topArtists.forEach((artist, count) -> {
-            sb.append(artist).append(" - Number of plays: ").append(count).append("\n");
-        });
+        topArtists.forEach((artist, count) ->
+            sb.append(artist).append(" - Number of plays: ").append(count).append("\n")
+        );
         return sb.toString();
     }
 
