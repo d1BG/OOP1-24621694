@@ -1,5 +1,8 @@
 package bg.tu_varna.sit.commands;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum CommandsIndex {
     EXIT("exit"),
     HELP("help"),
@@ -29,6 +32,7 @@ public enum CommandsIndex {
     UNKNOWN_COMMAND(null);
 
     private final String name;
+    private static final Map<String, CommandsIndex> BY_NAME = new HashMap<>();
 
     CommandsIndex(String name){
         this.name = name;
@@ -38,35 +42,14 @@ public enum CommandsIndex {
         return name;
     }
 
+    static {
+        for (CommandsIndex c : values()) {
+            BY_NAME.put(c.name, c);
+        }
+    }
+
     public static CommandsIndex fromName(String name) {
-        return switch (name.toLowerCase()) {
-            case "exit" -> EXIT;
-            case "help" -> HELP;
-            case "createplaylist" -> CREATE_PLAYLIST;
-            case "listplaylists" -> LIST_PLAYLISTS;
-            case "deleteplaylist" -> DELETE_PLAYLIST;
-            case "addsong" -> ADD_SONG;
-            case "listsongs" -> LIST_SONGS;
-            case "songinfo" -> SONG_INFO;
-            case "removesong" -> REMOVE_SONG;
-            case "saveas" -> SAVE_AS;
-            case "save" -> SAVE;
-            case "open" -> OPEN;
-            case "close" -> CLOSE;
-            case "addtoplaylist" -> ADD_TO_PLAYLIST;
-            case "removefromplaylist" -> REMOVE_FROM_PLAYLIST;
-            case "play" -> PLAY;
-            case "plays" -> PLAYS;
-            case "showplaylist" -> SHOW_PLAYLIST;
-            case "dropplaylist" -> DROP_PLAYLIST;
-            case "addartist" -> ADD_ARTIST;
-            case "listartists" -> LIST_ARTISTS;
-            case "removeartist" -> REMOVE_ARTIST;
-            case "topartists" -> TOP_ARTISTS;
-            case "toptracks" -> TOP_TRACKS;
-            case "topplaylists" -> TOP_PLAYLISTS;
-            default -> UNKNOWN_COMMAND;
-        };
+        return BY_NAME.get(name.toLowerCase());
     }
 
 }
