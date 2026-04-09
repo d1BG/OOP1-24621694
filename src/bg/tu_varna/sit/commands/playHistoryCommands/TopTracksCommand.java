@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class TopTracksCommand implements Command {
+public class TopTracksCommand extends Command {
     private PlayHistoryActions playHistoryActions;
     public TopTracksCommand(PlayHistoryActions playHistoryActions) {
         this.playHistoryActions = playHistoryActions;

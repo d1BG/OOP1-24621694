@@ -7,7 +7,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class DropPlaylistCommand implements Command {
+public class DropPlaylistCommand extends Command {
     private MusicPlaylists musicPlaylists;
 
     public DropPlaylistCommand(MusicPlaylists musicPlaylists) {

@@ -6,7 +6,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class DeletePlaylistCommand implements Command {
+public class DeletePlaylistCommand extends Command {
     private PlaylistActions playlistActions;
     public DeletePlaylistCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;

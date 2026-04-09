@@ -8,7 +8,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.util.List;
 import java.util.Map;
 
-public class HelpCommand implements Command {
+public class HelpCommand extends Command {
     private Map<CommandsIndex, Command> commands;
 
     public HelpCommand(Map<CommandsIndex, Command> commands) {

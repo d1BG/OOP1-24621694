@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class PlaysCommand implements Command {
+public class PlaysCommand extends Command {
     MusicPlaylists musicPlaylists;
     public PlaysCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;

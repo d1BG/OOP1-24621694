@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class AddSongCommand implements Command {
+public class AddSongCommand extends Command {
     private SongActions songActions;
     private ArtistActions artistActions;
 

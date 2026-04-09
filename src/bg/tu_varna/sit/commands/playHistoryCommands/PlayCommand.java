@@ -11,7 +11,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.util.List;
 import java.util.Map;
 
-public class PlayCommand implements Command {
+public class PlayCommand extends Command {
     private MusicPlaylists musicPlaylists;
     public PlayCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;

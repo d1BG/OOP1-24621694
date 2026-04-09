@@ -2,7 +2,7 @@ package bg.tu_varna.sit.commands;
 
 import java.util.List;
 
-public interface Command {
-    String execute(List<String> args);
-    String cmdHelpMessage();
+public abstract class Command {
+    protected abstract String execute(List<String> args);
+    public abstract String cmdHelpMessage();
 }

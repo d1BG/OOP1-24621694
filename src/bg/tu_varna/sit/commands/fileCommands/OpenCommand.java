@@ -9,7 +9,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.io.File;
 import java.util.List;
 
-public class OpenCommand implements Command {
+public class OpenCommand extends Command {
     private FileActions fileActions;
     private MusicPlaylists musicPlaylists;
     public OpenCommand(MusicPlaylists musicPlaylists, FileActions fileActions) {

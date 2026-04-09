@@ -8,7 +8,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.io.File;
 import java.util.List;
 
-public class SaveAsCommand implements Command {
+public class SaveAsCommand extends Command {
     private MusicPlaylists musicPlaylists;
     private FileActions fileActions;
     public SaveAsCommand(MusicPlaylists musicPlaylists, FileActions fileActions) {

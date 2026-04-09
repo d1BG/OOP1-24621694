@@ -7,7 +7,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class RemoveSongCommand implements Command {
+public class RemoveSongCommand extends Command {
     private SongActions songActions;
     public RemoveSongCommand(SongActions songActions) {
         this.songActions = songActions;

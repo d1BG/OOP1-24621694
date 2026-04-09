@@ -9,7 +9,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class ShowPlaylistCommand implements Command {
+public class ShowPlaylistCommand extends Command {
     private PlaylistActions playlistActions;
     public ShowPlaylistCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;

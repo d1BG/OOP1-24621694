@@ -13,7 +13,7 @@ import java.time.Year;
 import java.util.List;
 import java.util.Map;
 
-public class ListSongsCommand implements Command {
+public class ListSongsCommand extends Command {
     private SongActions songActions;
     private ArtistActions artistActions;
     public ListSongsCommand(SongActions songActions, ArtistActions artistActions) {

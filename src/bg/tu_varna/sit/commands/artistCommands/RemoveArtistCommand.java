@@ -7,7 +7,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class RemoveArtistCommand implements Command {
+public class RemoveArtistCommand extends Command {
     private MusicPlaylists musicPlaylists;
     public RemoveArtistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;

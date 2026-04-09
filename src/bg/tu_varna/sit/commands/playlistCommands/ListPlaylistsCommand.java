@@ -7,7 +7,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class ListPlaylistsCommand implements Command {
+public class ListPlaylistsCommand extends Command {
     private PlaylistActions playlistActions;
     public ListPlaylistsCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;

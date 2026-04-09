@@ -5,7 +5,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class ExitCommand implements Command {
+public class ExitCommand extends Command {
     public ExitCommand() {}
 
     @Override

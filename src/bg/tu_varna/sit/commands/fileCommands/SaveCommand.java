@@ -7,7 +7,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class SaveCommand implements Command {
+public class SaveCommand extends Command {
     private FileActions fileActions;
     private MusicPlaylists musicPlaylists;
 

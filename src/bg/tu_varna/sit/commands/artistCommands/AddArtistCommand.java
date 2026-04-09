@@ -7,7 +7,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class AddArtistCommand implements Command {
+public class AddArtistCommand extends Command {
     private ArtistActions artistActions;
     public AddArtistCommand(ArtistActions artistActions) {
         this.artistActions = artistActions;

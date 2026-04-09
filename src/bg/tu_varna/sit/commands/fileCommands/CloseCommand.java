@@ -7,7 +7,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class CloseCommand implements Command {
+public class CloseCommand extends Command {
     private FileActions fileActions;
     private MusicPlaylists musicPlaylists;
     public CloseCommand(MusicPlaylists musicPlaylists, FileActions fileActions) {

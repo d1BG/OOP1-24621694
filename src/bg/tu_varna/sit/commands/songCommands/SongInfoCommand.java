@@ -8,7 +8,7 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class SongInfoCommand implements Command {
+public class SongInfoCommand extends Command {
     private SongActions songActions;
     public SongInfoCommand(SongActions songActions) {
         this.songActions = songActions;
