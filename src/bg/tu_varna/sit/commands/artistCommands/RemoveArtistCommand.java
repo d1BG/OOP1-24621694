@@ -8,7 +8,7 @@ import bg.tu_varna.sit.models.Artist;
 import java.util.List;
 
 public class RemoveArtistCommand implements Command {
-    MusicPlaylists musicPlaylists;
+    private MusicPlaylists musicPlaylists;
     public RemoveArtistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
@@ -18,7 +18,7 @@ public class RemoveArtistCommand implements Command {
             throw new CommandException("Invalid Arguments");
         }
         Artist artist = musicPlaylists.getArtistActions().getArtistByUsername(args.getFirst());
-        musicPlaylists.removeArtistByUsername(artist);
+        musicPlaylists.removeArtist(artist);
         return "Successfully removed artist: " + args.getFirst();
     }
 

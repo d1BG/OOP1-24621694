@@ -13,7 +13,7 @@ public interface MusicPlaylists {
     void addSongToPlaylist(Playlist playlist, Song song, Integer position);
     void removeSongFromPlaylist(Playlist playlist, Song song);
     void dropPlaylist(Playlist p);
-    void removeArtistByUsername(Artist artist);
+    void removeArtist(Artist artist);
 
     void setMusicPlaylists(MusicPlaylists musicPlaylists);
 }

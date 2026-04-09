@@ -8,7 +8,7 @@ import bg.tu_varna.sit.models.Artist;
 import java.util.List;
 
 public class AddArtistCommand implements Command {
-    ArtistActions artistActions;
+    private ArtistActions artistActions;
     public AddArtistCommand(ArtistActions artistActions) {
         this.artistActions = artistActions;
     }
