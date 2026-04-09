@@ -13,7 +13,7 @@ public class FileService implements FileActions {
     public FileService() {}
 
     @Override
-    public boolean open(MusicPlaylists musicPlaylists, File file) {
+    public void open(MusicPlaylists musicPlaylists, File file) {
         if (isOpen()) {
             throw new FileException("A File is already open, save/close it before opening a new one");
         }
@@ -26,12 +26,12 @@ public class FileService implements FileActions {
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 musicPlaylists.setMusicPlaylists((MusicPlaylists) ois.readObject());
                 ois.close();
-                return true;
+                return;
             } catch (ClassNotFoundException | IOException e) {
                 throw new FileException(e.getMessage());
             }
         }
-        return false;
+        throw new FileException("This file doesnt exist");
     }
 
     @Override
@@ -44,7 +44,7 @@ public class FileService implements FileActions {
     }
 
     @Override
-    public boolean write(MusicPlaylists musicPlaylists, File file) {
+    public void write(MusicPlaylists musicPlaylists, File file) {
         if (file == null) {
             if (this.file != null) {
                 file = this.file; // if no file is passed, use the already opened one
@@ -58,7 +58,7 @@ public class FileService implements FileActions {
                 file.createNewFile();
             }
         } catch ( IOException e ) {
-            throw new FileException("Could not create new file");
+            throw new FileException("Could not create new file: " + e.getMessage());
         }
 
         try {
@@ -67,7 +67,6 @@ public class FileService implements FileActions {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(musicPlaylists);
             oos.close();
-            return true;
         } catch (IOException e) {
             throw new FileException(e.getMessage());
         }

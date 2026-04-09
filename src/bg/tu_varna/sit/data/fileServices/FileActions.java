@@ -5,10 +5,10 @@ import bg.tu_varna.sit.data.interfaces.MusicPlaylists;
 import java.io.File;
 
 public interface FileActions {
-    boolean open(MusicPlaylists musicPlaylists, File file);
+    void open(MusicPlaylists musicPlaylists, File file);
     void close(MusicPlaylists musicPlaylists);
 
-    boolean write(MusicPlaylists musicPlaylists, File file);
+    void write(MusicPlaylists musicPlaylists, File file);
 
     boolean isOpen();
 

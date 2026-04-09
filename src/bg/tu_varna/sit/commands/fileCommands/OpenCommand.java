@@ -24,9 +24,7 @@ public class OpenCommand implements Command {
         }
 
         File file = new File(args.getFirst());
-        if (fileActions.open(musicPlaylists, file)) {
-            return "Successfully opened file: " + file.getAbsolutePath();
-        }
+        fileActions.open(musicPlaylists, file);
         throw new FileException("Failed to open file: " + file.getAbsolutePath());
     }
 
