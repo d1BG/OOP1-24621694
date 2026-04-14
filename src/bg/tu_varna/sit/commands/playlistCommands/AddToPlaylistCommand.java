@@ -6,6 +6,7 @@ import bg.tu_varna.sit.exceptions.CommandException;
 import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
+import java.util.Map;
 
 public class AddToPlaylistCommand extends Command {
     private MusicPlaylists musicPlaylists;
@@ -22,7 +23,8 @@ public class AddToPlaylistCommand extends Command {
 
         try {
             if (args.size() == 3) {
-                pos = Integer.parseInt(args.get(2)) - 1;
+                Map<String, String> optPos = ArgumentParser.KeyValueParser(args.get(2));
+                pos = Integer.parseInt(optPos.get("pos"));
             }
         } catch (NumberFormatException e) {
             throw new CommandException("Position must be a number");
