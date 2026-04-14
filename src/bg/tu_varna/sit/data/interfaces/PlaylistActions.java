@@ -7,6 +7,7 @@ import java.util.List;
 public interface PlaylistActions {
     List<Playlist> getPlaylists();
     void createPlaylist(Playlist playlist);
-    Playlist getPlaylistByName(String name);
     void deletePlaylist(Playlist p);
+    void shuffle(Playlist playlist, Integer seed);
+    Playlist getPlaylistByName(String name);
 }

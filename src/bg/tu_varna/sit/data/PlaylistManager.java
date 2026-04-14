@@ -5,8 +5,7 @@ import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PlaylistManager implements PlaylistActions, Serializable {
     private List<Playlist> playlists;
@@ -35,6 +34,13 @@ public class PlaylistManager implements PlaylistActions, Serializable {
             return;
         }
         throw new PlaylistException("Playlist does not exist");
+    }
+
+    @Override
+    public void shuffle(Playlist playlist, Integer seed){
+        Random rand = new Random();
+        if (seed != null) {rand.setSeed(seed);}
+        Collections.shuffle(playlist.getSongs(), rand);
     }
 
     @Override

@@ -31,6 +31,7 @@ public enum CommandsIndex {
     TOP_PLAYLISTS("topplaylists"),
     LOW_ACTIVITY("lowactivity"),
     GEN("gen"),
+    SHUFFLE("shuffle"),
     UNKNOWN_COMMAND(null);
 
     private final String name;
