@@ -29,10 +29,10 @@ public class LowActivityCommand extends Command {
             throw new CommandException("thresholdPercent must be a number");
         }
 
-        Map<Playlist, Integer> playlistActivity = playHistoryActions.lowActivity(fromFilter, toFilter, threshold);
+        Map<Playlist, Double> playlistActivity = playHistoryActions.lowActivity(fromFilter, toFilter, threshold);
         StringBuilder sb = new StringBuilder("Playlists with activity under ").append(threshold).append("%\n");
         playlistActivity.forEach((p, v) -> {
-            sb.append(p.getName()).append(" - ").append(v).append("%\n");
+            sb.append(p.getName()).append(" - ").append(v.intValue()).append("%\n");
         });
 
         return sb.toString();
