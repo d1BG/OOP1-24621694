@@ -24,7 +24,7 @@ public class AddSongCommand extends Command {
     }
 
     @Override
-    public String execute(List<String> args) {
+    protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 3, 6);
 
         List<Song> songs = songActions.getSongs();
@@ -32,13 +32,6 @@ public class AddSongCommand extends Command {
         List<String> newArgs = new ArrayList<>();
         for (int i = 3; i < args.size(); i++){
             newArgs.add(args.get(i));
-        }
-
-        int songID;
-        if (songs.isEmpty()) {
-            songID = 1;
-        } else {
-            songID = songs.getLast().getID()+1;
         }
 
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(newArgs);
@@ -59,9 +52,9 @@ public class AddSongCommand extends Command {
 
         String album = parsedArgs.get("album") != null ? parsedArgs.get("album") : null;
 
-        songActions.addSong(new Song(songID, args.get(0), artist , args.get(2), album, year, genre));
+        songActions.addSong(new Song(songActions.getNextSongID(), args.get(0), artist , args.get(2), album, year, genre));
 
-        return "Added new song with ID:" + songID;
+        return "Added new song with ID:" + (songActions.getNextSongID()-1);
     }
 
     @Override

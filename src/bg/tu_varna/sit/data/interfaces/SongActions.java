@@ -12,4 +12,5 @@ public interface SongActions {
     void addSong(Song song);
     void removeSong(Song song);
     Song getSongById(int id);
+    int getNextSongID();
 }

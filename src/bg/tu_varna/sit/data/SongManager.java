@@ -64,4 +64,14 @@ public class SongManager implements SongActions, Serializable {
         }
         throw new SongException("Song not found");
     }
+
+    public int getNextSongID() {
+        int songID;
+        if (songs.isEmpty()) {
+            songID = 1;
+        } else {
+            songID = songs.getLast().getID()+1;
+        }
+        return songID;
+    }
 }
