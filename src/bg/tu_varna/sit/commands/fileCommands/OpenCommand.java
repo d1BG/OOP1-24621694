@@ -24,7 +24,7 @@ public class OpenCommand extends Command {
 
         File file = new File(args.getFirst());
         fileActions.open(musicPlaylists, file);
-        throw new FileException("Failed to open file: " + file.getAbsolutePath());
+        return "Successfully opened: " + file.getAbsolutePath();
     }
 
     @Override
