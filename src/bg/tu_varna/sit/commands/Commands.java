@@ -43,7 +43,7 @@ public class Commands {
         commands.put(CommandsIndex.TOP_ARTISTS, new TopArtistsCommand(musicPlaylists.getPlayHistoryActions()));
         commands.put(CommandsIndex.TOP_TRACKS, new TopTracksCommand(musicPlaylists.getPlayHistoryActions()));
         commands.put(CommandsIndex.TOP_PLAYLISTS, new TopPlaylistsCommand(musicPlaylists.getPlayHistoryActions()));
-
+        commands.put(CommandsIndex.LOW_ACTIVITY, new LowActivityCommand(musicPlaylists.getPlayHistoryActions()));
     }
 
     public String exec(String cmdName, List<String> args) {

@@ -9,6 +9,7 @@ import bg.tu_varna.sit.models.Song;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     private List<PlayHistoryEntry> entries;
@@ -123,7 +124,22 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     }
 
     @Override
-    public String lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold) {
-        return "";
+    public Map<Playlist, Integer> lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold) {
+        /* The Integer.MAX_VALUE is a "hack" that forces the return to be entryList.size()
+         so i get every playlist and not just the first X from topPlaylists */
+        Map<Playlist, Integer> mapOfPlaylists = topPlaylists(Integer.MAX_VALUE, from, to);
+
+        // Jetbrains suggestion - I cant use a regular if in a forEach
+        AtomicInteger totalPlays = new AtomicInteger();
+        mapOfPlaylists.forEach((_, e) -> totalPlays.addAndGet(e));
+
+        Map<Playlist, Integer> playlistActivityPercent = new HashMap<>();
+        mapOfPlaylists.forEach((p, e) -> {
+            if ((e / totalPlays.getAcquire()) * 10 < percentThreshold) {
+                playlistActivityPercent.put(p, (e / totalPlays.getAcquire()) * 10);
+            }
+        });
+
+        return playlistActivityPercent;
     }
 }

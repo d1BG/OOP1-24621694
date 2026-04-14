@@ -16,5 +16,5 @@ public interface PlayHistoryActions {
     Map<Playlist, Integer> topPlaylists(int n, LocalDateTime from, LocalDateTime to);
     Map<Song, Integer> topTracks(int n, LocalDateTime from, LocalDateTime to);
     Map<Artist, Integer> topArtists(int n, LocalDateTime from, LocalDateTime to);
-    String lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold);
+    Map<Playlist, Integer> lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold);
 }
