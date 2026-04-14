@@ -18,7 +18,7 @@ public class TopPlaylistsCommand extends Command {
         this.playHistoryActions = playHistoryActions;
     }
     @Override
-    public String execute(List<String> args) {
+    protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1, 3);
 
         List<String> newArgs = new ArrayList<>();

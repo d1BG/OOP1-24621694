@@ -18,7 +18,7 @@ public class PlayCommand extends Command {
     }
 
     @Override
-    public String execute(List<String> args) {
+    protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1, 2);
 
 

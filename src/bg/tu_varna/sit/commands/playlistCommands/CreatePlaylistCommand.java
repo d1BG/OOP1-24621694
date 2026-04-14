@@ -14,7 +14,7 @@ public class CreatePlaylistCommand extends Command {
     }
 
     @Override
-    public String execute(List<String> args) {
+    protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1, 2);
 
         Playlist playlist = new Playlist(args.get(0));

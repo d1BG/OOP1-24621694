@@ -20,7 +20,7 @@ public class PlaysCommand extends Command {
     }
 
     @Override
-    public String execute(List<String> args) {
+    protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 0, 4);
 
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(args);

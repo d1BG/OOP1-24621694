@@ -13,7 +13,7 @@ public class RemoveArtistCommand extends Command {
         this.musicPlaylists = musicPlaylists;
     }
     @Override
-    public String execute(List<String> args) {
+    protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1);
 
         Artist artist = musicPlaylists.getArtistActions().getArtistByUsername(args.getFirst());

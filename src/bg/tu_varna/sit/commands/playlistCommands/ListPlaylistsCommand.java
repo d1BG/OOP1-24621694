@@ -14,7 +14,7 @@ public class ListPlaylistsCommand extends Command {
     }
 
     @Override
-    public String execute(List<String> args) {
+    protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args);
 
         StringBuilder listOfPlaylists = new StringBuilder();

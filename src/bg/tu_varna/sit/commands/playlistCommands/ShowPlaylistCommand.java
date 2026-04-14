@@ -16,7 +16,7 @@ public class ShowPlaylistCommand extends Command {
     }
 
     @Override
-    public String execute(List<String> args) {
+    protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1);
 
         Playlist pl = playlistActions.getPlaylistByName(args.getFirst());
