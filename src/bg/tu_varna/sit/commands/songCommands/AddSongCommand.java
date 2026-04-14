@@ -7,8 +7,11 @@ import bg.tu_varna.sit.exceptions.CommandException;
 import bg.tu_varna.sit.models.Artist;
 import bg.tu_varna.sit.models.Genre;
 import bg.tu_varna.sit.models.Song;
+import bg.tu_varna.sit.models.TimeDuration;
 import bg.tu_varna.sit.util.ArgumentParser;
+import bg.tu_varna.sit.util.DateTimeParser;
 
+import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +39,8 @@ public class AddSongCommand extends Command {
 
         Map<String, String> parsedArgs = ArgumentParser.KeyValueParser(newArgs);
 
+        TimeDuration duration = new TimeDuration(args.get(2));
+
         Artist artist = artistActions.getArtistByUsername(args.get(1));
 
         Genre genre = parsedArgs.get("genre") != null ? Genre.fromName(parsedArgs.get("genre")) : Genre.NA;
@@ -51,8 +56,7 @@ public class AddSongCommand extends Command {
         }
 
         String album = parsedArgs.get("album") != null ? parsedArgs.get("album") : null;
-
-        songActions.addSong(new Song(songActions.getNextSongID(), args.get(0), artist , args.get(2), album, year, genre));
+        songActions.addSong(new Song(songActions.getNextSongID(), args.get(0), artist , duration, album, year, genre));
 
         return "Added new song with ID:" + (songActions.getNextSongID()-1);
     }
