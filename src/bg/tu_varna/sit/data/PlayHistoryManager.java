@@ -27,6 +27,11 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         entries.add(new PlayHistoryEntry(song, playlist));
     }
 
+    // used by random generator
+    public void play(Song song, Playlist playlist, LocalDateTime timestamp) {
+        entries.add(new PlayHistoryEntry(song, playlist, timestamp));
+    }
+
     @Override
     public List<PlayHistoryEntry> filterEntries(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song) {
         List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
@@ -68,7 +73,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         List<Map.Entry<Playlist, Integer>> entryList = new ArrayList<>(counts.entrySet());
         // compare and sort in descending order
         entryList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
-        Map<Playlist, Integer> topPlaylists = new HashMap<>();
+        Map<Playlist, Integer> topPlaylists = new LinkedHashMap<>();
         for (int i = 0; i < Math.min(n, entryList.size()); i++) {
             topPlaylists.put(entryList.get(i).getKey(), entryList.get(i).getValue());
         }
@@ -92,7 +97,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         List<Map.Entry<Song, Integer>> entryList = new ArrayList<>(counts.entrySet());
         // compare and sort in descending order
         entryList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
-        Map<Song, Integer> topTracks = new HashMap<>();
+        Map<Song, Integer> topTracks = new LinkedHashMap<>();
         for (int i = 0; i < Math.min(n, entryList.size()); i++) {
             topTracks.put(entryList.get(i).getKey(), entryList.get(i).getValue());
         }
@@ -116,7 +121,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         List<Map.Entry<Artist, Integer>> entryList = new ArrayList<>(counts.entrySet());
         // compare and sort in descending order
         entryList.sort((e1, e2) -> e2.getValue().compareTo(e1.getValue()));
-        Map<Artist, Integer> topArtists = new HashMap<>();
+        Map<Artist, Integer> topArtists = new LinkedHashMap<>();
         for (int i = 0; i < Math.min(n, entryList.size()); i++) {
             topArtists.put(entryList.get(i).getKey(), entryList.get(i).getValue());
         }
@@ -124,7 +129,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     }
 
     @Override
-    public Map<Playlist, Integer> lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold) {
+    public Map<Playlist, Double> lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold) {
         /* The Integer.MAX_VALUE is a "hack" that forces the return to be entryList.size()
          so i get every playlist and not just the first X from topPlaylists */
         Map<Playlist, Integer> mapOfPlaylists = topPlaylists(Integer.MAX_VALUE, from, to);
@@ -133,10 +138,11 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         AtomicInteger totalPlays = new AtomicInteger();
         mapOfPlaylists.forEach((_, e) -> totalPlays.addAndGet(e));
 
-        Map<Playlist, Integer> playlistActivityPercent = new HashMap<>();
+        Map<Playlist, Double> playlistActivityPercent = new LinkedHashMap<>();
         mapOfPlaylists.forEach((p, e) -> {
-            if ((e / totalPlays.getAcquire()) * 10 < percentThreshold) {
-                playlistActivityPercent.put(p, (e / totalPlays.getAcquire()) * 10);
+            double curr = (e.doubleValue() / totalPlays.get()) * 100;
+            if (curr < percentThreshold) {
+                playlistActivityPercent.put(p, curr);
             }
         });
 

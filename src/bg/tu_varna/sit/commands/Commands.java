@@ -4,6 +4,7 @@ import bg.tu_varna.sit.commands.artistCommands.*;
 import bg.tu_varna.sit.commands.fileCommands.*;
 import bg.tu_varna.sit.commands.genericCommands.*;
 import bg.tu_varna.sit.commands.playHistoryCommands.*;
+import bg.tu_varna.sit.commands.playHistoryCommands.topCommands.*;
 import bg.tu_varna.sit.commands.playlistCommands.*;
 import bg.tu_varna.sit.commands.songCommands.*;
 import bg.tu_varna.sit.data.fileServices.FileActions;
@@ -44,6 +45,7 @@ public class Commands {
         commands.put(CommandsIndex.TOP_TRACKS, new TopTracksCommand(musicPlaylists.getPlayHistoryActions()));
         commands.put(CommandsIndex.TOP_PLAYLISTS, new TopPlaylistsCommand(musicPlaylists.getPlayHistoryActions()));
         commands.put(CommandsIndex.LOW_ACTIVITY, new LowActivityCommand(musicPlaylists.getPlayHistoryActions()));
+        commands.put(CommandsIndex.GEN, new GenerateCommand(musicPlaylists));
     }
 
     public String exec(String cmdName, List<String> args) {

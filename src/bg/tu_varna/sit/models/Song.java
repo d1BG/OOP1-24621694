@@ -7,7 +7,7 @@ public class Song implements Serializable {
     // Required*
     private int ID;
     private String title;
-    private Artist artist; // object?
+    private Artist artist;
     private TimeDuration duration;
     // Optional
     private String album;
@@ -19,7 +19,17 @@ public class Song implements Serializable {
         this.ID = ID;
         this.title = title;
         this.artist = artist;
-        this.duration = new TimeDuration(duration);
+        this.duration = new TimeDuration(duration); // TODO: this should be LocalDateTime, not String
+        this.album = album != null ? album : "N/A";
+        this.year = year != null ? year : "N/A";
+        this.genre = genre;
+    }
+
+    public Song(int ID, String title, Artist artist, TimeDuration duration, String album, String year, Genre genre) {
+        this.ID = ID;
+        this.title = title;
+        this.artist = artist;
+        this.duration = duration;
         this.album = album != null ? album : "N/A";
         this.year = year != null ? year : "N/A";
         this.genre = genre;

@@ -3,6 +3,7 @@ package bg.tu_varna.sit.models;
 import bg.tu_varna.sit.exceptions.TimeFormatException;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class TimeDuration implements Serializable {
     private int hours;
@@ -72,5 +73,16 @@ public class TimeDuration implements Serializable {
                 .append(":")
                 .append(String.format("%02d", seconds));
         return sb.toString();
+    }
+
+    // Used for random Generate Command
+    private TimeDuration(int mins, int secs) {
+        this.minutes = mins;
+        this.seconds = secs;
+    }
+
+    public static TimeDuration genRandDuration() {
+        Random rand = new Random();
+        return new TimeDuration(rand.nextInt(5), rand.nextInt(60));
     }
 }

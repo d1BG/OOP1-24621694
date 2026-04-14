@@ -14,6 +14,13 @@ public class PlayHistoryEntry implements Serializable {
         this.playlist = playlist;
     }
 
+    // Only used for the Generate Command
+    public PlayHistoryEntry(Song song, Playlist playlist, LocalDateTime timestamp) {
+        this.song = song;
+        this.timestamp = timestamp;
+        this.playlist = playlist;
+    }
+
     public Song getSong() {
         return song;
     }

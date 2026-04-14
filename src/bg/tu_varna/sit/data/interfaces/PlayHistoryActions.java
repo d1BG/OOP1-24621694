@@ -12,9 +12,10 @@ import java.util.Map;
 public interface PlayHistoryActions {
     List<PlayHistoryEntry> getEntries();
     void play(Song song, Playlist playlist);
+    void play(Song song, Playlist playlist, LocalDateTime timestamp);
     List<PlayHistoryEntry> filterEntries(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song);
     Map<Playlist, Integer> topPlaylists(int n, LocalDateTime from, LocalDateTime to);
     Map<Song, Integer> topTracks(int n, LocalDateTime from, LocalDateTime to);
     Map<Artist, Integer> topArtists(int n, LocalDateTime from, LocalDateTime to);
-    Map<Playlist, Integer> lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold);
+    Map<Playlist, Double> lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold);
 }
