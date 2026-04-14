@@ -49,8 +49,8 @@ public class TopPlaylistsCommand extends Command {
 
         sb.append("\n");
 
-        topPlaylists.forEach((artist, count) ->
-            sb.append(artist).append(" - Number of plays: ").append(count).append("\n")
+        topPlaylists.forEach((playlist, count) ->
+            sb.append(playlist.getName()).append(" - Number of plays: ").append(count).append("\n")
         );
         return sb.toString();
     }
