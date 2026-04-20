@@ -32,6 +32,7 @@ public enum CommandsIndex {
     LOW_ACTIVITY("lowactivity"),
     GEN("gen"),
     SHUFFLE("shuffle"),
+    MOVE("move"),
     UNKNOWN_COMMAND(null);
 
     private final String name;

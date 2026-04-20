@@ -3,6 +3,7 @@ package bg.tu_varna.sit.data;
 import bg.tu_varna.sit.data.interfaces.PlaylistActions;
 import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Playlist;
+import bg.tu_varna.sit.models.Song;
 
 import java.io.Serializable;
 import java.util.*;
@@ -63,6 +64,12 @@ public class PlaylistManager implements PlaylistActions, Serializable {
         Random rand = new Random();
         if (seed != null) {rand.setSeed(seed);}
         Collections.shuffle(playlist.getSongs(), rand);
+    }
+
+    @Override
+    public void move(Playlist playlist, int fromPos, int toPos) {
+        Song movedSong = playlist.getSongs().remove(fromPos);
+        playlist.getSongs().add(toPos, movedSong);
     }
 
     /**

@@ -46,6 +46,7 @@ public class Commands {
         commands.put(CommandsIndex.TOP_PLAYLISTS, new TopPlaylistsCommand(musicPlaylists.getPlayHistoryActions()));
         commands.put(CommandsIndex.LOW_ACTIVITY, new LowActivityCommand(musicPlaylists.getPlayHistoryActions()));
         commands.put(CommandsIndex.SHUFFLE, new ShuffleCommand(musicPlaylists.getPlaylistActions()));
+        commands.put(CommandsIndex.MOVE, new MoveCommand(musicPlaylists.getPlaylistActions()));
         commands.put(CommandsIndex.GEN, new GenerateCommand(musicPlaylists));
     }
 

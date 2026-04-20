@@ -9,5 +9,6 @@ public interface PlaylistActions {
     void createPlaylist(Playlist playlist);
     void deletePlaylist(Playlist p);
     void shuffle(Playlist playlist, Integer seed);
+    void move(Playlist playlist, int fromPos, int toPos);
     Playlist getPlaylistByName(String name);
 }
