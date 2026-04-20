@@ -17,6 +17,11 @@ public class OpenCommand extends Command {
         this.musicPlaylists = musicPlaylists;
     }
 
+    /**
+     * Изълняващ метод на команда за отваряне и зареждане на подаден файл
+     * @param args аргументи които командата приема
+     * @return Съобщение за успех с директорията на отворения файл
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1);

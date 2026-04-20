@@ -15,6 +15,12 @@ public class SaveCommand extends Command {
         this.fileActions = fileActions;
         this.musicPlaylists = musicPlaylists;
     }
+
+    /**
+     * Изълняващ метод на команда за запазване на отворения файл
+     * @param args аргументи които командата приема
+     * @return съобщение за успех с директорията на отворения файл
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args);

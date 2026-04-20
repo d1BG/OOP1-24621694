@@ -15,6 +15,11 @@ public class HelpCommand extends Command {
         this.commands = commands;
     }
 
+    /**
+     * Изълняващ метод на команда за помощ
+     * @param args аргументи които командата приема
+     * @return Съобщение с всяка команда която програмата поддържа, ако е подадена определена команда се извежда съобщението за помощ на индивидуалната команда
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 0, 1);

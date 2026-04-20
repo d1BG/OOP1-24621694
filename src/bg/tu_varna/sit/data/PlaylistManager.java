@@ -9,17 +9,29 @@ import java.util.*;
 
 public class PlaylistManager implements PlaylistActions, Serializable {
     private List<Playlist> playlists;
+
+    /**
+     * Конструктор за PlaylistManager, създава празен списък за плейлисти.
+     */
     public PlaylistManager() {
         playlists = new ArrayList<>();
     }
 
+    /**
+     * @return Листата от плейлисти
+     */
     @Override
     public List<Playlist> getPlaylists() {
         return playlists;
     }
 
+    /**
+     * Добася нов плейлист в мениджъра.
+     * @param newPlaylist плейлиста който добавя
+     * @throws PlaylistException ако вече съществува
+     */
     @Override
-    public void createPlaylist(Playlist newPlaylist) {
+    public void createPlaylist(Playlist newPlaylist) throws PlaylistException {
         for (Playlist playlist : playlists) {
             if (playlist.equals(newPlaylist)) {
                 throw new PlaylistException("Playlist already exists");
@@ -28,14 +40,24 @@ public class PlaylistManager implements PlaylistActions, Serializable {
         playlists.add(newPlaylist);
     }
 
+    /**
+     * Премахва/Изтрива плейлист от мениджура
+     * @param playlist плейлиста който премахва
+     * @throws PlaylistException ако не съществува.
+     */
     @Override
-    public void deletePlaylist(Playlist p) {
-        if (playlists.remove(p)) {
+    public void deletePlaylist(Playlist playlist) throws PlaylistException {
+        if (playlists.remove(playlist)) {
             return;
         }
         throw new PlaylistException("Playlist does not exist");
     }
 
+    /**
+     * Разбърква плейлиста
+     * @param playlist плейлиста който да бъде разбъркан
+     * @param seed seed на произволност
+     */
     @Override
     public void shuffle(Playlist playlist, Integer seed){
         Random rand = new Random();
@@ -43,8 +65,14 @@ public class PlaylistManager implements PlaylistActions, Serializable {
         Collections.shuffle(playlist.getSongs(), rand);
     }
 
+    /**
+     * Намира плейлист по име
+     * @param name име на плейлиста който търсим
+     * @return намерения плейлист
+     * @throws PlaylistException ако плейлиста не е намерен
+     */
     @Override
-    public Playlist getPlaylistByName(String name) {
+    public Playlist getPlaylistByName(String name) throws PlaylistException {
         for (Playlist p : playlists) {
             if (p.getName().equals(name)) {
                 return p;

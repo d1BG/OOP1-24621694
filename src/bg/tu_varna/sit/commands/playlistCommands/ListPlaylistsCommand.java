@@ -13,6 +13,11 @@ public class ListPlaylistsCommand extends Command {
         this.playlistActions = playlistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за извеждане на информация за всички плейлисти
+     * @param args аргументи които командата приема
+     * @return информация за всички плейлисти
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args);

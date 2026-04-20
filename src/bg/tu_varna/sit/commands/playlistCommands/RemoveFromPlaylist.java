@@ -13,10 +13,14 @@ public class RemoveFromPlaylist extends Command {
         this.musicPlaylists = musicPlaylists;
     }
 
+    /**
+     * Изълняващ метод на команда за премахване на песен от плейлист
+     * @param args аргументи които командата приема
+     * @return Съобщение за успех
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 2);
-
 
         try {
             musicPlaylists.removeSongFromPlaylist(

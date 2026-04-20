@@ -14,6 +14,11 @@ public class ShuffleCommand extends Command {
         this.playlistActions = playlistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за разбъркване на плейлист
+     * @param args аргументи които командата приема
+     * @return съобщение за успех и името на разбъркания плейлист
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1, 2);
@@ -31,6 +36,7 @@ public class ShuffleCommand extends Command {
 
     @Override
     public String cmdHelpMessage() {
-        return "";
+        return "Разбърква песните в плейлист.\n" +
+                "   Usage: shuffle <playlistName> [seed=<n>]";
     }
 }

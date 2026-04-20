@@ -21,6 +21,11 @@ public class ListSongsCommand extends Command {
         this.artistActions = artistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за извеждане на всички песни
+     * @param args аргументи които командата приема
+     * @return символен низ от всички песни и кратка информация за тях (идентификатор, име, артист и продължителност)
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 0, 3);

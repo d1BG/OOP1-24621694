@@ -14,7 +14,16 @@ public class Song implements Serializable {
     private String year;
     private Genre genre;
 
-
+    /**
+     * Конструктор за обект Песен.
+     * @param ID int Уникален идентификатор на песен - задължителен
+     * @param title String Име на песента - задължителен
+     * @param artist Обект Artist - задължителен
+     * @param duration Обект TimeDuration - задължителен
+     * @param album String име на албума на песента
+     * @param year String година на излизане на песента
+     * @param genre enum стойност от Genre на песента
+     */
     public Song(int ID, String title, Artist artist, TimeDuration duration, String album, String year, Genre genre) {
         this.ID = ID;
         this.title = title;
@@ -25,35 +34,58 @@ public class Song implements Serializable {
         this.genre = genre;
     }
 
-
+    /**
+     * @return int уникален идентификатор на песента
+     */
     public int getID() {
         return ID;
     }
 
+    /**
+     * @return String Името на песента
+     */
     public String getTitle() {
         return title;
     }
 
+    /**
+     * @return Обект Artist на песента
+     */
     public Artist getArtist() {
         return artist;
     }
 
+    /**
+     * @return обект TimeDuration на песента
+     */
     public TimeDuration getDuration() {
         return duration;
     }
 
+    /**
+     * @return String Албума на песента
+     */
     public String getAlbum() {
         return album;
     }
 
+    /**
+     * @return String Годината на песента
+     */
     public String getYear() {
         return year;
     }
 
+    /**
+     * @return enum стойност от тип Genre на песента
+     */
     public Genre getGenre() {
         return genre;
     }
 
+    /**
+     * @return String с информация за всички полета на песента
+     */
     public String songInfo(){
         return  "ID: "       + ID       + "\n" +
                 "Title: "    + title    + "\n" +
@@ -64,18 +96,29 @@ public class Song implements Serializable {
                 "Genre: "    + genre    + "\n";
     }
 
+    /**
+     * @return {@code String} с информацията от всички задължителни полета на песента
+     */
     @Override
     public String toString() {
         return "ID: " + ID + ". " + title + " - " + artist + " " + duration;
     }
 
+    /**
+     * Метод за равенство (по име и артист)
+     * @param obj обекта с който се прави сравнение.
+     * @return {@code boolean} определящ равенство между този обект и {@code obj}
+     */
     @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Song song = (Song) o;
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Song song = (Song) obj;
         return Objects.equals(title, song.title) && Objects.equals(artist, song.artist);
     }
 
+    /**
+     * @return Хеш стойност на обекта по име и артист
+     */
     @Override
     public int hashCode() {
         return Objects.hash(title, artist);

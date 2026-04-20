@@ -17,6 +17,11 @@ public class LowActivityCommand extends Command {
         this.playHistoryActions = playHistoryActions;
     }
 
+    /**
+     * Изълняващ метод на команда за извеждане на плейлисти с слушаност под подаден процент за определен период
+     * @param args аргументи които командата приема
+     * @return Листа с плейлисти с по-ниска слушаност от подадената за подаден период
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 3);

@@ -13,6 +13,11 @@ public class ListArtistsCommand extends Command {
         this.artistActions = artistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за извеждане на списък с всички артисти
+     * @param args аргументи които командата приема
+     * @return всички артисти
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args);

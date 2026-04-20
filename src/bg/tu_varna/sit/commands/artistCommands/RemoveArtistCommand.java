@@ -12,6 +12,12 @@ public class RemoveArtistCommand extends Command {
     public RemoveArtistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
+
+    /**
+     * Изълняващ метод на команда за премахване на артист
+     * @param args аргументи които командата приема
+     * @return съобщение за успех с псевдонима на пемахнатия артист
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1);

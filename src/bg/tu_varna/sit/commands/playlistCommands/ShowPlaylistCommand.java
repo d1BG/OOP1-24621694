@@ -15,6 +15,11 @@ public class ShowPlaylistCommand extends Command {
         this.playlistActions = playlistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за извеждане на информация за определен плейлист
+     * @param args аргументи които командата приема
+     * @return Информация за плейлиста
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1);

@@ -37,10 +37,16 @@ public enum CommandsIndex {
     private final String name;
     private static final Map<String, CommandsIndex> BY_NAME = new HashMap<>();
 
+    /**
+     * @param name String който се изнася и по който се търси.
+     */
     CommandsIndex(String name){
         this.name = name;
     };
 
+    /**
+     * @return името на командата
+     */
     public String getName() {
         return name;
     }
@@ -51,6 +57,11 @@ public enum CommandsIndex {
         }
     }
 
+    /**
+     * Търси за стойност по име
+     * @param name име на команда
+     * @return enum стойност
+     */
     public static CommandsIndex fromName(String name) {
         return BY_NAME.get(name.toLowerCase());
     }

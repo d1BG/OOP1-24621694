@@ -26,6 +26,11 @@ public class AddSongCommand extends Command {
         this.artistActions = artistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за добавяне на песен
+     * @param args аргументи които командата приема
+     * @return Съобщение за усепх с идентификатора на новодобавената песен
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 3, 6);

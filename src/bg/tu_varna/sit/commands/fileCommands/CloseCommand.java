@@ -15,6 +15,11 @@ public class CloseCommand extends Command {
         this.musicPlaylists = musicPlaylists;
     }
 
+    /**
+     * Изълняващ метод на команда за затваряне и изчистване на заредената информация
+     * @param args аргументи които командата приема
+     * @return Съобщение аз успех
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args);

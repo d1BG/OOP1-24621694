@@ -17,6 +17,12 @@ public class TopPlaylistsCommand extends Command {
     public TopPlaylistsCommand(PlayHistoryActions playHistoryActions) {
         this.playHistoryActions = playHistoryActions;
     }
+
+    /**
+     * Изълняващ метод на команда за извеждане на топ {@code N} на брой плейлисти в определен период
+     * @param args аргументи които командата приема
+     * @return топ {@code N} на брой плейлисти в определен период
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1, 3);

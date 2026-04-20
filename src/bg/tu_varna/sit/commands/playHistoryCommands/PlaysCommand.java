@@ -19,6 +19,11 @@ public class PlaysCommand extends Command {
         this.musicPlaylists = musicPlaylists;
     }
 
+    /**
+     * Изълняващ метод на команда за извеждане на висчки пускания от историята
+     * @param args аргументи които командата приема
+     * @return всички пускания от историята
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 0, 4);

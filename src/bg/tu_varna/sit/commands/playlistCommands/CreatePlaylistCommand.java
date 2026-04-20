@@ -13,6 +13,11 @@ public class CreatePlaylistCommand extends Command {
         this.playlistActions = playlistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за създааване на плейлист
+     * @param args аргументи които командата приема
+     * @return съобщение за успех с името на новосъздадения плейлист
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1, 2);

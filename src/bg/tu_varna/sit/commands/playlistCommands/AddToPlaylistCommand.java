@@ -14,13 +14,16 @@ public class AddToPlaylistCommand extends Command {
         this.musicPlaylists = musicPlaylists;
     }
 
+    /**
+     * Изълняващ метод на команда за добавяне на песен в плейлист
+     * @param args аргументи които командата приема
+     * @return съобщение за успех
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 2, 3);
 
-
         Integer pos = null;
-
         try {
             if (args.size() == 3) {
                 Map<String, String> optPos = ArgumentParser.KeyValueParser(args.get(2));

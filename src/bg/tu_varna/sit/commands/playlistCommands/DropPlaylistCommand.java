@@ -14,6 +14,11 @@ public class DropPlaylistCommand extends Command {
         this.musicPlaylists = musicPlaylists;
     }
 
+    /**
+     * Изълняващ метод на команда за изтриване на плейлист и всички пускания в историята обвързани с плейлиста
+     * @param args аргументи които командата приема
+     * @return Съобщение за успех
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1);

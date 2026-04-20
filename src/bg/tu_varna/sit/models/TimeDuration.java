@@ -10,7 +10,12 @@ public class TimeDuration implements Serializable {
     private int minutes;
     private int seconds;
 
-    public TimeDuration(String duration) {
+    /**
+     * Конструктор за обект запазващ дължината на песен.
+     * @param duration {@code String} в формат {@code HH:MM:SS} ('{@code HH:}' - часовете, не са задължителни).
+     * @throws TimeFormatException ако формата на низа е невалиден
+     */
+    public TimeDuration(String duration) throws TimeFormatException {
         String[] split = duration.split(":");
         try {
             for (String segment : split) {
@@ -34,10 +39,18 @@ public class TimeDuration implements Serializable {
         }
     }
 
+    /**
+     * Конструктор за обект запазващ дължината на песен.
+     * Инициализира дължината към 0.
+     */
     public TimeDuration() {
         hours = minutes = seconds = 0;
     }
 
+    /**
+     * Добавя на две дължини.
+     * @param duration дължината която се добавя към този обект.
+     */
     public void addDurations(TimeDuration duration) {
         seconds += duration.seconds;
         validateSeconds();
@@ -48,6 +61,10 @@ public class TimeDuration implements Serializable {
         hours += duration.hours;
     }
 
+    /**
+     * Валидира на секундите на този обект,
+     * използва се при добавяне наа дължини
+     */
     private void validateSeconds() {
         if (seconds >= 60) {
             seconds -= 60;
@@ -56,6 +73,10 @@ public class TimeDuration implements Serializable {
         }
     }
 
+    /**
+     * Валидира на минутите на този обект,
+     * използва се при добавяне наа дължини
+     */
     private void validateMinutes() {
         if (minutes >= 60) {
             minutes -= 60;
@@ -63,6 +84,10 @@ public class TimeDuration implements Serializable {
         }
     }
 
+    /**
+     * toString метод форматиращ дължината в песен за четене, интуитивен формат.
+     * @return {@code String} в формат {@code HH:MM:SS} - където чава не се изписва ако е 0.
+     */
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();
@@ -75,12 +100,20 @@ public class TimeDuration implements Serializable {
         return sb.toString();
     }
 
-    // Used for random Generate Command
+    /**
+     * Констуктор за обект съхраняващ дължината на песен изполван единствено за {@code genRandDuration()}
+     * @param mins число за минути
+     * @param secs число за секунди
+     */
     private TimeDuration(int mins, int secs) {
         this.minutes = mins;
         this.seconds = secs;
     }
 
+    /**
+     * Метод за генериране на произволна дължина.
+     * @return Обект за съхранение на дължина на песен с произволни данни.
+     */
     public static TimeDuration genRandDuration() {
         Random rand = new Random();
         return new TimeDuration(rand.nextInt(5), rand.nextInt(60));

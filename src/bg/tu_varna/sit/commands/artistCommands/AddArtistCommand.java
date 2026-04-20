@@ -13,6 +13,11 @@ public class AddArtistCommand extends Command {
         this.artistActions = artistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за добавяне на артист
+     * @param args аргументи които командата приема
+     * @return съобщение за успех с псевдонима на добавеня
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1, 3);

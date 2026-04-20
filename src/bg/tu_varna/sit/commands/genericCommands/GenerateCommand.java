@@ -16,6 +16,13 @@ public class GenerateCommand extends Command {
     public GenerateCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
+
+    /**
+     * Изълняващ метод на команда за генериране на голямо количесто песни/артисти/пускания
+     * Генерираните елементи са в периода 1-ви Януари до 31-ви Март
+     * @param args аргументи които командата приема
+     * @return Съобщение за успех
+     */
     @Override
     protected String execute(List<String> args) {
         Random rand = new Random();

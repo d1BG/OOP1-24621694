@@ -17,10 +17,14 @@ public class PlayCommand extends Command {
         this.musicPlaylists = musicPlaylists;
     }
 
+    /**
+     * Изълняващ метод на команда за маркираща песен като слушана в историята
+     * @param args аргументи които командата приема
+     * @return съобщение за успех с името и плейлиста (ако е бил подаден) на песента
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1, 2);
-
 
         Song song;
         try {
@@ -33,10 +37,6 @@ public class PlayCommand extends Command {
         if (args.size() == 2) {
             Map<String, String> optPlaylist = ArgumentParser.KeyValueParser(args.get(1));
             playlist = musicPlaylists.getPlaylistActions().getPlaylistByName(optPlaylist.get("playlist"));
-
-            if (!playlist.contains(song)) {
-                throw new PlaylistException("Song is not in the provided playlist");
-            }
         }
 
         musicPlaylists.getPlayHistoryActions().play(song, playlist);

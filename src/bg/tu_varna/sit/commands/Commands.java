@@ -49,7 +49,14 @@ public class Commands {
         commands.put(CommandsIndex.GEN, new GenerateCommand(musicPlaylists));
     }
 
-    public String exec(String cmdName, List<String> args) {
+    /**
+     * Намира командата която потребителя иска да изълни и я изълнява подавайки аргументитие които са били въведени
+     * @param cmdName името на командата за която се търси
+     * @param args аргументите които камандата приема
+     * @return резултата след извършване на командата
+     * @throws CommandException ако командата не е намерена
+     */
+    public String exec(String cmdName, List<String> args) throws CommandException {
         Command cmd = commands.get(CommandsIndex.fromName(cmdName));
         if (cmd != null) {
             return cmd.execute(args);

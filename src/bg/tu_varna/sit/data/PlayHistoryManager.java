@@ -1,6 +1,7 @@
 package bg.tu_varna.sit.data;
 
 import bg.tu_varna.sit.data.interfaces.PlayHistoryActions;
+import bg.tu_varna.sit.exceptions.PlaylistException;
 import bg.tu_varna.sit.models.Artist;
 import bg.tu_varna.sit.models.PlayHistoryEntry;
 import bg.tu_varna.sit.models.Playlist;
@@ -14,24 +15,54 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class PlayHistoryManager implements Serializable, PlayHistoryActions {
     private List<PlayHistoryEntry> entries;
 
+    /**
+     * Конструктор за {@code PlayHistoryManager} създаващ празна листа от пускания
+     */
     public PlayHistoryManager() {
         this.entries = new ArrayList<>();
     }
 
+    /**
+     * @return Връща списъка с пусканията
+     */
     public List<PlayHistoryEntry> getEntries() {
         return entries;
     }
 
+    /**
+     * Пуска избрана песен
+     * @param song Песента която пуска
+     * @param playlist Плейлист от който е песента която се пуска (може да е {@code null})
+     * @throws PlaylistException ако песента не е част от пл
+     */
     @Override
-    public void play(Song song, Playlist playlist) {
+    public void play(Song song, Playlist playlist) throws PlaylistException {
+        if (!playlist.contains(song)) {
+            throw new PlaylistException("Song is not in the provided playlist");
+        }
         entries.add(new PlayHistoryEntry(song, playlist));
     }
 
-    // used by random generator
+    /**
+     * Пуска избрана песен
+     * Използва се само от произволния генератор.
+     * @param song песента която пуска
+     * @param playlist плейлиста от който е песента (може да е {@code null})
+     * @param timestamp време по което е пусната песента
+     */
     public void play(Song song, Playlist playlist, LocalDateTime timestamp) {
         entries.add(new PlayHistoryEntry(song, playlist, timestamp));
     }
 
+    /**
+     * Филтрира списъка от пускания по определени категории
+     * Ако на филтър бъде подаден {@code null} няма да се филтрира по тази категория
+     * @param from филтър от коя дата/кой час са пусканията
+     * @param to филтър до коя дата/кой час са пусканията
+     * @param playlist филтър по плейлист
+     * @param song филтър по песен
+     * @return филтриран списък по подадените аргументи
+     */
     @Override
     public List<PlayHistoryEntry> filterEntries(LocalDateTime from, LocalDateTime to, Playlist playlist, Song song) {
         List<PlayHistoryEntry> filteredList = new ArrayList<>(entries);
@@ -55,6 +86,13 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         return filteredList;
     }
 
+    /**
+     * Топ {@code N} на брой пускания по плейлисти
+     * @param n топ колко да се върнат
+     * @param from филтър от (може да е {@code null})
+     * @param to филтър до (може да е {@code null})
+     * @return връща {@code LinkedHashMap<Playlist, Integer>} подреден по слушания с {@code N} на брой елементи
+     */
     @Override
     public Map<Playlist, Integer> topPlaylists(int n, LocalDateTime from, LocalDateTime to) {
         List<PlayHistoryEntry> filteredList = filterEntries(from, to, null, null);
@@ -80,6 +118,13 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         return topPlaylists;
     }
 
+    /**
+     * Топ {@code N} на брой пускания по песни
+     * @param n топ колко да се върнат
+     * @param from филтър от (може да е {@code null})
+     * @param to филтър до (може да е {@code null})
+     * @return връща {@code LinkedHashMap<Song, Integer>} подреден по слушания с {@code N} на брой елементи
+     */
     @Override
     public Map<Song, Integer> topTracks(int n, LocalDateTime from, LocalDateTime to) {
         List<PlayHistoryEntry> filteredList = filterEntries(from, to, null, null);
@@ -104,6 +149,13 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         return topTracks;
     }
 
+    /**
+     * Топ {@code N} на брой пускания по Артисти
+     * @param n топ колко да се върнат
+     * @param from филтър от (може да е {@code null})
+     * @param to филтър до (може да е {@code null})
+     * @return връща {@code LinkedHashMap<Artist, Integer>} подреден по слушания с {@code N} на брой елементи
+     */
     @Override
     public Map<Artist, Integer> topArtists(int n, LocalDateTime from, LocalDateTime to) {
         List<PlayHistoryEntry> filteredList = filterEntries(from, to, null, null);
@@ -128,6 +180,13 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         return topArtists;
     }
 
+    /**
+     * Извежда всички плейлисти между две дати под подаден процент слушаност за педиода
+     * @param from филтър от
+     * @param to филтър до
+     * @param percentThreshold процент слушаност
+     * @return {@code Map<Playlist, Double>} от всикчки плейлисти за периода под подадения процент слушаност
+     */
     @Override
     public Map<Playlist, Double> lowActivity(LocalDateTime from, LocalDateTime to, int percentThreshold) {
         /* The Integer.MAX_VALUE is a "hack" that forces the return to be entryList.size()

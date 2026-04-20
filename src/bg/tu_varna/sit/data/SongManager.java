@@ -13,14 +13,22 @@ import java.util.List;
 
 public class SongManager implements SongActions, Serializable {
     private List<Song> songs;
+
+    /**
+     * Конструктор за SongManager, суздава празен списък за песни
+     */
     public SongManager() {
         songs = new ArrayList<>();
     }
 
-    public List<Song> getSongs() {
-        return songs;
-    }
-
+    /**
+     * Филтрира листата от песни по подаден Артист, Жанр и/или Година.
+     * Ако са подадени {@code null} стойности, не се филтрира по тези обекти.
+     * @param artist Артисст по който се филтрира
+     * @param genre Жанр по който се филтрира
+     * @param year Година по която се филтрира
+     * @return филтрирана листа по подадените аргументи
+     */
     @Override
     public List<Song> filterSongs(Artist artist, Genre genre, String year) {
         List<Song> filteredSongs = new ArrayList<>(songs);
@@ -40,8 +48,13 @@ public class SongManager implements SongActions, Serializable {
         return filteredSongs;
     }
 
+    /**
+     * Добавяне на песен.
+     * @param song песента аз добавяне
+     * @throws SongException ако песента съшествува
+     */
     @Override
-    public void addSong(Song song) {
+    public void addSong(Song song) throws SongException {
         for (Song s : songs) {
             if (s.equals(song)) {
                 throw new SongException("Song already exists");
@@ -50,13 +63,23 @@ public class SongManager implements SongActions, Serializable {
         songs.add(song);
     }
 
+    /**
+     * Премахва песен.
+     * @param song песен за премахване
+     */
     @Override
     public void removeSong(Song song) {
         songs.remove(song);
     }
 
+    /**
+     * Намира песен по уникален идентификатор
+     * @param id уникален идентификатор по който се търси
+     * @return песента отговаряща на уникалния идентификатор
+     * @throws SongException ако песента не е намерена
+     */
     @Override
-    public Song getSongById(int id) {
+    public Song getSongById(int id) throws SongException {
         for (Song song : songs) {
             if (song.getID() == id) {
                 return song;
@@ -65,6 +88,9 @@ public class SongManager implements SongActions, Serializable {
         throw new SongException("Song not found");
     }
 
+    /**
+     * @return уникален идентификатор за следващата песен която се добавя.
+     */
     public int getNextSongID() {
         int songID;
         if (songs.isEmpty()) {
@@ -73,5 +99,12 @@ public class SongManager implements SongActions, Serializable {
             songID = songs.getLast().getID()+1;
         }
         return songID;
+    }
+
+    /**
+     * @return листа от Песни.
+     */
+    public List<Song> getSongs() {
+        return songs;
     }
 }

@@ -12,6 +12,11 @@ public class DeletePlaylistCommand extends Command {
         this.playlistActions = playlistActions;
     }
 
+    /**
+     * Изълняващ метод на команда за изтриване на плейлист
+     * @param args аргументи които командата приема
+     * @return съобщение за успех и името на изтрития плейлист
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 1);

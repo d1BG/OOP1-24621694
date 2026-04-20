@@ -8,6 +8,13 @@ import java.util.List;
 public class ExitCommand extends Command {
     public ExitCommand() {}
 
+    /**
+     * Изълняващ метод на команда за напускане на програмта
+     * Командата връща "връща" {@code null}, но технически не стига до там.
+     * Командата излиза от програмата преди да завъриши изълнението си.
+     * @param args аргументи които командата приема
+     * @return {@code null}
+     */
     @Override
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args);

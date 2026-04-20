@@ -30,15 +30,26 @@ public enum Genre implements Serializable {
 
     private final String name;
 
+    /**
+     * @param name String който се изнася и по който се търси.
+     */
     Genre(String name) {
         this.name = name;
     }
 
+    /**
+     * @return String name
+     */
     @Override
     public String toString() {
         return name;
     }
 
+    /**
+     * Метод за получаване на enum стойност от {@code String}
+     * @param name String по който се търси за отнасяща се {@code enum} стойност
+     * @return {@code enum} стойност отговаряща на своя name {@code String}
+     */
     public static Genre fromName(String name) {
         for (Genre genre : Genre.values()) {
             if (genre.name.equalsIgnoreCase(name)) {

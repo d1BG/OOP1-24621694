@@ -5,9 +5,14 @@ import bg.tu_varna.sit.exceptions.TimeFormatException;
 import java.time.LocalDateTime;
 // TODO: nuke this, use LocalDateTime.format()
 public class DateTimeParser {
-    // parses dd.MM.yyyy-hh:mm to ISO-8601
 
-    public static LocalDateTime parse(String dateTime) {
+    /**
+     * Parser на дати и часове от {@code dd.MM.yyyy-hh:mm} към {@code ISO-8601} ({@code LocalDateTime})
+     * @param dateTime String в формат {@code dd.MM.yyyy-hh:mm}
+     * @return обект от тип {@code LocalDateTime}
+     * @throws TimeFormatException ако подадения низ не е в правилния формат или са подадени невалидни данни
+     */
+    public static LocalDateTime parse(String dateTime) throws TimeFormatException {
         try {
             String[] splitDateTime = dateTime.split("-");
             String[] date = splitDateTime[0].split("\\.");
@@ -24,11 +29,16 @@ public class DateTimeParser {
         }
     }
 
-    public static String format(LocalDateTime date) {
-        return date.getDayOfMonth() + "." +
-                date.getMonth().getValue() + "." +
-                date.getYear() + "-" +
-                date.getHour() + ":" +
-                date.getMinute();
+    /**
+     * Formatter на {@code LocalDateTime} обекти
+     * @param dateTime време което да се превърне в {@code String}
+     * @return {@code String} в формат {@code dd.MM.yyyy-hh:mm}
+     */
+    public static String format(LocalDateTime dateTime) {
+        return dateTime.getDayOfMonth() + "." +
+                dateTime.getMonth().getValue() + "." +
+                dateTime.getYear() + "-" +
+                dateTime.getHour() + ":" +
+                dateTime.getMinute();
     }
 }

@@ -43,8 +43,14 @@ public class FileService implements FileActions {
         musicPlaylists.setMusicPlaylists(new MusicData());
     }
 
+    /**
+     * Записва информацията в опреден файл или в вече отворения файл
+     * @param musicPlaylists обекта който бива записван в файла
+     * @param file файла в който записва
+     * @throws FileException ако няма отворен файл, ако не може да се създаде нов файл или има грешка при писане
+     */
     @Override
-    public void write(MusicPlaylists musicPlaylists, File file) {
+    public void write(MusicPlaylists musicPlaylists, File file) throws FileException{
         if (file == null) {
             if (this.file != null) {
                 file = this.file; // if no file is passed, use the already opened one
@@ -72,11 +78,18 @@ public class FileService implements FileActions {
         }
     }
 
+    /**
+     * Проверява дали има отворен файл
+     * @return истина ако е отворен, съществъва и е файл.
+     */
     @Override
     public boolean isOpen() {
         return (file != null && file.exists() && file.isFile());
     }
 
+    /**
+     * @return отворения файл (може да е {@code null})
+     */
     @Override
     public File getFile() {
         return file;

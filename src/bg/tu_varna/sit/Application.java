@@ -13,6 +13,9 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class Application {
+    /**
+     * Двигателен клас на програмата
+     */
     static void main() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         FileActions fileActions = new FileService();

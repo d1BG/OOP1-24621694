@@ -7,6 +7,14 @@ public class TokenizerWindows implements Tokenizer {
     private List<String> tokens = new ArrayList<>();
     public TokenizerWindows() {}
 
+    /**
+     * Метод за разделяна на потребителски вход за Windows. Разделя при интервал.
+     * При отваряне на кавички оставя в същия аргумент, дори и при
+     * използване на интервали, докато кавичките не биват затворени и не се
+     * използва интервал.
+     * @param line вход от потребителя
+     * @return Връща листа от разделение аргументи
+     */
     @Override
     public List<String> tokenize(String line) {
         StringBuilder currToken = new StringBuilder();
@@ -36,6 +44,9 @@ public class TokenizerWindows implements Tokenizer {
         return tokens;
     }
 
+    /**
+     * Изчиства листата с токени (аргументи)
+     */
     @Override
     public void clear() {
         tokens.clear();
