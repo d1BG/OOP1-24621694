@@ -33,7 +33,7 @@ public class Commands {
         commands.put(CommandsIndex.OPEN, new OpenCommand(musicPlaylists, fileActions));
         commands.put(CommandsIndex.CLOSE, new CloseCommand(musicPlaylists, fileActions));
         commands.put(CommandsIndex.ADD_TO_PLAYLIST, new AddToPlaylistCommand(musicPlaylists));
-        commands.put(CommandsIndex.REMOVE_FROM_PLAYLIST, new RemoveFromPlaylist(musicPlaylists));
+        commands.put(CommandsIndex.REMOVE_FROM_PLAYLIST, new RemoveFromPlaylistCommand(musicPlaylists));
         commands.put(CommandsIndex.PLAY, new PlayCommand(musicPlaylists));
         commands.put(CommandsIndex.PLAYS, new PlaysCommand(musicPlaylists));
         commands.put(CommandsIndex.SHOW_PLAYLIST, new ShowPlaylistCommand(musicPlaylists.getPlaylistActions()));

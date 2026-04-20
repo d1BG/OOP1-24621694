@@ -7,9 +7,9 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
-public class RemoveFromPlaylist extends Command {
+public class RemoveFromPlaylistCommand extends Command {
     private MusicPlaylists musicPlaylists;
-    public RemoveFromPlaylist(MusicPlaylists musicPlaylists) {
+    public RemoveFromPlaylistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }
 
