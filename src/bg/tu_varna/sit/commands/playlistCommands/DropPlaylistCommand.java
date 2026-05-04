@@ -7,9 +7,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за плейлисти изтриващ плейлисти и всички пускания от него
+ */
 public class DropPlaylistCommand extends Command {
+    /**
+     * Мениджър за музикални плейлисти
+     */
     private MusicPlaylists musicPlaylists;
 
+    /**
+     * Конструктор за команда премахващ плейлист от системата
+     * @param musicPlaylists Мениджър за музикални плейлисти
+     */
     public DropPlaylistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }

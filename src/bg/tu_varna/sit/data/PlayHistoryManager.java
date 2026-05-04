@@ -12,7 +12,14 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Мениджър клас за пускания на песни и операции с тях.
+ * Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class PlayHistoryManager implements Serializable, PlayHistoryActions {
+    /**
+     * Колекция от пускания.
+     */
     private List<PlayHistoryEntry> entries;
 
     /**
@@ -101,11 +108,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         Map<Playlist, Integer> counts = new HashMap<>();
         for (PlayHistoryEntry e : filteredList) {
             Playlist curr = e.getPlaylist();
-            if (counts.get(curr) == null) {
-                counts.put(curr, 1);
-            } else {
-                counts.replace(curr, counts.get(curr)+1);
-            }
+            counts.put(curr, counts.getOrDefault(curr, 0) + 1); //TODO
         }
 
         List<Map.Entry<Playlist, Integer>> entryList = new ArrayList<>(counts.entrySet());

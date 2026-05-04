@@ -18,9 +18,21 @@ import java.util.List;
 import java.util.Map;
 
 public class AddSongCommand extends Command {
+    /**
+     * Мениджър за песни
+     */
     private SongActions songActions;
+
+    /**
+     * Мениджър за артисти
+     */
     private ArtistActions artistActions;
 
+    /**
+     * Конеструктор за команда добавяща песен в мениджъра
+     * @param songActions Мениджър за песни
+     * @param artistActions Мениджър за артисти
+     */
     public AddSongCommand(SongActions songActions, ArtistActions artistActions) {
         this.songActions = songActions;
         this.artistActions = artistActions;

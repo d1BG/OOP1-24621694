@@ -2,6 +2,10 @@ package bg.tu_varna.sit.models;
 
 import java.io.Serializable;
 
+/**
+ * Клас съхраняващ енумерация за информацията на Жанра на песен. Задължитено поле {@code name}
+ * Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public enum Genre implements Serializable {
     NA("N/A"),
     POP("Pop"),
@@ -28,6 +32,10 @@ public enum Genre implements Serializable {
     LO_FI("Lo-Fi"),
     OTHER("Other");
 
+    /**
+     * Име на песента, използва се за извеждане на жанра в лесно четим от потребителя начин,
+     * и се използва при търсене на {@code enum} стойност.
+     */
     private final String name;
 
     /**

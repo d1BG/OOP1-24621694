@@ -11,8 +11,19 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Клас за команда извеждаща плейлисти с ниска активност
+ */
 public class LowActivityCommand extends Command {
+    /**
+     * мениджър на пускания
+     */
     private PlayHistoryActions playHistoryActions;
+
+    /**
+     * Конструктор нба команда извеждаща плейлисти с ниска активност
+     * @param playHistoryActions
+     */
     public LowActivityCommand(PlayHistoryActions playHistoryActions) {
         this.playHistoryActions = playHistoryActions;
     }

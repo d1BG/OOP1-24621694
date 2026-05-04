@@ -11,8 +11,19 @@ import java.time.Month;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Клас за команда генрираща артисти, плейлисти и песни
+ */
 public class GenerateCommand extends Command {
+    /**
+     * Мениджър за музикални плейлисти
+     */
     private MusicPlaylists musicPlaylists;
+
+    /**
+     * Конструктор на команда генрираща информация
+     * @param musicPlaylists Мениджър за музикални плейлисти
+     */
     public GenerateCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }

@@ -7,8 +7,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за команда извеждаща всички плейлисти
+ */
 public class ListPlaylistsCommand extends Command {
+    /**
+     * Мениджър за плейлисти
+     */
     private PlaylistActions playlistActions;
+
+    /**
+     * Конструктор за команда извеждаща всички плейлисти
+     * @param playlistActions Мениджър за плейлисти
+     */
     public ListPlaylistsCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;
     }

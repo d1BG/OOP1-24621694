@@ -8,9 +8,24 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Клас за команда запасваща информация в файл
+ */
 public class SaveAsCommand extends Command {
-    private MusicPlaylists musicPlaylists;
+    /**
+     * Мениджър за файлови операции
+     */
     private FileActions fileActions;
+    /**
+     * Мениджъра за музикални плейлисти, който бива записан в файла
+     */
+    private MusicPlaylists musicPlaylists;
+
+    /**
+     * Конструктор на команда запазваща информация в специфичвен файл
+     * @param musicPlaylists Мениджъра за музикални плейлисти
+     * @param fileActions Мениджър за файлови операции
+     */
     public SaveAsCommand(MusicPlaylists musicPlaylists, FileActions fileActions) {
         this.musicPlaylists = musicPlaylists;
         this.fileActions = fileActions;

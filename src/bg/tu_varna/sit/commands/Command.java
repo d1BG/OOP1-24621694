@@ -4,6 +4,9 @@ import bg.tu_varna.sit.exceptions.CommandException;
 
 import java.util.List;
 
+/**
+ * Клас команда наследяван от всички команди.
+ */
 public abstract class Command {
     /**
      * Изъплняващ метод на командата

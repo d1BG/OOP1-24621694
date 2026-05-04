@@ -11,8 +11,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Клас за команда за пускане на песен
+ */
 public class PlayCommand extends Command {
+    /**
+     * мениджър на музикални плейлисти
+     */
     private MusicPlaylists musicPlaylists;
+
+    /**
+     * Конструктор на команда за пускане на песен
+     * @param musicPlaylists
+     */
     public PlayCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }

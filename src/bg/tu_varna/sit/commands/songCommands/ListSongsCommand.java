@@ -14,8 +14,20 @@ import java.util.List;
 import java.util.Map;
 
 public class ListSongsCommand extends Command {
+    /**
+     * Мениджър на песни
+     */
     private SongActions songActions;
+    /**
+     * Мениджър на артисти
+     */
     private ArtistActions artistActions;
+
+    /**
+     * Конструктор на команда за извеждане на всички песни
+     * @param songActions Мениджър за песни
+     * @param artistActions Мениджър за артисти
+     */
     public ListSongsCommand(SongActions songActions, ArtistActions artistActions) {
         this.songActions = songActions;
         this.artistActions = artistActions;

@@ -12,8 +12,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Клас за команда извеждаща топ {@code N} на брой артисти в определен период
+ */
 public class TopArtistsCommand extends Command {
+    /**
+     * мениджър на пускания
+     */
     private PlayHistoryActions playHistoryActions;
+
+    /**
+     * Конструктор на команда извеждаща топ {@code N} на брой артисти в определен период
+     * @param playHistoryActions мениджър на пускания
+     */
     public TopArtistsCommand(PlayHistoryActions playHistoryActions) {
         this.playHistoryActions = playHistoryActions;
     }

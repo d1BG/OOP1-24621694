@@ -7,11 +7,25 @@ import bg.tu_varna.sit.exceptions.FileException;
 
 import java.io.*;
 
+/**
+ * Клас за работа са файлове.
+ */
 public class FileService implements FileActions {
+    /**
+     * Файла с който програмата работи.
+     */
     private File file;
 
+    /**
+     * Конструктор за услуга за работа с файлове
+     */
     public FileService() {}
 
+    /**
+     * Отваря файл и зарежда информацията от него в подадения мениджър файл.
+     * @param musicPlaylists мениджър файла в който се зарежда информацията от подадения файл
+     * @param file файла от който се зарежда информация.
+     */
     @Override
     public void open(MusicPlaylists musicPlaylists, File file) {
         if (isOpen()) {
@@ -34,6 +48,10 @@ public class FileService implements FileActions {
         throw new FileException("This file doesnt exist");
     }
 
+    /**
+     * Затваря отворения файл, и изчиствав информацията в програмата.
+     * @param musicPlaylists мениджър класа който да бъде изчистен.
+     */
     @Override
     public void close(MusicPlaylists musicPlaylists) {
         if (!isOpen()) {

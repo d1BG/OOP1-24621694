@@ -7,8 +7,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за команда, премахваща песен от плейлист
+ */
 public class RemoveFromPlaylistCommand extends Command {
+    /**
+     * Главен мениджър за пузикални плейлисти
+     */
     private MusicPlaylists musicPlaylists;
+
+    /**
+     * Конструктор на команда за премахване на песен от плейлист
+     * @param musicPlaylists Мениджър за музикални плейлисти
+     */
     public RemoveFromPlaylistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }

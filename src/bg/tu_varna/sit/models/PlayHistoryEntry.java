@@ -5,9 +5,24 @@ import bg.tu_varna.sit.util.DateTimeParser;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * Клас за обект съхраняващ едно пускане на песен, времето по което е пусната и определения плейлист от който е пусната
+ * песента. Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class PlayHistoryEntry implements Serializable {
+    /**
+     * Пуснатата песен (задължително)
+     */
     private Song song;
+
+    /**
+     * Времето по което е пусната песента (задължително - бива генерирано при създаване на обекта)
+     */
     private LocalDateTime timestamp;
+
+    /**
+     * Плейлиста от който е пуснат плейлиста, Може да е {@code null}
+     */
     private Playlist playlist; // may be null
 
     /**

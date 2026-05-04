@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Помощен клас с различни видове {@code Parser} имплементация свързани с аргументи, въведени от потребител.
+ */
 public class ArgumentParser {
     /**
      * Parser на {@code String} в формат ключ=стойност към Map

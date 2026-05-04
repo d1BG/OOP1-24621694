@@ -3,8 +3,19 @@ package bg.tu_varna.sit.util.tokenizers;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Имплементация на {@code Tokenizer} специфична за Windows, използва се при всички версии на Windows.
+ * Не поддържа {@code escape} символи.
+ */
 public class TokenizerWindows implements Tokenizer {
+    /**
+     * Съжържа разделения вход от потребителя, не се изтрива докато не се извика {@code clear()}
+     */
     private List<String> tokens = new ArrayList<>();
+
+    /**
+     * Конструктор на имплементация на {@code Tokenizer} за Windows операционните система.
+     */
     public TokenizerWindows() {}
 
     /**
@@ -44,9 +55,6 @@ public class TokenizerWindows implements Tokenizer {
         return tokens;
     }
 
-    /**
-     * Изчиства листата с токени (аргументи)
-     */
     @Override
     public void clear() {
         tokens.clear();

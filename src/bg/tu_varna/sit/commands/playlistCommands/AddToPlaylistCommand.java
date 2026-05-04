@@ -8,8 +8,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Клас за добавяне на песен в плейлисти
+ */
 public class AddToPlaylistCommand extends Command {
+    /**
+     * Мениджър за музикални плейлисти
+     */
     private MusicPlaylists musicPlaylists;
+
+    /**
+     * Конструтор на команда за добавяне на песен в плейлист
+     * @param musicPlaylists Мениджър за музикални плейлисти
+     */
     public AddToPlaylistCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;
     }

@@ -8,7 +8,14 @@ import bg.tu_varna.sit.models.Song;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * Мениджър клас за плейлисти и операции с тях.
+ * Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class PlaylistManager implements PlaylistActions, Serializable {
+    /**
+     * Колекция от плейлисти менижирани от класа.
+     */
     private List<Playlist> playlists;
 
     /**

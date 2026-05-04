@@ -9,9 +9,24 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.io.File;
 import java.util.List;
 
+/**
+ * Клас за команда отвараща файл и зареждаща информация от него
+ */
 public class OpenCommand extends Command {
+    /**
+     * Мениджър за файлови операции
+     */
     private FileActions fileActions;
+    /**
+     * Мениджъра за музикални плейлисти, който бива записан в файла
+     */
     private MusicPlaylists musicPlaylists;
+
+    /**
+     * Конструктор на команда отвараща и зареждаща информация от подаден файл
+     * @param musicPlaylists Мениджъра за музикални плейлисти
+     * @param fileActions Мениджър за файлови операции
+     */
     public OpenCommand(MusicPlaylists musicPlaylists, FileActions fileActions) {
         this.fileActions = fileActions;
         this.musicPlaylists = musicPlaylists;

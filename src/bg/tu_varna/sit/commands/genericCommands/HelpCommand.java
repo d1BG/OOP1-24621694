@@ -8,9 +8,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Клас за помощна команда извеждаща информация за всички команди
+ */
 public class HelpCommand extends Command {
+    /**
+     * Map от всички команди (използва се при търсене на команда за извеждане на нейната специфична информация)
+     */
     private Map<CommandsIndex, Command> commands;
 
+    /**
+     * Конструктор на команда за извеждане на всички команди и информация за тях
+     * @param commands Map от команди
+     */
     public HelpCommand(Map<CommandsIndex, Command> commands) {
         this.commands = commands;
     }
@@ -44,7 +54,7 @@ public class HelpCommand extends Command {
                 exit
                     Прекратява програмата.
             
-                addsong <title> <artist> <duration> [<album>] [<year>] [<genre>]
+                addsong <title> <artist> <duration> [album=<album>] [year=<year>] [genre=<genre>]
                     Добавя нова песен. Ако съществува песен със същото <title> и <artist>, връща грешка.
             
                 removesong <songId>

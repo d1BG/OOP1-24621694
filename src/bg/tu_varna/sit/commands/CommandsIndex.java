@@ -3,6 +3,9 @@ package bg.tu_varna.sit.commands;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Листа с всички възможни команди
+ */
 public enum CommandsIndex {
     EXIT("exit"),
     HELP("help"),
@@ -39,7 +42,7 @@ public enum CommandsIndex {
     private static final Map<String, CommandsIndex> BY_NAME = new HashMap<>();
 
     /**
-     * @param name String който се изнася и по който се търси.
+     * @param name {@code String} който се изнася и по който се търси.
      */
     CommandsIndex(String name){
         this.name = name;

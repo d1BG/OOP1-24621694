@@ -5,9 +5,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Клас за съхраняване на плейлист, с задължителни полета за име и колекция от обект песен.
+ * Описанието на плейлиста не е задължително. Имлементира {@code Serializable} за да може
+ * да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class Playlist implements Serializable {
+    /**
+     * Име на плейлиста (задължително)
+     */
     private String name;
+
+    /**
+     * Описание на плейлиста
+     */
     private String description;
+
+    /**
+     * Колекция от песни в плейлиста.
+     * Инициализира се при създаване
+     */
     private List<Song> songs;
 
     /**

@@ -3,15 +3,45 @@ package bg.tu_varna.sit.models;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Клас заа обект описващ песен с задължителни уникални идентификатори, заглавия, артисти и продължителност
+ * и незадължителни албум, година и жанр. Имлементира {@code Serializable} за да може да се запазвя
+ * чрез ObjectOutputStream/InputObjectStream.
+ */
 public class Song implements Serializable {
-    // Required*
+    /**
+     * Уникален идентификатор на песента (задължително)
+     */
     private int ID;
+
+    /**
+     * Заглавие на песента (задължително)
+     */
     private String title;
+
+    /**
+     * Изпълнител на песента (задължително)
+     */
     private Artist artist;
+
+    /**
+     * Продължителност на песента в формат MM:SS (задължително)
+     */
     private TimeDuration duration;
-    // Optional
+
+    /**
+     * Албум на песента
+     */
     private String album;
+
+    /**
+     * Година на излизане на песента
+     */
     private String year;
+
+    /**
+     * Жанр на песента
+     */
     private Genre genre;
 
     /**

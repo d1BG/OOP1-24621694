@@ -7,8 +7,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за команда създаваща артист
+ */
 public class AddArtistCommand extends Command {
+    /**
+     * Мениджър за артисти
+     */
     private ArtistActions artistActions;
+
+    /**
+     * Конструктор на команда за създаване на артист
+     * @param artistActions мениджър за артисти
+     */
     public AddArtistCommand(ArtistActions artistActions) {
         this.artistActions = artistActions;
     }

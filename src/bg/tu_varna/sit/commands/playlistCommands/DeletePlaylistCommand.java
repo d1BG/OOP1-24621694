@@ -6,8 +6,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за изтриване на плейлист (НЕ изтрива пускания)
+ */
 public class DeletePlaylistCommand extends Command {
+    /**
+     * Мениджър за плейлисти
+     */
     private PlaylistActions playlistActions;
+
+    /**
+     * Конструктор на команда за изтриване на плейлисти
+     * @param playlistActions
+     */
     public DeletePlaylistCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;
     }

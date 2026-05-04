@@ -13,7 +13,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Клас на команда за извеждане на пусканията
+ */
 public class PlaysCommand extends Command {
+    /**
+     * Мениджър за музикални пускания
+     */
     MusicPlaylists musicPlaylists;
     public PlaysCommand(MusicPlaylists musicPlaylists) {
         this.musicPlaylists = musicPlaylists;

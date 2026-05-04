@@ -3,9 +3,20 @@ package bg.tu_varna.sit.util.tokenizers;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Имплементация на {@code Tokenizer} специфична за Linux, използва се и при всяка операциона
+ * система която не е Windows. Използва специфики който UNIX-like операционните системи
+ * използваат в своя {@code shell}, като например {@code escape} символ ({@code \})
+ */
 public class TokenizerLinux implements Tokenizer {
+    /**
+     * Съжържа разделения вход от потребителя, не се изтрива докато не се извика {@code clear()}
+     */
     private List<String> tokens = new ArrayList<>();
 
+    /**
+     * Конструктор на имплементация на {@code Tokenizer} за Unix-like операционните система.
+     */
     public TokenizerLinux() {}
 
     /**
@@ -73,9 +84,6 @@ public class TokenizerLinux implements Tokenizer {
         return tokens;
     }
 
-    /**
-     * Изчиства листата с токени (аргументи)
-     */
     @Override
     public void clear() {
         tokens.clear();

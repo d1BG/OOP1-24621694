@@ -8,8 +8,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за команда премесваща песен от Н позиция в К позиция из плейлист
+ */
 public class MoveCommand extends Command {
+    /**
+     * Мениджър за плейлисти
+     */
     private PlaylistActions playlistActions;
+
+    /**
+     * Конструктор за команда
+     * @param playlistActions
+     */
     public MoveCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;
     }

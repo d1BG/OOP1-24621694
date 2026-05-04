@@ -11,7 +11,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Мениджър клас за песни и операции с тях.
+ * Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class SongManager implements SongActions, Serializable {
+    /**
+     * Колекция от песните менижирани от класа.
+     */
     private List<Song> songs;
 
     /**

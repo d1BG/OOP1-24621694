@@ -8,8 +8,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Мениджър клас за артисти и операции с тях.
+ * Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class ArtistManager implements Serializable, ArtistActions {
-    List<Artist> artists;
+    /**
+     * Колекция от артисти
+     */
+    private List<Artist> artists;
 
     /**
      * Конструктор за {@code ArtistManager} създаващ празна листа от артисти

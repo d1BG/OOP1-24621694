@@ -5,9 +5,25 @@ import bg.tu_varna.sit.exceptions.TimeFormatException;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * Клас за обект описващ продължителност, използва се при песни и общата продължителност на плейлист
+ * Формата с който се работи е {@code HH:MM:SS}, където часовете не са задължителни.
+ * Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class TimeDuration implements Serializable {
+    /**
+     * Часове в продължителноста.
+     */
     private int hours;
+
+    /**
+     * Минути в продължителноста, максимална стойност 59 (Може да е максимално 118 по време на изчисления).
+     */
     private int minutes;
+
+    /**
+     * Секунди в продължителноста, максимална стойност 59 (Може да е максимално 118 по време на изчисления).
+     */
     private int seconds;
 
     /**

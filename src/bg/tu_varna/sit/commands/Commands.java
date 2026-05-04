@@ -15,7 +15,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Клас изпълняващ команди
+ */
 public class Commands {
+    /**
+     * Map съдържащ всички командите и начин за търсенето им с скорост O(n^0)
+     */
     private final Map<CommandsIndex, Command> commands = new HashMap<>();
 
     public Commands(MusicPlaylists musicPlaylists, FileActions fileActions) {

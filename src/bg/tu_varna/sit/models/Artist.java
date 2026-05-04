@@ -3,11 +3,25 @@ package bg.tu_varna.sit.models;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Клас за обект артист, с задължителни полета за псевдоним и незадължителни за първо и послено име.
+ * Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class Artist implements Serializable {
-    // must-have
+    /**
+     * Псевдоним на артиста (задължително)
+     * използва се при търсене за артист.
+     */
     private String username;
-    // optional
+
+    /**
+     * Първо име на артист.
+     */
     private String firstName;
+
+    /**
+     * Последно име на артист.
+     */
     private String lastName;
 
     /**

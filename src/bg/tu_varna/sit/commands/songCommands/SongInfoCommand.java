@@ -9,8 +9,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за команда намираща информация за песента
+ */
 public class SongInfoCommand extends Command {
+    /**
+     * Мениджър за песни
+     */
     private SongActions songActions;
+
+    /**
+     * Конструктор за команда за информация на песен
+     * @param songActions мениджъра на песни
+     */
     public SongInfoCommand(SongActions songActions) {
         this.songActions = songActions;
     }

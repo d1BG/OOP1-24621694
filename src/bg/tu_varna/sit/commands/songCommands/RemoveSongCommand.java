@@ -8,8 +8,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за команда премахваща песен
+ */
 public class RemoveSongCommand extends Command {
+    /**
+     * Мениджър за песни
+     */
     private SongActions songActions;
+
+    /**
+     * Конструктор за команда премахваща песен от мениджъра
+     * @param songActions Мениджър за песни
+     */
     public RemoveSongCommand(SongActions songActions) {
         this.songActions = songActions;
     }

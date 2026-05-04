@@ -5,7 +5,14 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за команда излизаща от програмата
+ */
 public class ExitCommand extends Command {
+
+    /**
+     * Конструктор за команда излизаща от програмата
+     */
     public ExitCommand() {}
 
     /**

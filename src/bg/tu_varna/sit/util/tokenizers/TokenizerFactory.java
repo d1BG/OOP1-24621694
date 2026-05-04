@@ -1,5 +1,9 @@
 package bg.tu_varna.sit.util.tokenizers;
 
+/**
+ * Клас фабрика за създаване на {@code Tokenizer} обект за Windows или Linux в зависимост от
+ * операционната система на потребителя
+ */
 public class TokenizerFactory {
     /**
      * Метод фабрика за токенизер отговарящ на операционната система на потребителя.

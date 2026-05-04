@@ -4,6 +4,11 @@ import bg.tu_varna.sit.exceptions.TimeFormatException;
 
 import java.time.LocalDateTime;
 // TODO: nuke this, use LocalDateTime.format()
+
+/**
+ * {@code Parser} на дати от формат {@code dd.MM.yyyy-hh:mm} към {@code ISO-8601} (подходящ за {@code LocalDateTime})
+ * и форматър за обратната операция.
+ */
 public class DateTimeParser {
 
     /**
@@ -30,7 +35,7 @@ public class DateTimeParser {
     }
 
     /**
-     * Formatter на {@code LocalDateTime} обекти
+     * Форматър на {@code LocalDateTime} обекти
      * @param dateTime време което да се превърне в {@code String}
      * @return {@code String} в формат {@code dd.MM.yyyy-hh:mm}
      */

@@ -6,10 +6,29 @@ import bg.tu_varna.sit.models.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Главен мениджър клас, съдържащ всички дръги мениджъри.
+ * Имлементира {@code Serializable} за да може да се запазвя чрез ObjectOutputStream/InputObjectStream.
+ */
 public class MusicData implements MusicPlaylists, Serializable {
+    /**
+     * Мениджър за песни.
+     */
     private SongActions songManager;
+
+    /**
+     * Мениджър за артисти
+     */
     private ArtistActions artistManager;
+
+    /**
+     * Мениджър за плейлисти
+     */
     private PlaylistActions playlistManager;
+
+    /**
+     * Мениджър за пускания
+     */
     private PlayHistoryActions playHistoryManager;
 
     /**

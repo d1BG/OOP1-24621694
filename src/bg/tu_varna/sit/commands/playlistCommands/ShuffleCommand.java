@@ -8,8 +8,19 @@ import bg.tu_varna.sit.util.ArgumentParser;
 
 import java.util.List;
 
+/**
+ * Клас за команда разбъркваща плейлист
+ */
 public class ShuffleCommand extends Command {
+    /**
+     * Мениджър за плейлисти
+     */
     private PlaylistActions playlistActions;
+
+    /**
+     * Конструктор за команда разбъркваща плейлист
+     * @param playlistActions Мениджър за плейлист
+     */
     public ShuffleCommand(PlaylistActions playlistActions) {
         this.playlistActions = playlistActions;
     }
