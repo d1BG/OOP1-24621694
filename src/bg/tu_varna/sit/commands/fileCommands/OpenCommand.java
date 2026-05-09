@@ -49,7 +49,7 @@ public class OpenCommand extends Command {
 
     @Override
     public String cmdHelpMessage() {
-        return "Отваря файл със записани данни." +
+        return "Отваря файл със записани данни.\n" +
                 "   Usage: open <file path>";
     }
 }

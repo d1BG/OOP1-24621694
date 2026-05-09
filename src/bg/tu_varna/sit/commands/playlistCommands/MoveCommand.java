@@ -33,14 +33,18 @@ public class MoveCommand extends Command {
 
         int fromPos, toPos;
         try {
-            fromPos = Integer.parseInt(args.get(1));
-            toPos = Integer.parseInt(args.get(2));
+            fromPos = Integer.parseInt(args.get(1))-1;
+            toPos = Integer.parseInt(args.get(2))-1;
         } catch (NumberFormatException e) {
             throw new CommandException("fromPos and toPos must be numbers");
         }
 
+        if (fromPos < 0 || fromPos > playlist.getSongs().size() || toPos < 0 || toPos > playlist.getSongs().size()) {
+            throw new CommandException("You can only move songs between 1 and " + playlist.getSongs().size() + " position");
+        }
+
         playlistActions.move(playlist, fromPos, toPos);
-        return "Successfully moved song from position " + fromPos + " to position " + toPos + " in playlist: " + playlist.getName();
+        return "Successfully moved song from position " + (fromPos+1) + " to position " + (toPos+1) + " in playlist: " + playlist.getName();
     }
 
     @Override

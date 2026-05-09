@@ -38,7 +38,7 @@ public class AddToPlaylistCommand extends Command {
         try {
             if (args.size() == 3) {
                 Map<String, String> optPos = ArgumentParser.KeyValueParser(args.get(2));
-                pos = Integer.parseInt(optPos.get("pos"));
+                pos = Integer.parseInt(optPos.get("pos"))-1;
             }
         } catch (NumberFormatException e) {
             throw new CommandException("Position must be a number");

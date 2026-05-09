@@ -54,6 +54,6 @@ public class AddArtistCommand extends Command {
     @Override
     public String cmdHelpMessage() {
         return "Добавя артист. Уникален по псевдоним.\n" +
-                " Usage: addartist <username> [<firstName>] [<lastName>]";
+                "   Usage: addartist <username> [<firstName>] [<lastName>]";
     }
 }

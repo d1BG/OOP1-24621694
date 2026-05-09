@@ -73,6 +73,12 @@ public class PlaylistManager implements PlaylistActions, Serializable {
         Collections.shuffle(playlist.getSongs(), rand);
     }
 
+    /**
+     * Премества песен от позиция N към позиция К
+     * @param playlist плейлиста върху който се извършва операцията
+     * @param fromPos позицията от която се мърда песента
+     * @param toPos позицията на която се мърда песента
+     */
     @Override
     public void move(Playlist playlist, int fromPos, int toPos) {
         Song movedSong = playlist.getSongs().remove(fromPos);

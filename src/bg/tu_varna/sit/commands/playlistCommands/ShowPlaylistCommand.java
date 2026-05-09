@@ -39,9 +39,11 @@ public class ShowPlaylistCommand extends Command {
         StringBuilder sb = new StringBuilder();
 
         TimeDuration playlistDuration = new TimeDuration();
+        int number = 1;
         for (Song s : pl.getSongs()) {
-            sb.append(s.toString()).append("\n");
+            sb.append(number).append(". ").append(s.toString()).append("\n");
             playlistDuration.addDurations(s.getDuration());
+            number++;
         }
 
         sb.append("\nTotal Playlist Duration: ").append(playlistDuration);

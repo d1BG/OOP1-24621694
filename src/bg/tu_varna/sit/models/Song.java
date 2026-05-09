@@ -131,7 +131,7 @@ public class Song implements Serializable {
      */
     @Override
     public String toString() {
-        return "ID: " + ID + ". " + title + " - " + artist + " " + duration;
+        return title + " - " + artist + " " + duration + " (ID: "+ID+")";
     }
 
     /**
