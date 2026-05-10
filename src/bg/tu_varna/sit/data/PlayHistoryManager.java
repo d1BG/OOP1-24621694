@@ -44,7 +44,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
      */
     @Override
     public void play(Song song, Playlist playlist) throws PlaylistException {
-        if (!playlist.contains(song)) {
+        if (playlist != null && !playlist.contains(song)) {
             throw new PlaylistException("Song is not in the provided playlist");
         }
         entries.add(new PlayHistoryEntry(song, playlist));
@@ -79,7 +79,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
 
         // extra check here bcuz Playlists can be null
         if (playlist != null) {
-            filteredList.removeIf(e -> e.getPlaylist() != null && e.getPlaylist().equals(playlist));
+            filteredList.removeIf(e -> !Objects.equals(e.getPlaylist(), playlist));
         }
 
         if (from != null) {
@@ -108,7 +108,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         Map<Playlist, Integer> counts = new HashMap<>();
         for (PlayHistoryEntry e : filteredList) {
             Playlist curr = e.getPlaylist();
-            counts.put(curr, counts.getOrDefault(curr, 0) + 1); //TODO
+            counts.put(curr, counts.getOrDefault(curr, 0) + 1);
         }
 
         List<Map.Entry<Playlist, Integer>> entryList = new ArrayList<>(counts.entrySet());

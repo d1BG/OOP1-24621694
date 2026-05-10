@@ -4,6 +4,7 @@ import bg.tu_varna.sit.util.DateTimeParser;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * Клас за обект съхраняващ едно пускане на песен, времето по което е пусната и определения плейлист от който е пусната
@@ -89,5 +90,26 @@ public class PlayHistoryEntry implements Serializable {
             sb.append(" from playlist: ").append(playlist.getName());
         }
         return sb.toString();
+    }
+
+    /**
+     * Equals method
+     * @param obj   the reference object with which to compare.
+     * @return boolean that tells you if its the same object or not
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || getClass() != obj.getClass()) return false;
+        PlayHistoryEntry that = (PlayHistoryEntry) obj;
+        return Objects.equals(song, that.song) && Objects.equals(timestamp, that.timestamp) && Objects.equals(playlist, that.playlist);
+    }
+
+    /**
+     * Hashing method
+     * @return hash
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(song, timestamp, playlist);
     }
 }

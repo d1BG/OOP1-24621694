@@ -44,9 +44,16 @@ public class AddToPlaylistCommand extends Command {
             throw new CommandException("Position must be a number");
         }
 
+        Integer songId = null;
+        try {
+            songId = Integer.parseInt(args.get(1));
+        } catch (NumberFormatException e) {
+            throw new CommandException("Song ID must be a number!");
+        }
+
         musicPlaylists.addSongToPlaylist(
                 musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
-                musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.get(1))),
+                musicPlaylists.getSongActions().getSongById(songId),
                 pos
         );
 

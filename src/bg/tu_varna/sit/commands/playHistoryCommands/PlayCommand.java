@@ -53,7 +53,7 @@ public class PlayCommand extends Command {
         musicPlaylists.getPlayHistoryActions().play(song, playlist);
         StringBuilder sb = new StringBuilder("Played: ").append(song.toString());
         if (playlist != null) {
-            sb.append(" from playlist").append(playlist.getName());
+            sb.append(" from playlist: ").append(playlist.getName());
         }
 
         return sb.toString();

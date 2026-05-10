@@ -33,14 +33,18 @@ public class RemoveFromPlaylistCommand extends Command {
     protected String execute(List<String> args) {
         ArgumentParser.argSizeChecker(args, 2);
 
+        Integer songid=null;
         try {
-            musicPlaylists.removeSongFromPlaylist(
-                    musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
-                    musicPlaylists.getSongActions().getSongById(Integer.parseInt(args.get(1)))
-            );
+            songid= Integer.parseInt(args.get(1));
         } catch (NumberFormatException e) {
-            throw new CommandException("Invalid arguments");
+            throw new CommandException(e.getMessage());
         }
+
+        musicPlaylists.removeSongFromPlaylist(
+                musicPlaylists.getPlaylistActions().getPlaylistByName(args.get(0)),
+                musicPlaylists.getSongActions().getSongById(songid)
+        );
+
 
         return "Successfully removed the song from playlist";
     }
