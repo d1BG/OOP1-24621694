@@ -135,11 +135,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         Map<Song, Integer> counts = new HashMap<>();
         for (PlayHistoryEntry e : filteredList) {
             Song curr = e.getSong();
-            if (counts.get(curr) == null) {
-                counts.put(curr, 1);
-            } else {
-                counts.replace(curr, counts.get(curr)+1);
-            }
+            counts.put(curr, counts.getOrDefault(curr, 0) + 1);
         }
 
         List<Map.Entry<Song, Integer>> entryList = new ArrayList<>(counts.entrySet());
@@ -166,11 +162,7 @@ public class PlayHistoryManager implements Serializable, PlayHistoryActions {
         Map<Artist, Integer> counts = new HashMap<>();
         for (PlayHistoryEntry e : filteredList) {
             Artist curr = e.getSong().getArtist();
-            if (counts.get(curr) == null) {
-                counts.put(curr, 1);
-            } else {
-                counts.replace(curr, counts.get(curr)+1);
-            }
+            counts.put(curr, counts.getOrDefault(curr, 0) + 1);
         }
 
         List<Map.Entry<Artist, Integer>> entryList = new ArrayList<>(counts.entrySet());
